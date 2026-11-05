@@ -60,6 +60,7 @@ ol{padding-left:20px;margin:8px 0;color:var(--muted);font-size:14.5px}
   <div class="card">
     <div class="big weak" id="chord">—</div>
     <div class="alts" id="alts"></div>
+    <div id="diag" style="text-align:center;color:var(--muted);font-size:13px;margin-top:6px"></div>
     <div class="meter"><i id="lvl"></i></div>
     <div class="chroma" id="chroma"></div>
     <div class="lbls" id="lbls"></div>
@@ -150,22 +151,23 @@ function loop(){
     const w = f < 160 ? 1.25 : f > 700 ? .7 : 1;             // bas teller kökü taşır
     c[pc] += Math.sqrt(a) * w;
   }
-  const level = Math.min(1, Math.max(0, (10 * Math.log10(pow + 1e-12) + 70) / 50));
+  const dB = 10 * Math.log10(pow + 1e-15), level = Math.min(1, Math.max(0, (dB + 100) / 70));
   $("lvl").style.width = (level * 100).toFixed(0) + "%";
   const mx = Math.max(...c) || 1;
   for(let i = 0; i < 12; i++) chroma[i] = chroma[i] * .6 + (c[i] / mx) * .4;
   const kids = $("chroma").children; const m2 = Math.max(...chroma) || 1;
   for(let i = 0; i < 12; i++) kids[i].style.height = (chroma[i] / m2 * 100).toFixed(0) + "%";
-  if(level < .12){ $("chord").classList.add("weak"); stable = 0; return; }
+  if(dB < -100){ $("chord").classList.add("weak"); $("diag").textContent = "Seviye " + dB.toFixed(0) + " dB · ses çok düşük"; stable = 0; return; }
   const cands = parseCands($("cands").value), pool = cands.length ? cands : ALL;
   const norm = v => Math.sqrt(v.reduce((s, x) => s + x * x, 0)) || 1, cn = norm(chroma);
   const sc = pool.map(t => ({ t, s: t.v.reduce((s, x, i) => s + x * chroma[i], 0) / (norm(t.v) * cn) * (/7$/.test(t.name) ? .95 : 1) })).sort((a, b) => b.s - a.s);   // yedilileri sadece açıkça duyunca seç
   const best = sc[0], margin = best.s - (sc[1] ? sc[1].s : 0);
   if(best.t.name === last) stable++; else { last = best.t.name; stable = 0; }
   // ~0,15 sn aynı akoru duyunca göster
-  if(stable >= 8 && best.s > .55){
-    if(shown !== best.t.name){ shown = best.t.name; log(shown + "  (benzerlik " + best.s.toFixed(2) + ", fark " + margin.toFixed(2) + ")"); }
-    $("chord").textContent = shown; $("chord").classList.toggle("weak", margin < .03);
+  $("diag").textContent = "Seviye " + dB.toFixed(0) + " dB · tahmin " + best.t.name + " · benzerlik " + best.s.toFixed(2);
+  if(stable >= 5 && best.s > .4){
+    if(shown !== best.t.name){ shown = best.t.name; log(shown + "  (benzerlik " + best.s.toFixed(2) + ", fark " + margin.toFixed(2) + ", " + dB.toFixed(0) + " dB)"); }
+    $("chord").textContent = shown; $("chord").classList.toggle("weak", margin < .03 || best.s < .55);
   }
   $("alts").textContent = sc.slice(1, 4).map(x => x.t.name).join("   ");
 }
