@@ -1,19 +1,15 @@
-// Sahne Repertuarı – çevrimdışı çalışma
-const C = "repertuar-2026-11-07a";
+// StagePal Repertoire – offline
+const C = "repertuar-2026-11-15a";
 const CORE = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(C).then(c => c.addAll(CORE)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k.startsWith("repertuar-") && k !== C).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener("fetch", e => {
   if(e.request.method !== "GET") return;
   const u = new URL(e.request.url);
-  if(u.origin === self.location.origin){
-    // önce kayıtlı kopya (internetsiz de açılır), arka planda yenisi indirilir
-    e.respondWith(caches.open(C).then(async c => {
-      const hit = await c.match(e.request, { ignoreSearch: true }) || (e.request.mode === "navigate" ? await c.match("./index.html") : null);
-      const net = fetch(e.request).then(r => { if(r && r.ok) c.put(e.request, r.clone()); return r; }).catch(() => hit);
-      return hit || net;
-    }));
-  } else if(/fonts\.(googleapis|gstatic)\.com$/.test(u.hostname)){
-    e.respondWith(caches.open(C + "-font").then(async c => (await c.match(e.request)) || fetch(e.request).then(r => { c.put(e.request, r.clone()); return r; })));
-  }
+  if(u.origin !== self.location.origin) return;
+  e.respondWith(caches.open(C).then(async c => {
+    const hit = await c.match(e.request, { ignoreSearch: true }) || (e.request.mode === "navigate" ? await c.match("./index.html") : null);
+    const net = fetch(e.request).then(r => { if(r && r.ok) c.put(e.request, r.clone()); return r; }).catch(() => hit);
+    return hit || net;
+  }));
 });
