@@ -1186,6 +1186,44 @@ body{margin:0}
 .home .home-set .langrow > span{flex:none;display:grid;place-items:center;width:18px}
 .home .home-set .langrow select{height:38px;min-width:96px;padding:0 6px;border:0;background:transparent;flex:1}
 .home .home-set .themesw{height:40px}
+
+/* ====== StagePal Pro: abonelik ekranı ====== */
+#payBox{z-index:65}
+.paybox{position:relative;width:min(480px,100%);max-height:92vh;overflow:auto;background:linear-gradient(160deg,#23262c,#141518);color:#f1f1ef;border:1px solid #33373f;border-radius:22px;padding:22px 20px 18px;display:flex;flex-direction:column;gap:14px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.pay-x{position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:10px;border:0;background:rgba(255,255,255,.08);color:#f1f1ef;font-size:20px;line-height:1;cursor:pointer}
+.pay-head{display:flex;align-items:center;gap:12px;padding-right:30px}
+.pay-head b{display:block;font:800 24px/1.1 var(--f-display);letter-spacing:-.01em}
+.pay-head b span{color:#ffc233}
+.pay-head small{display:block;color:#b9bec7;font-size:13.5px;margin-top:3px;line-height:1.35}
+.pay-feat{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+#payBox .pay-feat li{display:flex;gap:9px;font-size:14px;line-height:1.35}
+.pay-feat i{font-style:normal;color:#ffc233;font-weight:800;flex:none}
+.pay-plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pay-plan{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;padding:16px 6px 11px;border-radius:14px;border:2px solid #33373f;background:#1b1e24;color:#f1f1ef;cursor:pointer;font:inherit;text-align:center}
+.pay-plan b{font-size:13px;font-weight:700;color:#b9bec7;text-transform:uppercase;letter-spacing:.06em}
+.pay-plan .pay-price{font:800 19px var(--f-display);font-variant-numeric:tabular-nums}
+.pay-plan small{font-size:11px;color:#8d939e;line-height:1.25}
+.pay-plan[aria-checked="true"]{border-color:#ffc233;background:#2a2412}
+.pay-plan[aria-checked="true"] b{color:#ffc233}
+.pay-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);white-space:nowrap;font:800 9.5px var(--f-ui);font-style:normal;letter-spacing:.06em;text-transform:uppercase;background:#ffc233;color:#141414;padding:3px 7px;border-radius:999px}
+.pay-cta{height:52px;border-radius:14px;border:0;background:#ffc233;color:#141414;font:800 16px var(--f-ui);cursor:pointer;box-shadow:0 4px 0 #a37400}
+.pay-cta:active{transform:translateY(2px);box-shadow:0 2px 0 #a37400}
+.pay-cta:disabled{opacity:.6;cursor:default}
+#payBox .pay-sub{margin:-6px 0 0;text-align:center;color:#b9bec7;font-size:12.5px}
+.pay-links{display:flex;justify-content:space-between;gap:10px}
+.pay-links button,.pay-fine button{border:0;background:none;color:#e8eaee;font:600 13px var(--f-ui);padding:4px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+#payBox .pay-fine{margin:0;color:#8d939e;font-size:11px;line-height:1.45}
+.pay-fine button{font-size:11px;color:#b9bec7;padding:0}
+.paybox :focus-visible{outline:2px solid #ffc233;outline-offset:2px}
+@media (max-width:420px){.pay-plan .pay-price{font-size:16px}.pay-plan{padding:15px 4px 10px}}
+/* ücretsiz planda kilitli özellikler: küçük PRO etiketi */
+.sp-free #rhythm.pedal .go:after{content:"PRO" !important;display:inline-block !important;position:static !important;width:auto !important;height:auto !important;margin-left:auto;padding:2px 6px;border-radius:5px;background:#ffc233 !important;color:#141414;font:800 9px var(--f-ui);letter-spacing:.08em;text-shadow:none;box-shadow:none !important}
+.sp-free #myRBtn:after,.sp-free #tUp:after{content:"PRO";margin-left:6px;padding:1px 5px;border-radius:4px;background:#ffc233;color:#141414;font:800 8.5px var(--f-ui);letter-spacing:.06em;vertical-align:middle}
+/* açılış ekranında plan durumu */
+.plan-chip{display:inline-flex;align-items:center;gap:10px;margin:0 0 16px;padding:7px 8px 7px 13px;border-radius:999px;background:var(--gl-bg,rgba(255,255,255,.06));border:1px solid var(--gl-br,rgba(255,255,255,.12));color:var(--gl-tx,#f1f1ef);font-size:13px;-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.plan-chip[hidden]{display:none}
+.plan-chip b{font-weight:700}
+.plan-chip button{border:0;border-radius:999px;background:#ffc233;color:#141414;font:800 12px var(--f-ui);padding:6px 12px;cursor:pointer}
 </style>
 
 <script>try{ const t = JSON.parse(localStorage.getItem("sp.theme") || "null"); if(t === "light" || t === "dark") document.documentElement.dataset.theme = t; }catch(e){}</script>
@@ -1201,6 +1239,7 @@ body{margin:0}
         </button></div>
     </header>
     <h2 class="home-h">Repertuarların</h2>
+    <div class="plan-chip" id="planChip" hidden data-noi18n></div>
     <p class="home-sub">Bir repertuar seç ya da yenisini oluştur. Her mekan ya da program için ayrı bir repertuar yapabilirsin; şarkıların hepsinde ortaktır, birinde düzeltince hepsinde düzelir.</p>
     <div class="repgrid" id="repGrid"><div class="empty">Yükleniyor…</div></div>
     <footer class="home-foot">
@@ -1473,6 +1512,26 @@ body{margin:0}
     <div class="imp-list" id="impList"></div>
     <div class="askbtns"><button type="button" id="impBack">‹ Geri</button><button type="button" class="pri" id="impSave">Ekle</button></div>
   </div>
+</div></div>
+<div class="askwrap" id="payBox" hidden role="dialog" aria-label="StagePal Pro"><div class="askbox paybox">
+  <button type="button" class="pay-x" id="payClose" aria-label="Kapat">×</button>
+  <div class="pay-head"><svg width="44" height="44" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#1b1e25"/><rect x="13" y="8.5" width="22" height="28" rx="3" fill="#ffc233"/><circle cx="24" cy="29" r="4.3" fill="#1b1e25"/><path d="M26.5 13.5v8.2a2.6 2.6 0 1 1-1.6-2.4v-5.8z" fill="#1b1e25"/></svg><div><b>StagePal <span>Pro</span></b><small id="payWhy"></small></div></div>
+  <ul class="pay-feat">
+    <li><i>✓</i><span>Ritim makinesi: davulcular, bölümler, dolgular, insan hissi</span></li>
+    <li><i>✓</i><span>Ayak pedalı ve tuş takımıyla tam kontrol</span></li>
+    <li><i>✓</i><span>Kendi ritmini yaz, kendi seslerini kullan</span></li>
+    <li><i>✓</i><span>Transpoze: şarkıyı tek dokunuşla istediğin tona taşı</span></li>
+    <li><i>✓</i><span>Sınırsız şarkı ve repertuar</span></li>
+  </ul>
+  <div class="pay-plans" role="radiogroup" aria-label="Plan">
+    <button type="button" class="pay-plan" data-plan="yearly" role="radio"><em class="pay-badge">En avantajlı</em><b>Yıllık</b><span class="pay-price" id="ppYearly">19,99 €</span><small id="ppYearlyM">aylık yalnızca 1,67 €</small></button>
+    <button type="button" class="pay-plan" data-plan="monthly" role="radio"><b>Aylık</b><span class="pay-price" id="ppMonthly">2,99 €</span><small>her ay</small></button>
+    <button type="button" class="pay-plan" data-plan="lifetime" role="radio"><b>Ömür boyu</b><span class="pay-price" id="ppLifetime">39,99 €</span><small>tek ödeme</small></button>
+  </div>
+  <button type="button" class="pay-cta" id="payBuy">7 gün ücretsiz dene</button>
+  <p class="pay-sub" id="paySub">7 gün boyunca ücret yok. Bitmeden iptal edersen hiç ödeme yapmazsın.</p>
+  <div class="pay-links"><button type="button" id="payRestore">Satın alımları geri yükle</button><button type="button" id="payLater">Şimdilik değil</button></div>
+  <p class="pay-fine">Abonelik, deneme bitince seçtiğin süre için otomatik yenilenir ve App Store ya da Google Play hesabından ücretlendirilir. İstediğin zaman mağazanın abonelik ayarlarından iptal edebilirsin. Ücretsiz planda şarkıların her zaman açık kalır. <button type="button" id="payTerms">Kullanım koşulları</button> · <button type="button" id="payPriv">Gizlilik</button></p>
 </div></div>
 <div class="askwrap" id="legalBox" hidden role="dialog" aria-label="Hakkında ve yasal bilgiler"><div class="askbox lgbox">
   <div class="gm-top"><b>Hakkında ve yasal bilgiler</b><button type="button" class="btn" id="lgClose">Kapat</button></div>
@@ -2105,6 +2164,7 @@ function open(id){
 }
 function setShift(v){
   if(!current) return;
+  if(v && !proOk("transpose")) return;
   v = ((v % 12) + 12) % 12; if(v > 6) v -= 12; // keep it in −5…+6
   if(v) prefs[current.id] = {t:v}; else delete prefs[current.id];
   LS.set("sp.prefs", prefs);
@@ -2263,7 +2323,7 @@ function fillSongRhythm(song){
   const want = song && song.ritim && STYLES[song.ritim] ? song.ritim : (STYLES[styleId] && STYLES[styleId].fam !== "click" ? styleId : "slow");
   sel.value = want;
 }
-$("addBtn").onclick = () => openEditor(null);
+$("addBtn").onclick = () => { if(!canAddSongs(1)){ openPaywall("songs"); return; } openEditor(null); };
 $("editBtn").onclick = () => current && openEditor(current);
 $("edClose").onclick = closeEditor;
 $("editor").addEventListener("click", e => { if(e.target === $("editor")) closeEditor(); });
@@ -2394,6 +2454,8 @@ $("form").addEventListener("submit", async e => {
   e.preventDefault();
   const title = $("fTitle").value.trim(), body = $("fBody").value.replace(/\r/g,"").replace(/\s+$/,"");
   if(!title || !body.trim()){ $("saveStatus").className = "status err"; $("saveStatus").textContent = "Şarkı adı ve akorlar boş olamaz."; return; }
+  if(!editing && !canAddSongs(1)){ openPaywall("songs"); return; }
+  { const prob = songSizeProblem(body); if(prob){ $("saveStatus").className = "status err"; $("saveStatus").textContent = prob; return; } }
   const data = {
     title, artist: $("fArtist").value.trim(), capo: $("fCapo").value.trim(),
     tags: [...edGroups], reps: [...edReps],
@@ -3558,6 +3620,7 @@ function vis(){
   visRaf = requestAnimationFrame(vis);
 }
 async function startRhythm(noCount){
+  if(!proOk("rhythm")) return;
   if(!liveBpm){ $("rBpm").focus(); toast("Önce tempoyu yaz ya da Vur ile ölç"); return; }
   if(starting) return; starting = true;
   try{ await startRhythm2(noCount); } finally { starting = false; }
@@ -4375,7 +4438,14 @@ function drawImp(){
   });
 }
 async function impSave(){
-  const list = impSongs.filter(s => s.on && s.body.trim()); if(!list.length || !db) return;
+  let list = impSongs.filter(s => s.on && s.body.trim()); if(!list.length || !db) return;
+  if(!isPro()){
+    const big = list.find(s => s.body.split("\n").filter(l => l.trim()).length > FREE_LINES);
+    if(big){ toast(rL("“" + (big.title || "?") + "” çok uzun (en fazla " + FREE_LINES + " satır). Birden çok şarkıysa ayrı ayrı ekle.", "“" + (big.title || "?") + "” is too long (max " + FREE_LINES + " lines). If it's several songs, add them separately.")); return; }
+    const room = Math.max(0, FREE_SONGS - userSongCount());
+    if(room <= 0){ openPaywall("songs"); return; }
+    if(list.length > room){ list = list.slice(0, room); toast(rL("Ücretsiz planda yer olan " + room + " şarkı eklendi; gerisi için Pro.", "Added the " + room + " songs that fit the free plan; Pro for the rest.")); setTimeout(() => openPaywall("songs"), 1800); }
+  }
   const rep = $("impRep").value; $("impSave").disabled = true;
   let ok = 0;
   for(const s of list){
@@ -4399,6 +4469,93 @@ $("impSave").onclick = impSave;
   ["dragleave", "drop"].forEach(ev => d.addEventListener(ev, () => d.classList.remove("over")));
   d.addEventListener("drop", e => { e.preventDefault(); const f = [...(e.dataTransfer && e.dataTransfer.files || [])]; if(f.length) impRun(f); }); }
 $("impBtn").onclick = openImport;
+/* ---- StagePal Pro: plan, kilitler ve sınırlar ----
+   Mağaza sürümünde window.SP_BILLING (RevenueCat köprüsü) tanımlanır; o yoksa (web, kişisel site) her şey açıktır.
+   Deneme için adrese ?free=1 eklenirse ücretsiz plan, ?free=0 ile geri. */
+const FREE_SONGS = 20, FREE_LINES = 100;
+try{ const q = new URLSearchParams(location.search).get("free"); if(q === "1") LS.set("sp.devFree", true); else if(q === "0") LS.set("sp.devFree", false); }catch(e){}
+function proCache(){ return LS.get("sp.pro", null) || {}; }
+function isPro(){
+  if(LS.get("sp.devFree", false)) return false;
+  if(!window.SP_BILLING) return true;
+  const c = proCache(); if(!c.active) return false;
+  if(c.lifetime) return true;
+  // internetsiz sahne: son doğrulanan bitiş + 7 gün tolerans
+  return !c.until || Date.parse(c.until) + 7 * 864e5 > Date.now();
+}
+function userSongCount(){ return songs.filter(s => !s.demo).length; }
+function updatePro(){
+  const free = !isPro();
+  document.documentElement.classList.toggle("sp-free", free);
+  const chip = $("planChip"); if(!chip) return;
+  const show = free || !!window.SP_BILLING; chip.hidden = !show;
+  if(!show) return;
+  chip.textContent = "";
+  const t = document.createElement("span");
+  if(free){
+    const b = document.createElement("b"); b.textContent = rL("Ücretsiz plan", "Free plan");
+    t.append(b, document.createTextNode(" · " + Math.min(userSongCount(), 9999) + " / " + FREE_SONGS + rL(" şarkı", " songs")));
+    const up = document.createElement("button"); up.type = "button"; up.textContent = rL("Pro'ya geç", "Go Pro"); up.onclick = () => openPaywall("home");
+    chip.append(t, up);
+  } else {
+    const b = document.createElement("b"); b.textContent = "Pro ✓"; t.append(b, document.createTextNode(proCache().lifetime ? rL(" · ömür boyu", " · lifetime") : ""));
+    chip.append(t);
+  }
+}
+const PAY_WHY = {
+  rhythm: ["Ritim makinesi Pro özelliği.", "The rhythm machine is a Pro feature."],
+  editor: ["Kendi ritmini yazmak Pro özelliği.", "Writing your own rhythms is a Pro feature."],
+  transpose: ["Transpoze Pro özelliği.", "Transpose is a Pro feature."],
+  songs: ["Ücretsiz planda en fazla " + FREE_SONGS + " şarkı ekleyebilirsin.", "The free plan holds up to " + FREE_SONGS + " songs."],
+  home: ["Sahnede ihtiyacın olan her şey.", "Everything you need on stage."]
+};
+let payPlan = "yearly";
+function drawPayPlan(){
+  document.querySelectorAll("#payBox .pay-plan").forEach(b => b.setAttribute("aria-checked", b.dataset.plan === payPlan));
+  const sub = payPlan !== "lifetime";
+  $("payBuy").textContent = sub ? rL("7 gün ücretsiz dene", "Try 7 days free") : rL("Satın al", "Buy");
+  $("paySub").textContent = sub ? rL("7 gün boyunca ücret yok. Bitmeden iptal edersen hiç ödeme yapmazsın.", "No charge for 7 days. Cancel before it ends and you pay nothing.") : rL("Tek ödeme, abonelik yok. Pro sonsuza kadar senin.", "One payment, no subscription. Pro is yours for good.");
+}
+async function openPaywall(why){
+  $("payWhy").textContent = rL(...(PAY_WHY[why] || PAY_WHY.home));
+  if(window.SP_BILLING && SP_BILLING.prices){ try{ const p = await SP_BILLING.prices(); if(p){ if(p.yearly) $("ppYearly").textContent = p.yearly; if(p.monthly) $("ppMonthly").textContent = p.monthly; if(p.lifetime) $("ppLifetime").textContent = p.lifetime; if(p.yearlyPerMonth) $("ppYearlyM").textContent = rL("aylık yalnızca ", "only ") + p.yearlyPerMonth + rL("", " a month"); } }catch(e){} }
+  drawPayPlan(); $("payBox").hidden = false;
+}
+function proOk(why){ if(isPro()) return true; openPaywall(why); return false; }
+function canAddSongs(n){ return isPro() || userSongCount() + (n || 1) <= FREE_SONGS; }
+// tek şarkının içine koca bir repertuar doldurulmasın
+function songSizeProblem(body){
+  if(isPro()) return null;
+  const lines = String(body || "").split("\n").filter(l => l.trim()).length;
+  let many = 0; try{ many = IMP.parse(body, new Set()).length; }catch(e){}
+  if(many > 1) return rL("Bu metinde birden çok şarkı var gibi görünüyor. Her şarkıyı ayrı ekle; “İçe aktar” bunları tek seferde ayırır.", "This text looks like several songs. Add each song separately; “Import” splits them in one go.");
+  if(lines > FREE_LINES) return rL("Bir şarkı en fazla " + FREE_LINES + " satır olabilir. Bu metin " + lines + " satır; birden çok şarkıysa ayrı ayrı ekle.", "A song can have at most " + FREE_LINES + " lines. This text has " + lines + "; if it's several songs, add them separately.");
+  return null;
+}
+async function payDone(r){
+  if(r && r.active){ LS.set("sp.pro", { active: true, until: r.until || null, lifetime: !!r.lifetime, checked: new Date().toISOString() }); }
+  updatePro();
+  if(isPro()){ $("payBox").hidden = true; toast(rL("Pro açıldı, iyi sahneler!", "Pro unlocked, have a great show!")); }
+}
+document.querySelectorAll("#payBox .pay-plan").forEach(b => b.onclick = () => { payPlan = b.dataset.plan; drawPayPlan(); });
+$("payBuy").onclick = async () => {
+  if(!window.SP_BILLING){ toast(rL("Satın alma, uygulamanın mağaza sürümünde açılacak.", "Purchases open in the store version of the app.")); return; }
+  $("payBuy").disabled = true;
+  try{ payDone(await SP_BILLING.purchase(payPlan)); }
+  catch(e){ if(!(e && e.cancelled)) toast(rL("Satın alma tamamlanamadı. Tekrar dene.", "The purchase didn't complete. Try again.")); }
+  finally{ $("payBuy").disabled = false; }
+};
+$("payRestore").onclick = async () => {
+  if(!window.SP_BILLING){ toast(rL("Geri yükleme, uygulamanın mağaza sürümünde çalışır.", "Restore works in the store version of the app.")); return; }
+  try{ const r = await SP_BILLING.restore(); if(r && r.active) payDone(r); else toast(rL("Bu hesapta etkin bir satın alım bulunamadı.", "No active purchase found on this account.")); }
+  catch(e){ toast(rL("Geri yüklenemedi. İnternet bağlantını kontrol et.", "Couldn't restore. Check your internet connection.")); }
+};
+$("payClose").onclick = $("payLater").onclick = () => { $("payBox").hidden = true; };
+$("payTerms").onclick = () => { $("payBox").hidden = true; openLegal("agb"); };
+$("payPriv").onclick = () => { $("payBox").hidden = true; openLegal("datenschutz"); };
+// mağaza sürümünde açılışta aboneliği sessizce doğrula (internet varsa)
+if(window.SP_BILLING && SP_BILLING.status){ SP_BILLING.status().then(r => { if(r){ LS.set("sp.pro", { active: !!r.active, until: r.until || null, lifetime: !!r.lifetime, checked: new Date().toISOString() }); updatePro(); } }).catch(() => {}); }
+setTimeout(updatePro, 0);
 $("homeBtn").onclick = showHome;
 $("pickBtn").onclick = openPick;
 $("songPickClose").onclick = () => { $("songPickBox").hidden = true; };
@@ -4753,6 +4910,7 @@ function edFillFrom(){
   sel.value = "";
 }
 function openRhythmEditor(id, fromStyle){
+  if(!proOk("editor")) return;
   if(playing) stopRhythm();
   const own = id && myRhythms[id];
   ed = { id: own ? id : null, d: own ? JSON.parse(JSON.stringify(myRhythms[id])) : fromStyle ? builtinToDoc(fromStyle) : newDoc(), part: "kita", mode: "hit", dirty: false };
@@ -5336,7 +5494,7 @@ const EN = {
   "Sıralama":"Sort","Sıralama: alfabetik / tempo":"Sort: A–Z / tempo","Alfabetik sıralı (tempoya göre için dokun)":"Sorted A–Z (tap to sort by tempo)","Tempoya göre sıralı (alfabetik için dokun)":"Sorted by tempo (tap for A–Z)",
   "Tempo yok":"No tempo","70 altı":"Under 70","130 ve üstü":"130 and up","hrk":"upb","krd":"bls","özg":"orig","oyun":"dance",
   "Listeyi gizle":"Hide list","Listeyi göster":"Show list","Listeye dön":"Back to list","Listenin başı":"Start of list","Listenin sonu":"End of list",
-  "Repertuarların":"Your repertoires","Bir repertuar seç ya da yenisini oluştur. Her mekan ya da program için ayrı bir repertuar yapabilirsin; şarkıların hepsinde ortaktır, birinde düzeltince hepsinde düzelir.":"Pick a repertoire or create a new one. Make a separate repertoire for each venue or show; your songs are shared, so a fix in one fixes them everywhere.","✉ Bize ulaşın":"✉ Contact us","Öneri, istek, şikâyet ya da bir hata mı buldun? “Bize ulaşın” ile doğrudan bize yaz, her mesajı okuyoruz.":"A suggestion, request, complaint or a bug? Write to us with “Contact us”, we read every message.","＋ Şarkılarımdan seç":"＋ Pick from my songs","Şarkılarımdan seç":"Pick from my songs","Tümünü seç":"Select all","Repertuarlar":"Repertoires","Sadece bu repertuardan çıkar":"Only remove from this repertoire","Tempo":"Tempo","İnsan":"Feel","Sesi azalt":"Volume down","Sesi artır":"Volume up","Daha düz":"Tighter","Daha canlı":"Looser","Ritim panelini gizle":"Hide rhythm panel","Ritim panelini göster":"Show rhythm panel","Paneli gizle":"Hide panel","Paneli göster":"Show panel","Şarkı içe aktar":"Import songs","⤓ Şarkı içe aktar":"⤓ Import songs","⤓ İçe aktar":"⤓ Import","Dosya seç":"Choose file","ya da dosyayı buraya sürükle":"or drop the file here","veya":"or","Akorlu şarkı metnini buraya yapıştır…":"Paste the song text with chords here…","Şarkıları bul":"Find songs","Eklenecek repertuar":"Add to repertoire","‹ Geri":"‹ Back","Not Defteri (.txt), Word (.docx) ya da ChordPro (.cho) dosyanı seç, veya akorlu metni aşağıya yapıştır. Akor satırları, sözler, şarkı adı, sanatçı ve kapo kendiliğinden ayrılır. Tek dosyada birden çok şarkı olabilir.":"Choose a Notepad (.txt), Word (.docx) or ChordPro (.cho) file, or paste the text with chords below. Chord lines, lyrics, title, artist and capo are separated automatically. One file can hold many songs.","Tuş takımını ya da ayak pedalını Bluetooth ile bağla. Bir tuşa dokun ya da tuş takımında bas: altında o tuşun <b>tek</b>, <b>çift</b> ve <b>basılı</b> ayarları açılır. Yeni tuş için <b>＋</b>.":"Connect your keypad or foot pedal via Bluetooth. Tap a key or press it on the keypad: its single, double and hold settings open below. Add a key with ＋.","Yanlış dokunmaya karşı koruma: ritim çalarken durdurmak için iki kez bas":"Accidental-press guard: press twice to stop while playing","Sahneye hazır":"Ready for the stage","Düzenle":"Edit","Kapat":"Close","Kaydet":"Save","Vazgeç":"Cancel","Sil":"Delete","Evet, sil":"Yes, delete","Silinsin mi?":"Delete it?","Silindi":"Deleted","Silinemedi. Tekrar dene.":"Couldn't delete. Try again.",
+  "Repertuarların":"Your repertoires","Bir repertuar seç ya da yenisini oluştur. Her mekan ya da program için ayrı bir repertuar yapabilirsin; şarkıların hepsinde ortaktır, birinde düzeltince hepsinde düzelir.":"Pick a repertoire or create a new one. Make a separate repertoire for each venue or show; your songs are shared, so a fix in one fixes them everywhere.","✉ Bize ulaşın":"✉ Contact us","Öneri, istek, şikâyet ya da bir hata mı buldun? “Bize ulaşın” ile doğrudan bize yaz, her mesajı okuyoruz.":"A suggestion, request, complaint or a bug? Write to us with “Contact us”, we read every message.","＋ Şarkılarımdan seç":"＋ Pick from my songs","Şarkılarımdan seç":"Pick from my songs","Tümünü seç":"Select all","Repertuarlar":"Repertoires","Sadece bu repertuardan çıkar":"Only remove from this repertoire","Tempo":"Tempo","İnsan":"Feel","Sesi azalt":"Volume down","Sesi artır":"Volume up","Daha düz":"Tighter","Daha canlı":"Looser","Ritim panelini gizle":"Hide rhythm panel","Ritim panelini göster":"Show rhythm panel","Paneli gizle":"Hide panel","Paneli göster":"Show panel","Şarkı içe aktar":"Import songs","⤓ Şarkı içe aktar":"⤓ Import songs","⤓ İçe aktar":"⤓ Import","Dosya seç":"Choose file","ya da dosyayı buraya sürükle":"or drop the file here","veya":"or","Akorlu şarkı metnini buraya yapıştır…":"Paste the song text with chords here…","Şarkıları bul":"Find songs","Eklenecek repertuar":"Add to repertoire","‹ Geri":"‹ Back","Not Defteri (.txt), Word (.docx) ya da ChordPro (.cho) dosyanı seç, veya akorlu metni aşağıya yapıştır. Akor satırları, sözler, şarkı adı, sanatçı ve kapo kendiliğinden ayrılır. Tek dosyada birden çok şarkı olabilir.":"Choose a Notepad (.txt), Word (.docx) or ChordPro (.cho) file, or paste the text with chords below. Chord lines, lyrics, title, artist and capo are separated automatically. One file can hold many songs.","Tuş takımını ya da ayak pedalını Bluetooth ile bağla. Bir tuşa dokun ya da tuş takımında bas: altında o tuşun <b>tek</b>, <b>çift</b> ve <b>basılı</b> ayarları açılır. Yeni tuş için <b>＋</b>.":"Connect your keypad or foot pedal via Bluetooth. Tap a key or press it on the keypad: its single, double and hold settings open below. Add a key with ＋.","Yanlış dokunmaya karşı koruma: ritim çalarken durdurmak için iki kez bas":"Accidental-press guard: press twice to stop while playing","Ritim makinesi: davulcular, bölümler, dolgular, insan hissi":"Rhythm machine: drummers, sections, fills, human feel","Ayak pedalı ve tuş takımıyla tam kontrol":"Full control from a foot pedal or keypad","Kendi ritmini yaz, kendi seslerini kullan":"Write your own rhythms, use your own sounds","Transpoze: şarkıyı tek dokunuşla istediğin tona taşı":"Transpose any song to any key with one tap","Sınırsız şarkı ve repertuar":"Unlimited songs and repertoires","En avantajlı":"Best value","Yıllık":"Yearly","Aylık":"Monthly","Ömür boyu":"Lifetime","aylık yalnızca 1,67 €":"only €1.67 a month","her ay":"every month","tek ödeme":"one payment","Satın alımları geri yükle":"Restore purchases","Şimdilik değil":"Not now","Abonelik, deneme bitince seçtiğin süre için otomatik yenilenir ve App Store ya da Google Play hesabından ücretlendirilir. İstediğin zaman mağazanın abonelik ayarlarından iptal edebilirsin. Ücretsiz planda şarkıların her zaman açık kalır.":"After the trial, the subscription renews automatically for the period you chose and is charged to your App Store or Google Play account. Cancel any time in the store's subscription settings. On the free plan your songs always stay open.","Kullanım koşulları":"Terms of use","Gizlilik":"Privacy","Sahneye hazır":"Ready for the stage","Düzenle":"Edit","Kapat":"Close","Kaydet":"Save","Vazgeç":"Cancel","Sil":"Delete","Evet, sil":"Yes, delete","Silinsin mi?":"Delete it?","Silindi":"Deleted","Silinemedi. Tekrar dene.":"Couldn't delete. Try again.",
   "Kaydedildi":"Saved","Kaydedilemedi":"Couldn't save","Kaydedilemedi, tekrar dene":"Couldn't save, try again","Kaydediliyor…":"Saving…","Kayıtlı ✓":"Saved ✓",
   "Kaydedilemedi. Bağlantını kontrol edip tekrar dene.":"Couldn't save. Check your connection and try again.","Bağlantı sorunu oldu. Tekrar dene.":"There was a connection problem. Try again.",
   "Kayıt alanı doldu. Birkaç eski şarkıyı silip tekrar dene.":"Storage is full. Delete a few old songs and try again.","Kayıt yeri şu an açılamadı. İnternet bağlantını kontrol edip tekrar dene.":"Storage couldn't be opened. Check your internet connection and try again.",
@@ -5510,7 +5668,7 @@ if(last && songs.some(s => s.id === last) && matchMedia("(min-width:761px)").mat
     if(current){ current = songs.find(x => x.id === current.id) || null; }
     else { const l = LS.get("sp.last", null); if(l && matchMedia("(min-width:761px)").matches) current = songs.find(x => x.id === l) || null; }
     if(curRep && current && !inRep(current) && !playing) current = null;
-    songsLoadedOnce = true; ensureReps(); if(!$("home").hidden) drawHome();
+    songsLoadedOnce = true; ensureReps(); if(!$("home").hidden) drawHome(); try{ updatePro(); }catch(e){}
     renderList(); renderSheet(); if(current) refreshSave();
   }, () => { loaded = true; songsLoadedOnce = true; ensureReps(); renderList(); });
 })();
