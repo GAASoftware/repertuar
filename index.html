@@ -632,7 +632,7 @@ label.f{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:var(--
     </footer>
   </div>
 </div>
-<div class="askwrap" id="pickBox" hidden role="dialog" aria-label="Şarkılarımdan seç"><div class="askbox lgbox pickbox"><div class="gm-top"><b>Şarkılarımdan seç</b><button type="button" class="btn" id="pickClose">Kapat</button></div><input id="pickQ" class="askinp" type="search" placeholder="Ara" autocomplete="off"><div class="picklist" id="pickList"></div><div class="askbtns"><button type="button" id="pickAll">Tümünü seç</button><button type="button" class="pri" id="pickOk">Ekle</button></div></div></div>
+<div class="askwrap" id="songPickBox" hidden role="dialog" aria-label="Şarkılarımdan seç"><div class="askbox lgbox pickbox"><div class="gm-top"><b>Şarkılarımdan seç</b><button type="button" class="btn" id="songPickClose">Kapat</button></div><input id="songPickQ" class="askinp" type="search" placeholder="Ara" autocomplete="off"><div class="picklist" id="songPickList"></div><div class="askbtns"><button type="button" id="songPickAll">Tümünü seç</button><button type="button" class="pri" id="songPickOk">Ekle</button></div></div></div>
 <div class="app" id="app">
   <aside class="side" aria-label="Şarkı listesi">
     <div class="side-head">
@@ -2940,7 +2940,7 @@ function showHome(){
   closeAllPanels();
   $("home").hidden = false; drawHome();
 }
-function closeAllPanels(){ try{ $("pickBox").hidden = true; $("mixWrap").hidden = true; $("rMix").setAttribute("aria-expanded", "false"); }catch(e){} }
+function closeAllPanels(){ try{ $("songPickBox").hidden = true; $("mixWrap").hidden = true; $("rMix").setAttribute("aria-expanded", "false"); }catch(e){} }
 function openRep(id){
   if(id !== "*all" && !reps[id]) return;
   curRep = id; LS.set("sp.rep", id);
@@ -2998,7 +2998,7 @@ function drawEdReps(){
 /* şarkılarımdan seç */
 let songPick = new Set();
 function drawPick(){
-  const L = $("pickList"), q = trFold($("pickQ").value.trim()); L.textContent = "";
+  const L = $("songPickList"), q = trFold($("songPickQ").value.trim()); L.textContent = "";
   const cand = songs.filter(s => !inRep(s)).filter(s => !q || trFold(s.title + " " + (s.artist || "")).includes(q)).sort((a, b) => coll.compare(a.title, b.title));
   if(!cand.length){ const e = document.createElement("div"); e.className = "empty"; e.textContent = rL("Eklenebilecek başka şarkı yok. Yeni şarkıyı “Yeni şarkı ekle” ile ekleyebilirsin.", "No other songs to add. Add a new one with “Add new song”."); L.append(e); }
   cand.forEach(s => {
@@ -3010,8 +3010,8 @@ function drawPick(){
   });
   drawPickOk();
 }
-function drawPickOk(){ $("pickOk").textContent = songPick.size ? rL(songPick.size + " şarkıyı ekle", "Add " + songPick.size + " songs") : rL("Ekle", "Add"); $("pickOk").disabled = !songPick.size; }
-function openPick(){ if(!curRep || curRep === "*all") return; songPick = new Set(); $("pickQ").value = ""; $("pickQ").placeholder = rL("Ara", "Search"); drawPick(); $("pickBox").hidden = false; }
+function drawPickOk(){ $("songPickOk").textContent = songPick.size ? rL(songPick.size + " şarkıyı ekle", "Add " + songPick.size + " songs") : rL("Ekle", "Add"); $("songPickOk").disabled = !songPick.size; }
+function openPick(){ if(!curRep || curRep === "*all") return; songPick = new Set(); $("songPickQ").value = ""; $("songPickQ").placeholder = rL("Ara", "Search"); drawPick(); $("songPickBox").hidden = false; }
 function demoSongs(){
   const en = dL(false, true), tag = en ? "Demo" : "Örnek", now = new Date().toISOString();
   const D = (id, title, body, x) => Object.assign({ id: "demo-" + id, title, artist: "StagePal Demo", capo: "", tags: [tag], reps: ["demo"], body: body.replace(/^\n/, ""), updatedAt: now, demo: true }, x);
@@ -3409,11 +3409,11 @@ function armStop(i){
 function disarmStop(){ if(!stopArm) return; stopArm = 0; stopArmIdx = -1; clearTimeout(stopArmT); drawHint(); }
 $("homeBtn").onclick = showHome;
 $("pickBtn").onclick = openPick;
-$("pickClose").onclick = () => { $("pickBox").hidden = true; };
-$("pickQ").addEventListener("input", drawPick);
-$("pickAll").onclick = () => { songs.filter(s => !inRep(s)).filter(s => { const q = trFold($("pickQ").value.trim()); return !q || trFold(s.title + " " + (s.artist || "")).includes(q); }).forEach(s => songPick.add(s.id)); drawPick(); };
-$("pickOk").onclick = async () => {
-  const ids = [...songPick]; $("pickBox").hidden = true; if(!ids.length) return;
+$("songPickClose").onclick = () => { $("songPickBox").hidden = true; };
+$("songPickQ").addEventListener("input", drawPick);
+$("songPickAll").onclick = () => { songs.filter(s => !inRep(s)).filter(s => { const q = trFold($("songPickQ").value.trim()); return !q || trFold(s.title + " " + (s.artist || "")).includes(q); }).forEach(s => songPick.add(s.id)); drawPick(); };
+$("songPickOk").onclick = async () => {
+  const ids = [...songPick]; $("songPickBox").hidden = true; if(!ids.length) return;
   for(const id of ids){ const s = songs.find(x => x.id === id); if(s) await setSongReps(s, songReps(s).concat(curRep)); }
   LS.set("sp.cache", songs); renderList(); toast(rL(ids.length + " şarkı eklendi", ids.length + " songs added"));
 };
