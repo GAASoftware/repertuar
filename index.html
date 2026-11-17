@@ -1217,8 +1217,6 @@ body{margin:0}
 .paybox :focus-visible{outline:2px solid #ffc233;outline-offset:2px}
 @media (max-width:420px){.pay-plan .pay-price{font-size:16px}.pay-plan{padding:15px 4px 10px}}
 /* ücretsiz planda kilitli özellikler: küçük PRO etiketi */
-.sp-free #rhythm.pedal .go:after{content:"PRO" !important;display:inline-block !important;position:static !important;width:auto !important;height:auto !important;margin-left:auto;padding:2px 6px;border-radius:5px;background:#ffc233 !important;color:#141414;font:800 9px var(--f-ui);letter-spacing:.08em;text-shadow:none;box-shadow:none !important}
-.sp-free #myRBtn:after,.sp-free #tUp:after{content:"PRO";margin-left:6px;padding:1px 5px;border-radius:4px;background:#ffc233;color:#141414;font:800 8.5px var(--f-ui);letter-spacing:.06em;vertical-align:middle}
 /* açılış ekranında plan durumu */
 .plan-chip{display:inline-flex;align-items:center;gap:10px;margin:0 0 16px;padding:7px 8px 7px 13px;border-radius:999px;background:var(--gl-bg,rgba(255,255,255,.06));border:1px solid var(--gl-br,rgba(255,255,255,.12));color:var(--gl-tx,#f1f1ef);font-size:13px;-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
 .plan-chip[hidden]{display:none}
@@ -1230,6 +1228,13 @@ body{margin:0}
 .home .home-set .pro-btn:hover{background:rgba(255,194,51,.24)}
 .sp-free .home .home-set .pro-btn{background:#ffc233;color:#141414}
 .sp-free .home .home-set .pro-btn span{color:#141414}
+
+/* yeşil ekranda plan durumu (Kayıtlı'nın altında) */
+#rhythm.pedal .pd-lcd{position:relative}
+#rhythm.pedal .pd-sub{padding-right:84px}
+#rhythm.pedal .pd-plan{position:absolute;right:10px;top:var(--plan-top,58px);font:700 9.5px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:#9dff9a;opacity:.85;white-space:nowrap}
+#rhythm.pedal .pd-plan.free{color:#ffe066}
+#rhythm.pedal .pd-plan:empty{display:none}
 </style>
 
 <script>try{ const t = JSON.parse(localStorage.getItem("sp.theme") || "null"); if(t === "light" || t === "dark") document.documentElement.dataset.theme = t; }catch(e){}</script>
@@ -1327,7 +1332,7 @@ body{margin:0}
       <div class="pd-lcd" id="pdLcd">
         <div class="pd-top"><span id="lcdStyle" data-noi18n></span><span id="lcdKalip" data-noi18n></span></div>
         <div class="bpm" aria-label="Tempo"><input id="rBpm" type="text" inputmode="numeric" placeholder="—" aria-label="Tempo (BPM)"><span class="unit">BPM</span><button class="savebpm" id="rSave" hidden title="Bu tempoyu şarkıya kaydet">Kaydet</button></div>
-        <div class="pd-sub" id="lcdSub" data-noi18n></div>
+        <div class="pd-sub" id="lcdSub" data-noi18n></div><span class="pd-plan" id="lcdPlan" data-noi18n></span>
         <div class="beats" id="rBeats" aria-hidden="true"></div>
       </div>
       <div class="pd-prog"><select class="rsel" id="rStyle" aria-label="Ritim"></select><button class="tapbig redit" id="rEdit" type="button" title="Ritmi düzenle ya da kendi ritmini yap">✎</button><select class="rsel" id="rDrummer" aria-label="Kajoncu"></select><select class="rsel" id="rKit" aria-label="Davul seti"></select></div>
@@ -4493,6 +4498,11 @@ function userSongCount(){ return songs.filter(s => !s.demo).length; }
 function updatePro(){
   const free = !isPro();
   document.documentElement.classList.toggle("sp-free", free);
+  { const el = $("lcdPlan"); if(el){ const c = proCache(); let t;
+      if(free) t = rL("Ücretsiz", "Free");
+      else if(window.SP_BILLING && c.trial && c.until){ const d = Math.max(0, Math.ceil((Date.parse(c.until) - Date.now()) / 864e5)); t = rL("Deneme · " + d + " gün", "Trial · " + d + (d === 1 ? " day" : " days")); }
+      else t = "Pro";
+      el.textContent = t; el.classList.toggle("free", free); } }
   const chip = $("planChip"); if(!chip) return;
   const show = free || !!window.SP_BILLING; chip.hidden = !show;
   if(!show) return;
@@ -4542,7 +4552,7 @@ function songSizeProblem(body){
   return null;
 }
 async function payDone(r){
-  if(r && r.active){ LS.set("sp.pro", { active: true, until: r.until || null, lifetime: !!r.lifetime, checked: new Date().toISOString() }); }
+  if(r && r.active){ LS.set("sp.pro", { active: true, until: r.until || null, lifetime: !!r.lifetime, trial: !!r.trial, checked: new Date().toISOString() }); }
   updatePro();
   if(isPro()){ $("payBox").hidden = true; toast(rL("Pro açıldı, iyi sahneler!", "Pro unlocked, have a great show!")); }
 }
@@ -4564,7 +4574,7 @@ $("payClose").onclick = $("payLater").onclick = () => { $("payBox").hidden = tru
 $("payTerms").onclick = () => { $("payBox").hidden = true; openLegal("agb"); };
 $("payPriv").onclick = () => { $("payBox").hidden = true; openLegal("datenschutz"); };
 // mağaza sürümünde açılışta aboneliği sessizce doğrula (internet varsa)
-if(window.SP_BILLING && SP_BILLING.status){ SP_BILLING.status().then(r => { if(r){ LS.set("sp.pro", { active: !!r.active, until: r.until || null, lifetime: !!r.lifetime, checked: new Date().toISOString() }); updatePro(); } }).catch(() => {}); }
+if(window.SP_BILLING && SP_BILLING.status){ SP_BILLING.status().then(r => { if(r){ LS.set("sp.pro", { active: !!r.active, until: r.until || null, lifetime: !!r.lifetime, trial: !!r.trial, checked: new Date().toISOString() }); updatePro(); } }).catch(() => {}); }
 setTimeout(updatePro, 0);
 $("homeBtn").onclick = showHome;
 $("pickBtn").onclick = openPick;
