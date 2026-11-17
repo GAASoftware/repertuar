@@ -1152,46 +1152,39 @@ body{margin:0}
 #keyBox .kb-foot{display:flex;justify-content:center}
 @media (max-width:520px){.ks-kc{width:56px;height:52px}.ks-kc .n{font-size:18px}.ks-pad{gap:9px;padding:12px 6px 16px}.ks-er{grid-template-columns:74px 1fr}}
 
-/* ====== açılış ekranı: sahne arka planı + cam efekti ====== */
-.home{--hb-sky1:#3a2a44;--hb-sky2:#171a26;--hb-sky3:#0b0c11;--hb-beam:#ffc871;--hb-beam2:#7fb7ff;--hb-floor1:#2a1d16;--hb-floor2:#0d0a08;--hb-line:#000;--hb-rim:#ffd38a;--hb-bokeh:.55;--hb-inst:.62;
-  --gl-bg:rgba(255,255,255,.07);--gl-bg2:rgba(255,255,255,.11);--gl-br:rgba(255,255,255,.14);--gl-tx:#f3f1ee;--gl-mu:rgba(243,241,238,.68);background:#0b0c11;color:var(--gl-tx)}
-:root[data-theme="light"] .home{--hb-sky1:#ffe9c7;--hb-sky2:#e9dfd6;--hb-sky3:#f3efe9;--hb-beam:#fff2c9;--hb-beam2:#cfe3ff;--hb-floor1:#c9a27c;--hb-floor2:#8a6446;--hb-line:#6b4a30;--hb-rim:#fff4d6;--hb-bokeh:.5;--hb-inst:.62;
-  --gl-bg:rgba(255,255,255,.55);--gl-bg2:rgba(255,255,255,.72);--gl-br:rgba(255,255,255,.75);--gl-tx:#1d2026;--gl-mu:rgba(29,32,38,.66);background:#f3efe9}
-@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .home{--hb-sky1:#ffe9c7;--hb-sky2:#e9dfd6;--hb-sky3:#f3efe9;--hb-beam:#fff2c9;--hb-beam2:#cfe3ff;--hb-floor1:#c9a27c;--hb-floor2:#8a6446;--hb-line:#6b4a30;--hb-rim:#fff4d6;--hb-bokeh:.5;--hb-inst:.62;--gl-bg:rgba(255,255,255,.55);--gl-bg2:rgba(255,255,255,.72);--gl-br:rgba(255,255,255,.75);--gl-tx:#1d2026;--gl-mu:rgba(29,32,38,.66);background:#f3efe9}}
+/* ====== açılış ekranı: siyah zemin, camın arkasından görünen sarı kajon ====== */
+.home{--hb-bg:#0b0c0e;--gl-bg:rgba(20,21,25,.42);--gl-bg2:rgba(28,30,35,.55);--gl-br:rgba(255,255,255,.12);--gl-tx:#f3f1ee;--gl-mu:rgba(243,241,238,.66);background:#0b0c0e;color:var(--gl-tx)}
+:root[data-theme="light"] .home{--hb-bg:#f2f2f0;--gl-bg:rgba(255,255,255,.5);--gl-bg2:rgba(255,255,255,.68);--gl-br:rgba(255,255,255,.8);--gl-tx:#1d2026;--gl-mu:rgba(29,32,38,.64);background:#f2f2f0}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .home{--hb-bg:#f2f2f0;--gl-bg:rgba(255,255,255,.5);--gl-bg2:rgba(255,255,255,.68);--gl-br:rgba(255,255,255,.8);--gl-tx:#1d2026;--gl-mu:rgba(29,32,38,.64);background:#f2f2f0}}
 .home-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.home-bg svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.home-bg svg{position:absolute;inset:-60px;width:calc(100% + 120px);height:calc(100% + 120px);display:block;filter:blur(14px);opacity:.6}
+:root[data-theme="light"] .home-bg svg{opacity:.42}
 .home-in{position:relative;z-index:1}
 .home .home-name b,.home .home-h{color:var(--gl-tx)}
 .home .home-sub,.home .home-note,.home .home-name span{color:var(--gl-mu)}
-.home .home-h{text-shadow:0 2px 18px rgba(0,0,0,.35)}
-:root[data-theme="light"] .home .home-h{text-shadow:none}
-/* cam kartlar */
-.home .repcard{background:var(--gl-bg);border:1px solid var(--gl-br);color:var(--gl-tx);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);box-shadow:0 10px 30px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.12)}
+.home .repcard{background:var(--gl-bg);border:1px solid var(--gl-br);color:var(--gl-tx);-webkit-backdrop-filter:blur(26px) saturate(150%);backdrop-filter:blur(26px) saturate(150%);box-shadow:0 10px 30px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.1)}
 .home .repcard:hover{border-color:#ffc233;background:var(--gl-bg2)}
 .home .repcard.lib{background:var(--gl-bg2)}
-.home .repcard .rc-meta{color:var(--gl-mu)}
+.home .repcard .rc-meta,.home .repcard .rc-more{color:var(--gl-mu)}
 .home .repcard .rc-count{color:#ffc233}
 :root[data-theme="light"] .home .repcard .rc-count{color:#b57f00}
-.home .repcard .rc-more{color:var(--gl-mu)}
-.home .repcard.add{background:rgba(255,255,255,.03);border:1.5px dashed var(--gl-br);color:var(--gl-mu)}
+.home .repcard.add{border:1.5px dashed var(--gl-br);color:var(--gl-tx)}
 .home .repcard.add .plus{color:#ffc233}
-.home .home-tools .btn,.home .home-foot .bkrow .btn,.home .home-set .langrow,.home .home-set .themesw{background:var(--gl-bg);border:1px solid var(--gl-br);color:var(--gl-tx);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.home .repcard.add small{font-size:12px;font-weight:500;color:var(--gl-mu);text-align:center;padding:0 8px;line-height:1.35}
+.home .home-tools .btn,.home .home-foot .bkrow .btn,.home .home-set .langrow,.home .home-set .themesw{background:var(--gl-bg);border:1px solid var(--gl-br);color:var(--gl-tx);border-radius:10px;-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
 .home .home-set .langrow select{background:transparent;color:var(--gl-tx);border:0}
 .home .linkbtn,.home #aboutLine{color:var(--gl-mu)}
-.home .home-logo svg{box-shadow:0 6px 20px rgba(0,0,0,.35)}
+/* alt düğmeler tek sırada */
+.home .home-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.home .home-tools,.home .home-foot .bkrow{display:contents}
+.home .home-note,.home .home-foot .legalrow{flex-basis:100%}
 @media (prefers-reduced-transparency: reduce){.home .repcard,.home .home-tools .btn{-webkit-backdrop-filter:none;backdrop-filter:none;background:var(--gl-bg2)}}
-@media (max-width:560px){.home-bg svg{opacity:.4}}
-.home .home-set .langrow,.home .home-set .themesw{border-radius:10px}
+@media (max-width:560px){.home-bg svg{opacity:.3}}
 </style>
 
 <script>try{ const t = JSON.parse(localStorage.getItem("sp.theme") || "null"); if(t === "light" || t === "dark") document.documentElement.dataset.theme = t; }catch(e){}</script>
 <div class="home" id="home" role="dialog" aria-label="Repertuarlar">
-  <div class="home-bg" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMaxYMax slice" class="hb-svg"> <defs> <radialGradient id="hbSky" cx="62%" cy="18%" r="85%"> <stop style="stop-color:var(--hb-sky1)" offset="0"/><stop style="stop-color:var(--hb-sky2)" offset=".55"/><stop style="stop-color:var(--hb-sky3)" offset="1"/> </radialGradient> <linearGradient id="hbBeam" x1="0" y1="0" x2="0" y2="1"> <stop style="stop-color:var(--hb-beam)" offset="0" stop-opacity=".55"/><stop style="stop-color:var(--hb-beam)" offset=".7" stop-opacity=".08"/><stop style="stop-color:var(--hb-beam)" offset="1" stop-opacity="0"/> </linearGradient> <linearGradient id="hbBeam2" x1="0" y1="0" x2="0" y2="1"> <stop style="stop-color:var(--hb-beam2)" offset="0" stop-opacity=".4"/><stop style="stop-color:var(--hb-beam2)" offset="1" stop-opacity="0"/> </linearGradient> <linearGradient id="hbFloor" x1="0" y1="0" x2="0" y2="1"> <stop style="stop-color:var(--hb-floor1)" offset="0"/><stop style="stop-color:var(--hb-floor2)" offset="1"/> </linearGradient> <radialGradient id="hbPool" cx="50%" cy="50%" r="50%"> <stop style="stop-color:var(--hb-beam)" offset="0" stop-opacity=".35"/><stop style="stop-color:var(--hb-beam)" offset="1" stop-opacity="0"/> </radialGradient> <linearGradient id="hbWood" x1="0" y1="0" x2="1" y2="1"> <stop offset="0" stop-color="#c98a4b"/><stop offset=".5" stop-color="#9a5f2c"/><stop offset="1" stop-color="#5e3517"/> </linearGradient> <linearGradient id="hbWoodSide" x1="0" y1="0" x2="1" y2="0"> <stop offset="0" stop-color="#6b3d1a"/><stop offset="1" stop-color="#3d220d"/> </linearGradient> <linearGradient id="hbGtr" x1="0" y1="0" x2="1" y2="1"> <stop offset="0" stop-color="#e3b26a"/><stop offset=".6" stop-color="#b9772f"/><stop offset="1" stop-color="#6e3c12"/> </linearGradient> <filter id="hbBlur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="18"/></filter> <filter id="hbSoft" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="1.6"/></filter> <filter id="hbBokeh" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9"/></filter> <linearGradient id="hbVig" x1="0" y1="0" x2="1" y2="0"> <stop style="stop-color:var(--hb-sky3)" offset="0" stop-opacity=".92"/><stop style="stop-color:var(--hb-sky3)" offset=".45" stop-opacity=".55"/><stop style="stop-color:var(--hb-sky3)" offset="1" stop-opacity="0"/> </linearGradient> </defs> <rect width="1600" height="1000" fill="url(#hbSky)"/> 
- <g style="opacity:var(--hb-bokeh)" filter="url(#hbBokeh)"> <circle style="fill:var(--hb-beam)" cx="210" cy="140" r="26"/><circle style="fill:var(--hb-beam2)" cx="420" cy="90" r="18"/> <circle style="fill:var(--hb-beam)" cx="760" cy="120" r="22"/><circle style="fill:var(--hb-beam2)" cx="1010" cy="70" r="16"/> <circle style="fill:var(--hb-beam)" cx="1260" cy="110" r="28"/><circle style="fill:var(--hb-beam2)" cx="1480" cy="160" r="18"/> <circle style="fill:var(--hb-beam)" cx="1380" cy="300" r="12"/><circle style="fill:var(--hb-beam2)" cx="560" cy="260" r="10"/> </g> 
- <g filter="url(#hbBlur)"> <polygon points="1030,0 1110,0 1420,860 880,860" fill="url(#hbBeam)"/> <polygon points="1400,0 1450,0 1580,800 1180,800" fill="url(#hbBeam2)" opacity=".7"/> <polygon points="700,0 740,0 900,820 560,820" fill="url(#hbBeam2)" opacity=".45"/> </g> 
- <path d="M0 790 L1600 760 L1600 1000 L0 1000 Z" fill="url(#hbFloor)"/> <g style="stroke:var(--hb-line)" stroke-width="1.2" opacity=".5"> <path d="M0 830 L1600 800"/><path d="M0 880 L1600 852"/><path d="M0 940 L1600 915"/> <path d="M300 800 L180 1000"/><path d="M700 790 L660 1000"/><path d="M1100 780 L1150 1000"/><path d="M1450 772 L1580 1000"/> </g> <ellipse cx="1150" cy="830" rx="330" ry="52" fill="url(#hbPool)"/> 
- <g transform="translate(1210 540) scale(.78) rotate(-4)" style="opacity:var(--hb-inst)"> <ellipse cx="150" cy="352" rx="240" ry="34" fill="#000" opacity=".35" filter="url(#hbBokeh)"/> <g filter="url(#hbSoft)"> <polygon points="232,10 292,-28 292,302 232,346" fill="#b07a0e"/> <polygon points="0,10 60,-28 292,-28 232,10" fill="#ffd66b"/> <rect x="0" y="10" width="232" height="336" rx="10" fill="#ffc233"/> <rect x="0" y="10" width="232" height="336" rx="10" fill="none" stroke="#fff3c4" stroke-opacity=".55" stroke-width="2"/> <circle cx="116" cy="236" r="44" fill="#1b1e25"/> <path d="M137 78v86a26 26 0 1 1-15-24V78z" fill="#1b1e25"/> <g fill="#7a5408"><circle cx="18" cy="28" r="4"/><circle cx="214" cy="28" r="4"/><circle cx="18" cy="328" r="4"/><circle cx="214" cy="328" r="4"/></g> <path d="M232 10 L232 346" stroke="#fff3c4" stroke-width="2.5" opacity=".6"/> </g> </g> 
- <rect width="1600" height="1000" fill="url(#hbVig)"/> </svg></div>
+  <div class="home-bg" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMaxYMid slice" class="hb-svg"><g transform="translate(1000 60) rotate(-8 330 420) scale(30) translate(-13 -8.5)"><rect x="13" y="8.5" width="22" height="28" rx="2.4" fill="#ffc233"/><circle cx="24" cy="29" r="4.3" style="fill:var(--hb-bg)"/><path d="M26.5 13.5v8.2a2.6 2.6 0 1 1-1.6-2.4v-5.8z" style="fill:var(--hb-bg)"/></g></svg></div>
   <div class="home-in">
     <header class="home-top">
       <div class="home-brand"><span class="home-logo" aria-hidden="true"><svg viewBox="0 0 48 48" width="40" height="40"><rect width="48" height="48" rx="11" fill="#1b1e25"/><rect x="13" y="8.5" width="22" height="28" rx="3" fill="#ffc233"/><circle cx="24" cy="29" r="4.3" fill="#1b1e25"/><path d="M26.5 13.5v8.2a2.6 2.6 0 1 1-1.6-2.4v-5.8z" fill="#1b1e25"/></svg></span><div class="home-name"><b>StagePal</b><span>Repertoire</span></div></div>
@@ -1205,7 +1198,7 @@ body{margin:0}
     <p class="home-sub">Bir repertuar seç ya da yenisini oluştur. Her mekan ya da program için ayrı bir repertuar yapabilirsin; şarkıların hepsinde ortaktır, birinde düzeltince hepsinde düzelir.</p>
     <div class="repgrid" id="repGrid"><div class="empty">Yükleniyor…</div></div>
     <footer class="home-foot">
-      <div class="home-tools"><button type="button" class="btn" id="guideBtn">❓ Kılavuz</button><button type="button" class="btn" id="homeImpBtn">⤓ Şarkı içe aktar</button><button type="button" class="btn" id="contactBtn">✉ Bize ulaşın</button></div>
+      <div class="home-tools"><button type="button" class="btn" id="guideBtn">❓ Kılavuz</button><button type="button" class="btn" id="contactBtn">✉ Bize ulaşın</button></div>
       <div class="bkrow" id="bkSlot"><button class="btn" id="bkExport" type="button">Yedek al</button><button class="btn" id="bkImport" type="button">Yedekten yükle</button><input type="file" id="bkFile" accept=".json,application/json" hidden></div>
       <p class="home-note">Öneri, istek, şikâyet ya da bir hata mı buldun? “Bize ulaşın” ile doğrudan bize yaz, her mesajı okuyoruz.</p>
       <div class="legalrow"><button type="button" class="linkbtn" id="legalBtn">Hakkında ve yasal bilgiler</button><span id="aboutLine" data-noi18n></span></div>
@@ -3829,6 +3822,10 @@ function drawHome(){
   const add = document.createElement("button"); add.type = "button"; add.className = "repcard add";
   const pl = document.createElement("span"); pl.className = "plus"; pl.textContent = "+";
   add.append(pl, document.createTextNode(rL("Yeni repertuar", "New repertoire"))); add.onclick = newRep; g.append(add);
+  const imp = document.createElement("button"); imp.type = "button"; imp.className = "repcard add imp"; imp.id = "homeImpBtn";
+  const ip = document.createElement("span"); ip.className = "plus"; ip.textContent = "⤓";
+  const is = document.createElement("small"); is.textContent = rL("Not Defteri, Word, ChordPro", "Notepad, Word, ChordPro");
+  imp.append(ip, document.createTextNode(rL("Şarkı içe aktar", "Import songs")), is); imp.onclick = () => openImport(); g.append(imp);
 }
 function showHome(){
   curRep = null;
@@ -4395,7 +4392,7 @@ $("impSave").onclick = impSave;
   ["dragenter", "dragover"].forEach(ev => d.addEventListener(ev, e => { e.preventDefault(); d.classList.add("over"); }));
   ["dragleave", "drop"].forEach(ev => d.addEventListener(ev, () => d.classList.remove("over")));
   d.addEventListener("drop", e => { e.preventDefault(); const f = [...(e.dataTransfer && e.dataTransfer.files || [])]; if(f.length) impRun(f); }); }
-$("impBtn").onclick = openImport; $("homeImpBtn").onclick = openImport;
+$("impBtn").onclick = openImport;
 $("homeBtn").onclick = showHome;
 $("pickBtn").onclick = openPick;
 $("songPickClose").onclick = () => { $("songPickBox").hidden = true; };
