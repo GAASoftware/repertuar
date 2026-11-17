@@ -4490,10 +4490,12 @@ $("impBtn").onclick = openImport;
    Mağaza sürümünde window.SP_BILLING (RevenueCat köprüsü) tanımlanır; o yoksa (web, kişisel site) her şey açıktır.
    Deneme için adrese ?free=1 eklenirse ücretsiz plan, ?free=0 ile geri. */
 const FREE_SONGS = 20, FREE_LINES = 100;
-try{ const q = new URLSearchParams(location.search).get("free"); if(q === "1") LS.set("sp.devFree", true); else if(q === "0") LS.set("sp.devFree", false); }catch(e){}
+// ?free=1 sadece o sekmede geçerli (kalıcı değil); eski kalıcı ayar temizlenir
+let devFree = false;
+try{ LS.set("sp.devFree", false); const q = new URLSearchParams(location.search).get("free"); if(q === "1") sessionStorage.setItem("sp.devFree", "1"); else if(q === "0") sessionStorage.removeItem("sp.devFree"); devFree = sessionStorage.getItem("sp.devFree") === "1"; }catch(e){}
 function proCache(){ return LS.get("sp.pro", null) || {}; }
 function isPro(){
-  if(LS.get("sp.devFree", false)) return false;
+  if(devFree) return false;
   if(!window.SP_BILLING) return true;
   const c = proCache(); if(!c.active) return false;
   if(c.lifetime) return true;
