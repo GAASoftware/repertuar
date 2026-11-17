@@ -1042,6 +1042,68 @@ body{margin:0}
 .imp-pre{margin:8px 0 0 26px;padding:8px 10px;border-radius:8px;background:var(--bg);border:1px solid var(--line);font:12.5px/1.45 var(--f-mono);white-space:pre;overflow:auto;max-height:260px}
 .imp-pre .c{color:var(--chord);font-weight:700}
 @media (max-width:620px){.imp-row{grid-template-columns:auto minmax(0,1fr) auto;}.imp-row .ar{grid-column:2 / 4}.imp-row .cp{grid-column:2}}
+
+/* ====== pedal v6: Başlat düğmesi doğal boyutunda; ekran büyüyünce pedal şişmez ====== */
+#rhythm.pedal .go{overflow-wrap:normal;word-break:normal;hyphens:none}
+@media (min-width:761px){
+  @container main (min-width:860px){
+    .main:not(.rright) #rhythm.pedal{grid-template-columns:minmax(180px,250px) auto auto minmax(190px,260px) !important;justify-content:center;column-gap:clamp(14px,2.2cqw,40px) !important}
+    .main:not(.rright) #rhythm.pedal .go{width:calc(var(--gs) + 112px)}
+  }
+  @container main (min-width:740px) and (max-width:859.98px){
+    .main:not(.rright) #rhythm.pedal{--st:44px;--gs:52px;--kn:42px;grid-template-columns:minmax(150px,200px) auto auto minmax(165px,200px) !important;justify-content:center;column-gap:12px !important}
+    .main:not(.rright) #rhythm.pedal .go{width:calc(var(--gs) + 86px);font-size:15px}
+    .main:not(.rright) #rhythm.pedal .pd-lcd .bpm .savebpm{font-size:8.5px;padding:2px 4px;letter-spacing:0}
+  }
+  .main:not(.rright) #rhythm.pedal .go{align-self:center !important;height:calc(var(--gs) + 26px);min-height:0 !important}
+  @container main (max-width:739.98px){
+    .main:not(.rright) #rhythm.pedal .go{width:auto;justify-self:stretch}
+  }
+}
+@media (min-width:761px) and (max-height:560px){
+  .main:not(.rright) #rhythm.pedal{grid-template-columns:minmax(120px,190px) auto auto auto minmax(140px,220px) !important;justify-content:space-between}
+  .main:not(.rright) #rhythm.pedal .go{width:calc(var(--gs) + 96px);height:calc(var(--gs) + 10px)}
+}
+
+/* ====== pedal v7: ayrı Başlat düğmesi yok — ilk ayak düğmesi BAŞLAT/GİRİŞ; durum ekranı 4 düğmenin üstünde ====== */
+#rhythm.pedal .go{all:unset;position:relative;box-sizing:border-box;display:flex !important;align-items:center;gap:8px;width:auto !important;height:34px !important;min-height:0 !important;padding:0 12px 0 28px !important;border-radius:8px;cursor:pointer;
+  background:linear-gradient(180deg,#1b2a1c,#122014);border:2px solid #07090a;box-shadow:inset 0 0 12px rgba(0,0,0,.8);
+  font:700 12px/1 var(--f-mono) !important;letter-spacing:.06em;text-transform:uppercase;color:#9dff9a !important;text-shadow:0 0 6px rgba(120,255,120,.45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;align-self:stretch !important;justify-self:stretch !important}
+#rhythm.pedal .go:after{display:none !important}
+#rhythm.pedal .go:before{content:"" !important;position:absolute !important;left:10px !important;right:auto !important;top:50% !important;width:9px !important;height:9px !important;transform:translateY(-50%) !important;border-radius:50%;background:#1d4a33;box-shadow:inset 0 1px 2px rgba(0,0,0,.6)}
+#rhythm.pedal .go[aria-pressed="true"]{color:#ffb4a8 !important;text-shadow:0 0 6px rgba(255,140,120,.45)}
+#rhythm.pedal .go[aria-pressed="true"]:before{background:#3ecf8e;box-shadow:0 0 9px #3ecf8e}
+#rhythm.pedal .go[aria-pressed="true"].beat:before{filter:brightness(1.4);box-shadow:0 0 14px 4px #3ecf8e}
+#rhythm.pedal .go[aria-pressed="true"].beat1:before{background:#ffe066;box-shadow:0 0 14px 4px #ffe066}
+#rhythm.pedal .go.long{font-size:10.5px !important;letter-spacing:.02em}
+#rhythm.pedal .go:active{transform:translateY(1px)}
+.stage{overflow:hidden}   /* sayım rakamı pedalın üstüne taşmasın */
+/* dikey */
+.main.rright #rhythm.pedal{grid-template-areas:"brand" "lcd" "prog" "knobs" "go" "foot" "minis" "more" !important}
+@media (max-height:900px){.main.rright #rhythm.pedal{grid-template-areas:"lcd" "prog" "knobs" "go" "foot" "minis" "more" !important}}
+/* alt — geniş */
+@media (min-width:761px){
+  @container main (min-width:740px){
+    .main:not(.rright) #rhythm.pedal{grid-template-columns:minmax(180px,260px) auto minmax(190px,270px) !important;justify-content:center;column-gap:clamp(14px,2.4cqw,44px) !important;
+      grid-template-areas:"lcd go knobs" "prog foot minis" "more foot minis" !important;align-items:start}
+    .main:not(.rright) #rhythm.pedal .pd-foot{align-self:start}
+  }
+  @container main (max-width:739.98px){
+    .main:not(.rright) #rhythm.pedal{grid-template-areas:"lcd knobs" "go go" "foot minis" "prog more" !important}
+  }
+}
+/* alçak ekran */
+@media (min-width:761px) and (max-height:560px){
+  .main:not(.rright) #rhythm.pedal{grid-template-columns:minmax(120px,190px) auto auto minmax(140px,220px) !important;grid-template-areas:"lcd go knobs minis" "lcd foot knobs minis" !important}
+  .main.rright #rhythm.pedal{grid-template-areas:"lcd" "go" "foot" "knobs" "minis" !important}
+  #rhythm.pedal .go{height:28px !important}
+}
+/* telefon */
+@media (max-width:760px){
+  .main #rhythm.pedal{grid-template-columns:minmax(0,1fr) !important;grid-template-rows:auto !important;grid-template-areas:"lcd" "go" "foot" "knobs" "minis" "prog" "more" !important}
+  .main #rhythm.pedal .pd-lcd{height:auto !important}
+  .main #rhythm.pedal .pd-lcd .pd-sub{display:none}
+}
 </style>
 
 <script>try{ const t = JSON.parse(localStorage.getItem("sp.theme") || "null"); if(t === "light" || t === "dark") document.documentElement.dataset.theme = t; }catch(e){}</script>
@@ -3527,7 +3589,7 @@ $("rUp").onclick = () => setBpm((liveBpm || 90) + 1);
     $("lcdStyle").textContent = optText($("rStyle")).replace(/\s*\(.*\)/, "");
     const k = P.querySelector("#rKalip button.cur"); $("lcdKalip").textContent = L("KALIP ", "PATTERN ") + (k ? k.textContent : "");
     const cur = P.querySelector("#rSecs button.cur"), nx = P.querySelector("#rSecs button.next");
-    $("lcdSub").textContent = optText($("rDrummer")).split("·")[0].trim() + (cur ? " ▸ " + cur.textContent : "") + (nx ? " → " + nx.textContent : "");
+    $("lcdSub").textContent = optText($("rDrummer")).split("·")[0].trim() + (cur ? " ▸ " + (cur.dataset.sec === "giris" ? L("Giriş", "Intro") : cur.textContent) : "") + (nx ? " → " + nx.textContent : "");
     rot($("knTempo"), +$("rBpm").value || 90, 40, 220);
     rot($("knVol"), +$("rVol").value, 0, 100);
     rot($("knHum"), Math.round(humanAmt * 100), 0, 100);
@@ -3537,6 +3599,7 @@ $("rUp").onclick = () => setBpm((liveBpm || 90) + 1);
     $("pdFoldBpm").textContent = (+$("rBpm").value || liveBpm || "—");
     $("pdFoldArrow").textContent = main && main.classList.contains("rright") ? "‹" : "▴";
     fold.classList.toggle("on", $("rGo").getAttribute("aria-pressed") === "true");
+    { const on = $("rGo").getAttribute("aria-pressed") === "true", t = on ? L("Giriş", "Intro") : L("Başlat", "Start"); if(gir.textContent !== t) gir.textContent = t; gir.classList.toggle("startbtn", !on); }
     val("knTempoV", String(+$("rBpm").value || liveBpm || "—")); val("knVolV", (+$("rVol").value) + "<small>%</small>"); val("knHumV", Math.round(humanAmt * 100) + "<small>%</small>");
   }
   // gizle / göster
@@ -3546,6 +3609,9 @@ $("rUp").onclick = () => setBpm((liveBpm || 90) + 1);
     if(on){ try{ $("mixWrap").hidden = true; $("rMix").setAttribute("aria-expanded", "false"); }catch(e){} }
     requestAnimationFrame(() => dispatchEvent(new Event("resize")));
   };
+  // ilk ayak düğmesi: dururken BAŞLAT (şarkının başlangıç bölümünden), çalarken GİRİŞ
+  const gir = P.querySelector('#rSecs [data-sec="giris"]');
+  gir.addEventListener("click", e => { if($("rGo").getAttribute("aria-pressed") !== "true"){ e.stopImmediatePropagation(); e.preventDefault(); $("rGo").click(); } }, true);
   $("pdHide").onclick = () => setFold(true);
   fold.onclick = () => setFold(false);
   setFold(!!LS.get("sp.rfold", false));
