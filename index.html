@@ -818,6 +818,199 @@ label.f{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:var(--
 .side-foot .setrow{flex-wrap:wrap}.side-foot .setrow .langrow{flex:1 1 130px}.side-foot .langrow select{min-width:96px}
 .main.rright .rhythm > .tapbig.mixbtn:not(.nextsong){grid-column:1 / -1;justify-content:center}
 .mix{width:min(600px,calc(100% - 24px));bottom:max(8px,env(safe-area-inset-bottom,0px));max-height:calc(100% - 16px - env(safe-area-inset-bottom,0px))}
+
+/* ====== pedal v3: sabit düzen, yazıya göre kaymaz; tuş ipuçları sözlerin üstüne binmez ====== */
+/* Başlat düğmesi: yazı uzarsa düğme büyümez, yazı küçülür/alt satıra geçer */
+#rhythm.pedal .go{white-space:normal;overflow-wrap:anywhere;text-align:left;min-width:0}
+#rhythm.pedal .go.long{font-size:12.5px;letter-spacing:0;line-height:1.15}
+/* sonraki şarkı düğmesi, ritim/davulcu seçicilerin yerine geçer: hiçbir şey kaymaz */
+#rhythm.pedal.carrying .pd-prog{visibility:hidden}
+#rhythm.pedal .nextsong{overflow:hidden}
+#rhythm.pedal.haskit .pd-prog{grid-template-columns:1fr 1fr auto}
+#rhythm.pedal.haskit .pd-prog #rStyle{grid-column:1 / 3}
+#rhythm.pedal.haskit .pd-prog #rDrummer{grid-column:1}
+#rhythm.pedal.haskit .pd-prog #rKit{grid-column:2 / 4}
+/* dikey: sonraki şarkı seçicilerin üstünde, aynı yükseklikte */
+.main.rright #rhythm.pedal{display:grid;grid-template-columns:minmax(0,1fr);align-content:start;row-gap:9px;
+  grid-template-areas:"brand" "lcd" "prog" "knobs" "foot" "go" "minis" "more"}
+.main.rright #rhythm.pedal .pd-brand{grid-area:brand}.main.rright #rhythm.pedal .pd-lcd{grid-area:lcd}.main.rright #rhythm.pedal .pd-prog{grid-area:prog}
+.main.rright #rhythm.pedal .nextsong{grid-area:prog;align-self:stretch;height:auto;margin:0;z-index:2}
+.main.rright #rhythm.pedal .pd-knobs{grid-area:knobs}.main.rright #rhythm.pedal .pd-foot{grid-area:foot}
+.main.rright #rhythm.pedal .go{grid-area:go;height:calc(var(--gs) + 22px)}
+.main.rright #rhythm.pedal .pd-minis{grid-area:minis}.main.rright #rhythm.pedal .rmore{grid-area:more}
+@media (max-height:900px){.main.rright #rhythm.pedal{grid-template-areas:"lcd" "prog" "knobs" "foot" "go" "minis" "more";row-gap:7px}}
+/* yatay (altta): sabit ızgara, ekran genişliğine göre ölçeklenir */
+@media (min-width:761px){
+  .main:not(.rright) #rhythm.pedal{display:grid;align-items:center;justify-items:stretch;gap:8px 14px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));
+    grid-template-columns:minmax(0,1.15fr) auto minmax(0,1fr) minmax(0,1.25fr);
+    grid-template-areas:"lcd foot go knobs" "prog foot go minis" "more foot go minis"}
+  .main:not(.rright) #rhythm.pedal > *{flex:none !important;max-width:none !important;margin:0}
+  .main:not(.rright) #rhythm.pedal .pd-lcd{grid-area:lcd}
+  .main:not(.rright) #rhythm.pedal .pd-prog{grid-area:prog}
+  .main:not(.rright) #rhythm.pedal .nextsong{grid-area:prog;align-self:stretch;z-index:2}
+  .main:not(.rright) #rhythm.pedal .rmore{grid-area:more;justify-content:flex-start;gap:4px 14px}
+  .main:not(.rright) #rhythm.pedal .pd-foot{grid-area:foot;grid-template-columns:repeat(4,calc(var(--st) + 6px));align-self:center}
+  .main:not(.rright) #rhythm.pedal .go{grid-area:go;align-self:stretch;height:auto;padding:10px 12px 14px 14px}
+  .main:not(.rright) #rhythm.pedal .pd-knobs{grid-area:knobs;justify-content:space-around;gap:6px;padding:6px 0 0}
+  .main:not(.rright) #rhythm.pedal .pd-minis{grid-area:minis;grid-template-columns:1fr 1fr;align-self:stretch;align-content:center}
+}
+/* yatay ama dar (ör. iPad dikey + alt panel): iki sütunlu sabit düzen */
+@media (min-width:761px) and (max-width:1099px){
+  .main:not(.rright) #rhythm.pedal{--st:48px;--gs:56px;--kn:48px;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    grid-template-areas:"lcd go" "foot knobs" "prog minis" "more minis";gap:8px 12px}
+  .main:not(.rright) #rhythm.pedal .go{min-height:84px}
+  .main:not(.rright) #rhythm.pedal .pd-foot{justify-self:center}
+}
+/* tuş ipuçları: akor alanının altında ayrı bir şerit, sözlerin üstüne asla binmez */
+.stage{flex-direction:column}
+.stage > .keyhint{position:static !important;inset:auto !important;flex:none;width:auto;margin:0 12px 10px;opacity:1;box-shadow:none;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px 10px;padding:6px 8px;border-radius:10px;
+  background:linear-gradient(160deg,#2c3037,#1d2025);border:1px solid #0a0b0d;color:#e8eaee;font-size:11.5px}
+:root[data-theme="light"] .stage > .keyhint{background:linear-gradient(160deg,#e9ebef,#d3d6dc);border-color:#aeb3bb;color:#1d2026}
+.stage > .keyhint[hidden]{display:none}
+.stage > .keyhint .kh-head{grid-column:1 / -1;margin:0 0 2px}
+.stage > .keyhint .kh-row{grid-template-columns:22px 1fr;gap:6px;padding:2px}
+.stage > .keyhint .kh-k{width:20px;height:20px;font-size:12px;background:#15171b;border-color:#33373f;color:#e8eaee}
+:root[data-theme="light"] .stage > .keyhint .kh-k{background:#f4f5f7;border-color:#aeb3bb;color:#1d2026}
+.stage > .keyhint .kh-t small{color:inherit;opacity:.65}
+
+/* ====== pedal v4: her ekranda aynı düzen — ölçek ekrana göre, yerleşim sabit ====== */
+body{margin:0}
+.main{container-type:inline-size;container-name:main}
+/* dikey (sağ) panel: boyutlar ekran yüksekliğine göre ölçeklenir, hiç kaydırma gerekmez */
+.main.rright #rhythm.pedal{--st:clamp(44px,6.2vh,64px);--gs:clamp(50px,7.3vh,78px);--kn:clamp(42px,5.6vh,60px);row-gap:clamp(5px,.85vh,9px);padding:clamp(8px,1.2vh,12px) 12px clamp(10px,1.4vh,16px)}
+.main.rright #rhythm.pedal .pd-lcd .bpm input{font-size:clamp(26px,3.5vh,36px)}
+.main.rright #rhythm.pedal .pd-prog .rsel,.main.rright #rhythm.pedal .pd-prog .redit{height:clamp(28px,3.2vh,32px)}
+.main.rright #rhythm.pedal .kalip button,.main.rright #rhythm.pedal .secs button[data-sec="bitis"]{height:clamp(26px,3vh,30px)}
+.main.rright #rhythm.pedal .pd-minis .tapbig{height:clamp(30px,3.4vh,34px)}
+.main.rright #rhythm.pedal .pd-foot{row-gap:clamp(5px,.8vh,8px)}
+@media (max-height:900px){.main.rright #rhythm.pedal{--st:clamp(44px,6.2vh,64px);--gs:clamp(50px,7.3vh,78px);--kn:clamp(42px,5.6vh,60px)}}
+/* alt panel — geniş alan: 4 sütun tek blok */
+@container main (min-width:740px){
+  #rhythm.pedal.pedal{--st:clamp(44px,5.4cqw,58px);--gs:clamp(52px,6.6cqw,72px);--kn:clamp(42px,5cqw,56px)}
+}
+@media (min-width:761px){
+  .main:not(.rright) #rhythm.pedal .pd-minis .tapbig{font-size:10.5px;letter-spacing:.04em;padding:0 6px}
+}
+/* alt panel — dar alan (ör. iPad dikey): 2 sütun */
+@media (min-width:761px){
+  @container main (max-width:739.98px){
+    .main:not(.rright) #rhythm.pedal{--st:46px;--gs:54px;--kn:46px;grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+      grid-template-areas:"lcd go" "foot knobs" "prog minis" "more minis" !important;gap:8px 12px}
+    .main:not(.rright) #rhythm.pedal .pd-foot{justify-self:center}
+    .main:not(.rright) #rhythm.pedal .go{min-height:80px}
+  }
+  @container main (min-width:740px){
+    .main:not(.rright) #rhythm.pedal{grid-template-columns:minmax(0,1.15fr) auto minmax(0,1fr) minmax(0,1.25fr) !important;
+      grid-template-areas:"lcd foot go knobs" "prog foot go minis" "more foot go minis" !important}
+  }
+}
+/* alçak ekran (telefon yatay, küçük pencere): tek sıra şerit; ayarlar ⚙ ile */
+@media (min-width:761px) and (max-height:560px){
+  #rhythm.pedal .pd-minis #pdMore{display:inline-flex}
+  .main:not(.rright) #rhythm.pedal{--st:40px;--gs:44px;--kn:38px;gap:6px 10px !important;padding:6px 10px calc(6px + env(safe-area-inset-bottom,0px)) !important;
+    grid-template-columns:minmax(0,1fr) auto minmax(0,.9fr) auto minmax(0,1fr) !important;grid-template-areas:"lcd foot go knobs minis" !important}
+  .main.rright #rhythm.pedal{--st:38px;--gs:42px;--kn:38px;row-gap:6px;padding:6px 8px 8px;grid-template-areas:"lcd" "foot" "knobs" "go" "minis" !important}
+  .main #rhythm.pedal .pd-brand,.main #rhythm.pedal .pd-prog,.main #rhythm.pedal .pd-foot .kalip,.main #rhythm.pedal .secs [data-sec="bitis"],.main #rhythm.pedal .rmore,.main #rhythm.pedal .pd-screw{display:none !important}
+  .main #rhythm.pedal .pd-lcd{padding:4px 8px 5px}
+  .main #rhythm.pedal .pd-lcd .bpm input{font-size:24px}
+  .main #rhythm.pedal .pd-lcd .pd-sub,.main #rhythm.pedal .pd-lcd .beats{display:none}
+  .main #rhythm.pedal .secs button{font-size:9px;letter-spacing:.04em;gap:2px}
+  .main #rhythm.pedal .pd-foot{grid-template-columns:repeat(4,calc(var(--st) + 4px)) !important;gap:2px 4px;padding:0;justify-content:center}
+  .main #rhythm.pedal .go{min-height:0 !important;height:auto;padding:4px 8px 6px 10px;font-size:13px}
+  .main #rhythm.pedal .pd-kn{gap:5px}.main #rhythm.pedal .pd-kn label{font-size:8px}
+  .main #rhythm.pedal .pd-val{font-size:12px}
+  .main #rhythm.pedal .pd-minis{grid-template-columns:1fr 1fr 1fr !important;gap:4px}
+  .main.rright #rhythm.pedal .pd-minis{grid-template-columns:repeat(5,1fr) !important}
+  .main #rhythm.pedal .pd-minis .tapbig{height:28px;font-size:9.5px;padding:0 4px;letter-spacing:.02em}
+  .main #rhythm.pedal .pd-minis .mixbtn svg{display:none}
+  .main #rhythm.pedal.open{overflow-y:auto}
+  .main #rhythm.pedal.open .pd-prog{display:grid !important;grid-column:1 / -1}
+  .main #rhythm.pedal.open .pd-foot .kalip{display:grid !important}
+  .main #rhythm.pedal.open .rmore{display:flex !important;grid-column:1 / -1}
+  .main:not(.rright) #rhythm.pedal.open{grid-template-areas:"lcd foot go knobs minis" "prog prog prog prog prog" "more more more more more" !important}
+  .main.rright #rhythm.pedal.open{grid-template-areas:"lcd" "foot" "knobs" "go" "minis" "prog" "more" !important}
+}
+/* telefon (dikey): sabit ızgara — yazı değişse de hiçbir şey kaymaz */
+@media (max-width:760px){
+  .main #rhythm.pedal{display:grid !important;grid-template-columns:minmax(0,1fr) 136px;grid-template-areas:"lcd go" "next next" "foot foot" "knobs knobs" "minis minis" "prog prog" "more more";align-items:stretch}
+  .main #rhythm.pedal > *{flex:none !important;order:0 !important;margin:0}
+  .main #rhythm.pedal .pd-lcd{grid-area:lcd}
+  .main #rhythm.pedal .go{grid-area:go;width:auto;justify-content:space-between}
+  .main #rhythm.pedal .go.long{font-size:11px}
+  .main #rhythm.pedal .nextsong{grid-area:next}
+  .main #rhythm.pedal .pd-foot{grid-area:foot}
+  .main #rhythm.pedal .pd-knobs{grid-area:knobs}
+  .main #rhythm.pedal .pd-minis{grid-area:minis}
+  .main #rhythm.pedal .pd-prog{grid-area:prog}
+  .main #rhythm.pedal .rmore{grid-area:more}
+}
+
+/* ====== pedal v5: durum değişince hiçbir şey kaymaz ====== */
+/* şarkı başlığı ve alt bilgi tek satır: başlık yüksekliği şarkıdan şarkıya değişmez */
+.titleblock{min-width:0}
+.titleblock #title,.titleblock .sub{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.titleblock .sub{flex-wrap:nowrap !important;max-height:1.5em}.titleblock .sub > *{flex:none}
+/* telefon: ilk sıra sabit yükseklik, "sonraki şarkı" düğmesi döner düğmelerin yerine geçer */
+@media (max-width:760px){
+  .main #rhythm.pedal{grid-template-rows:76px auto auto auto auto auto !important;grid-template-areas:"lcd go" "foot foot" "knobs knobs" "minis minis" "prog prog" "more more" !important}
+  .main #rhythm.pedal .go{height:76px;min-height:0 !important;overflow:hidden}
+  .main #rhythm.pedal .pd-lcd{height:76px;overflow:hidden}
+  .main #rhythm.pedal .nextsong{grid-area:knobs !important;align-self:stretch;z-index:2;font-size:12px;min-height:0}
+  .main #rhythm.pedal.carrying .pd-knobs{visibility:hidden}
+  .main #rhythm.pedal.carrying .pd-prog{visibility:visible}
+}
+/* alçak ekran (telefon yatay): sağ sütunda sıkı düzen */
+@media (min-width:761px) and (max-height:560px){
+  .main #rhythm.pedal .go{height:calc(var(--gs) + 10px);overflow:hidden}
+  .main #rhythm.pedal .go.long{font-size:10.5px}
+  .main #rhythm.pedal .pd-lcd{height:52px;overflow:hidden}
+  .main #rhythm.pedal .nextsong{grid-area:knobs !important;align-self:stretch;z-index:2;font-size:11px;min-height:0;padding:2px 6px}
+  .main #rhythm.pedal.carrying .pd-knobs{visibility:hidden}
+  .main #rhythm.pedal.carrying .pd-prog{visibility:visible}
+  .main #rhythm.pedal .pd-minis{grid-template-columns:repeat(4,minmax(0,1fr)) !important}
+  .main #rhythm.pedal .pd-minis #rPos{display:none}
+  .main #rhythm.pedal.open .pd-minis #rPos{display:inline-flex}
+  .main #rhythm.pedal .pd-minis .mixbtn b{display:none}
+  .main #rhythm.pedal .pd-minis .tapbig{letter-spacing:0 !important;padding:0 2px !important}
+  .main #rhythm.pedal .pd-knob:before{inset:-4px}
+  .main #rhythm.pedal .pd-knobs{padding-top:3px}
+}
+/* geniş alt panel: Ses·EQ yazısı sığsın */
+@media (min-width:761px){ .main:not(.rright) #rhythm.pedal .pd-minis .mixbtn{gap:3px} .main:not(.rright) #rhythm.pedal .pd-minis .mixbtn svg{width:12px;height:12px} }
+
+/* tuş ipuçları şeridi: tek satır başlık + yan yana tuşlar; alçak ekranda gizli (yer açmak için) */
+.stage > .keyhint{display:block !important;padding:5px 8px 6px}
+.stage > .keyhint[hidden]{display:none !important}
+.stage > .keyhint .kh-head{margin:0 0 3px;font-size:10.5px}
+.stage > .keyhint #khRows{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px 10px}
+@media (max-height:560px){.stage > .keyhint{display:none !important}}
+
+/* ====== ritim panelini gizle / göster ====== */
+#rhythm.pedal .pd-fold{display:none}
+#rhythm.pedal .pd-hide{position:absolute !important;z-index:4;padding:0;border:1px solid var(--pd-slotb);background:var(--pd-slot);color:var(--pd-ink);display:grid;place-items:center;cursor:pointer;opacity:.85;-webkit-tap-highlight-color:transparent}
+#rhythm.pedal .pd-hide:hover{opacity:1}
+#rhythm.pedal .pd-hide:before{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor}
+.main.rright #rhythm.pedal .pd-hide{left:-1px;top:50%;width:16px;height:66px;margin-top:-33px;border-left:0;border-radius:0 9px 9px 0}
+.main.rright #rhythm.pedal .pd-hide:before{transform:translateX(-2px) rotate(-45deg)}
+.main:not(.rright) #rhythm.pedal .pd-hide{top:-1px;left:50%;width:76px;height:15px;margin-left:-38px;border-top:0;border-radius:0 0 9px 9px}
+.main:not(.rright) #rhythm.pedal .pd-hide:before{transform:translateY(-2px) rotate(45deg)}
+/* katlanmış hali: ince bir şerit, sözlerin üstüne binmez */
+#rhythm.pedal.folded{padding:0 !important;display:block !important;overflow:hidden !important;min-height:0}
+#rhythm.pedal.folded > *:not(.pd-fold){display:none !important}
+#rhythm.pedal.folded .pd-fold{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:100%;cursor:pointer;color:var(--pd-ink);font:800 11px var(--f-ui);letter-spacing:.16em;text-transform:uppercase;-webkit-tap-highlight-color:transparent}
+#rhythm.pedal .pd-fold i{width:10px;height:10px;border-radius:50%;background:#1d4a33;box-shadow:inset 0 1px 2px rgba(0,0,0,.6);flex:none}
+#rhythm.pedal .pd-fold.on i{background:#3ecf8e;box-shadow:0 0 10px #3ecf8e}
+#rhythm.pedal .pd-fold.beat i{filter:brightness(1.4);box-shadow:0 0 16px 4px #3ecf8e}
+#rhythm.pedal .pd-fold b{font:700 12px var(--f-mono);letter-spacing:0;color:#9dff9a;background:linear-gradient(180deg,#1b2a1c,#122014);border:1px solid #07090a;border-radius:5px;padding:2px 6px;text-shadow:0 0 6px rgba(120,255,120,.45)}
+#rhythm.pedal .pd-fold em{font-style:normal;font-size:13px;opacity:.8}
+.app .main.rright.pfold{grid-template-columns:minmax(0,1fr) 34px !important}
+.main.rright #rhythm.pedal.folded .pd-fold{flex-direction:row;writing-mode:vertical-rl;padding:14px 0}
+.main.rright #rhythm.pedal.folded .pd-fold b{writing-mode:horizontal-tb}
+.main.rright #rhythm.pedal.folded .pd-fold em{writing-mode:horizontal-tb}
+.main:not(.rright) #rhythm.pedal.folded{height:34px;flex:none}
+.main:not(.rright) #rhythm.pedal.folded .pd-fold{padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (max-width:760px){ .main #rhythm.pedal.folded{display:block !important;height:38px} }
 </style>
 
 <script>try{ const t = JSON.parse(localStorage.getItem("sp.theme") || "null"); if(t === "light" || t === "dark") document.documentElement.dataset.theme = t; }catch(e){}</script>
@@ -907,6 +1100,7 @@ label.f{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:var(--
     </div>
     </div>
     <div class="rhythm pedal" id="rhythm" hidden>
+      <button class="pd-hide" id="pdHide" type="button" aria-label="Ritim panelini gizle" title="Paneli gizle"></button><button class="pd-fold" id="pdFold" type="button" aria-label="Ritim panelini göster" title="Paneli göster"><i></i><span>Ritim</span><b id="pdFoldBpm"></b><em id="pdFoldArrow"></em></button>
       <i class="pd-screw a"></i><i class="pd-screw b"></i><i class="pd-screw c"></i><i class="pd-screw d"></i>
       <div class="pd-brand" aria-hidden="true"><b>STAGEPAL</b><span>RHYTHM · ONE</span></div>
       <div class="pd-lcd" id="pdLcd">
@@ -3052,12 +3246,28 @@ $("rUp").onclick = () => setBpm((liveBpm || 90) + 1);
     rot($("knTempo"), +$("rBpm").value || 90, 40, 220);
     rot($("knVol"), +$("rVol").value, 0, 100);
     rot($("knHum"), Math.round(humanAmt * 100), 0, 100);
+    P.classList.toggle("carrying", !$("rNext").hidden);
+    P.classList.toggle("haskit", !$("rKit").hidden);
+    $("rGo").classList.toggle("long", ($("rGo").textContent || "").trim().length > 10);
+    $("pdFoldBpm").textContent = (+$("rBpm").value || liveBpm || "—");
+    $("pdFoldArrow").textContent = main && main.classList.contains("rright") ? "‹" : "▴";
+    fold.classList.toggle("on", $("rGo").getAttribute("aria-pressed") === "true");
     val("knTempoV", String(+$("rBpm").value || liveBpm || "—")); val("knVolV", (+$("rVol").value) + "<small>%</small>"); val("knHumV", Math.round(humanAmt * 100) + "<small>%</small>");
   }
+  // gizle / göster
+  const main = P.closest(".main"), fold = $("pdFold");
+  const setFold = on => {
+    P.classList.toggle("folded", on); if(main) main.classList.toggle("pfold", on); LS.set("sp.rfold", on);
+    if(on){ try{ $("mixWrap").hidden = true; $("rMix").setAttribute("aria-expanded", "false"); }catch(e){} }
+    requestAnimationFrame(() => dispatchEvent(new Event("resize")));
+  };
+  $("pdHide").onclick = () => setFold(true);
+  fold.onclick = () => setFold(false);
+  setFold(!!LS.get("sp.rfold", false));
   setInterval(upd, 250); upd();
   // Başlat düğmesinin ortası her vuruşta parlar (ilk vuruş sarı)
   const go = $("rGo");
-  new MutationObserver(() => { const on = $("rBeats").querySelector("i.on"); go.classList.toggle("beat", !!on); go.classList.toggle("beat1", !!(on && on.classList.contains("one"))); clearTimeout(go._bt); if(on) go._bt = setTimeout(() => go.classList.remove("beat", "beat1"), 110); }).observe($("rBeats"), { subtree: true, attributes: true, attributeFilter: ["class"], childList: true });
+  new MutationObserver(() => { const on = $("rBeats").querySelector("i.on"); go.classList.toggle("beat", !!on); fold.classList.toggle("beat", !!on); go.classList.toggle("beat1", !!(on && on.classList.contains("one"))); clearTimeout(go._bt); if(on) go._bt = setTimeout(() => { go.classList.remove("beat", "beat1"); fold.classList.remove("beat"); }, 110); }).observe($("rBeats"), { subtree: true, attributes: true, attributeFilter: ["class"], childList: true });
   const setHum = v => { v = Math.max(0, Math.min(100, Math.round(v))); humanAmt = v / 100; LS.set("sp.human", v); savePrefs(); upd(); };
   const vol = d => { setVolValue(+$("rVol").value + d); upd(); };
   const tempo = d => { setBpm((liveBpm || +$("rBpm").value || 90) + d); upd(); };
@@ -4571,7 +4781,7 @@ const EN = {
   "Sıralama":"Sort","Sıralama: alfabetik / tempo":"Sort: A–Z / tempo","Alfabetik sıralı (tempoya göre için dokun)":"Sorted A–Z (tap to sort by tempo)","Tempoya göre sıralı (alfabetik için dokun)":"Sorted by tempo (tap for A–Z)",
   "Tempo yok":"No tempo","70 altı":"Under 70","130 ve üstü":"130 and up","hrk":"upb","krd":"bls","özg":"orig","oyun":"dance",
   "Listeyi gizle":"Hide list","Listeyi göster":"Show list","Listeye dön":"Back to list","Listenin başı":"Start of list","Listenin sonu":"End of list",
-  "Repertuarların":"Your repertoires","Bir repertuar seç ya da yenisini oluştur. Her mekan ya da program için ayrı bir repertuar yapabilirsin; şarkıların hepsinde ortaktır, birinde düzeltince hepsinde düzelir.":"Pick a repertoire or create a new one. Make a separate repertoire for each venue or show; your songs are shared, so a fix in one fixes them everywhere.","✉ Bize ulaşın":"✉ Contact us","Öneri, istek, şikâyet ya da bir hata mı buldun? “Bize ulaşın” ile doğrudan bize yaz, her mesajı okuyoruz.":"A suggestion, request, complaint or a bug? Write to us with “Contact us”, we read every message.","＋ Şarkılarımdan seç":"＋ Pick from my songs","Şarkılarımdan seç":"Pick from my songs","Tümünü seç":"Select all","Repertuarlar":"Repertoires","Sadece bu repertuardan çıkar":"Only remove from this repertoire","Tempo":"Tempo","İnsan":"Feel","Sesi azalt":"Volume down","Sesi artır":"Volume up","Daha düz":"Tighter","Daha canlı":"Looser","Sahneye hazır":"Ready for the stage","Düzenle":"Edit","Kapat":"Close","Kaydet":"Save","Vazgeç":"Cancel","Sil":"Delete","Evet, sil":"Yes, delete","Silinsin mi?":"Delete it?","Silindi":"Deleted","Silinemedi. Tekrar dene.":"Couldn't delete. Try again.",
+  "Repertuarların":"Your repertoires","Bir repertuar seç ya da yenisini oluştur. Her mekan ya da program için ayrı bir repertuar yapabilirsin; şarkıların hepsinde ortaktır, birinde düzeltince hepsinde düzelir.":"Pick a repertoire or create a new one. Make a separate repertoire for each venue or show; your songs are shared, so a fix in one fixes them everywhere.","✉ Bize ulaşın":"✉ Contact us","Öneri, istek, şikâyet ya da bir hata mı buldun? “Bize ulaşın” ile doğrudan bize yaz, her mesajı okuyoruz.":"A suggestion, request, complaint or a bug? Write to us with “Contact us”, we read every message.","＋ Şarkılarımdan seç":"＋ Pick from my songs","Şarkılarımdan seç":"Pick from my songs","Tümünü seç":"Select all","Repertuarlar":"Repertoires","Sadece bu repertuardan çıkar":"Only remove from this repertoire","Tempo":"Tempo","İnsan":"Feel","Sesi azalt":"Volume down","Sesi artır":"Volume up","Daha düz":"Tighter","Daha canlı":"Looser","Ritim panelini gizle":"Hide rhythm panel","Ritim panelini göster":"Show rhythm panel","Paneli gizle":"Hide panel","Paneli göster":"Show panel","Sahneye hazır":"Ready for the stage","Düzenle":"Edit","Kapat":"Close","Kaydet":"Save","Vazgeç":"Cancel","Sil":"Delete","Evet, sil":"Yes, delete","Silinsin mi?":"Delete it?","Silindi":"Deleted","Silinemedi. Tekrar dene.":"Couldn't delete. Try again.",
   "Kaydedildi":"Saved","Kaydedilemedi":"Couldn't save","Kaydedilemedi, tekrar dene":"Couldn't save, try again","Kaydediliyor…":"Saving…","Kayıtlı ✓":"Saved ✓",
   "Kaydedilemedi. Bağlantını kontrol edip tekrar dene.":"Couldn't save. Check your connection and try again.","Bağlantı sorunu oldu. Tekrar dene.":"There was a connection problem. Try again.",
   "Kayıt alanı doldu. Birkaç eski şarkıyı silip tekrar dene.":"Storage is full. Delete a few old songs and try again.","Kayıt yeri şu an açılamadı. İnternet bağlantını kontrol edip tekrar dene.":"Storage couldn't be opened. Check your internet connection and try again.",
