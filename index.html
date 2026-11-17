@@ -1011,6 +1011,37 @@ body{margin:0}
 .main:not(.rright) #rhythm.pedal.folded{height:34px;flex:none}
 .main:not(.rright) #rhythm.pedal.folded .pd-fold{padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (max-width:760px){ .main #rhythm.pedal.folded{display:block !important;height:38px} }
+
+/* şarkı içe aktar */
+.impbox{width:min(820px,100%);max-height:90vh;display:flex;flex-direction:column}
+.impbox #impStep1,.impbox #impStep2{display:flex;flex-direction:column;gap:10px;min-height:0}
+.impbox #impStep2{flex:1}
+.impbox [hidden]{display:none !important}
+.imp-note{margin:0;color:var(--muted);font-size:13.5px;line-height:1.5}
+.imp-drop{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:22px 12px;border:2px dashed var(--line);border-radius:14px;cursor:pointer;text-align:center;transition:border-color .12s,background .12s}
+.imp-drop:hover,.imp-drop.over{border-color:var(--chord);background:var(--raise)}
+.imp-drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.imp-drop .imp-ico{font-size:28px;line-height:1;color:var(--chord)}
+.imp-drop b{font-size:15px}.imp-drop small{color:var(--muted);font-size:12.5px}
+.imp-or{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px}
+.imp-or:before,.imp-or:after{content:"";flex:1;height:1px;background:var(--line)}
+.impbox textarea{width:100%;font-family:var(--f-mono);font-size:13px;min-height:120px;resize:vertical}
+.imp-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.imp-rep{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.imp-rep select{height:34px;border-radius:9px;border:1px solid var(--line);background:var(--raise);color:var(--fg);padding:0 8px;max-width:240px}
+.imp-list{overflow:auto;flex:1;min-height:160px;display:flex;flex-direction:column;gap:8px;padding-right:2px}
+.imp-it{border:1px solid var(--line);border-radius:12px;padding:10px;background:var(--panel)}
+.imp-it.off{opacity:.55}
+.imp-row{display:grid;grid-template-columns:auto minmax(0,1.3fr) auto minmax(0,1fr) 64px;gap:6px;align-items:center}
+.imp-row input[type=text]{height:34px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);padding:0 9px;font:inherit;font-size:14px;min-width:0}
+.imp-row input[type=checkbox]{width:20px;height:20px;accent-color:var(--chord)}
+.imp-row .swap{height:34px;width:34px;border-radius:8px;border:1px solid var(--line);background:var(--raise);color:var(--fg);padding:0;font-size:15px}
+.imp-meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:6px 0 0 26px;font-size:12px;color:var(--muted)}
+.imp-meta .warn{color:var(--danger);font-weight:600}
+.imp-meta button{border:0;background:none;color:var(--chord);font:inherit;font-weight:600;padding:0;cursor:pointer}
+.imp-pre{margin:8px 0 0 26px;padding:8px 10px;border-radius:8px;background:var(--bg);border:1px solid var(--line);font:12.5px/1.45 var(--f-mono);white-space:pre;overflow:auto;max-height:260px}
+.imp-pre .c{color:var(--chord);font-weight:700}
+@media (max-width:620px){.imp-row{grid-template-columns:auto minmax(0,1fr) auto;}.imp-row .ar{grid-column:2 / 4}.imp-row .cp{grid-column:2}}
 </style>
 
 <script>try{ const t = JSON.parse(localStorage.getItem("sp.theme") || "null"); if(t === "light" || t === "dark") document.documentElement.dataset.theme = t; }catch(e){}</script>
@@ -1028,7 +1059,7 @@ body{margin:0}
     <p class="home-sub">Bir repertuar seç ya da yenisini oluştur. Her mekan ya da program için ayrı bir repertuar yapabilirsin; şarkıların hepsinde ortaktır, birinde düzeltince hepsinde düzelir.</p>
     <div class="repgrid" id="repGrid"><div class="empty">Yükleniyor…</div></div>
     <footer class="home-foot">
-      <div class="home-tools"><button type="button" class="btn" id="guideBtn">❓ Kılavuz</button><button type="button" class="btn" id="contactBtn">✉ Bize ulaşın</button></div>
+      <div class="home-tools"><button type="button" class="btn" id="guideBtn">❓ Kılavuz</button><button type="button" class="btn" id="homeImpBtn">⤓ Şarkı içe aktar</button><button type="button" class="btn" id="contactBtn">✉ Bize ulaşın</button></div>
       <div class="bkrow" id="bkSlot"><button class="btn" id="bkExport" type="button">Yedek al</button><button class="btn" id="bkImport" type="button">Yedekten yükle</button><input type="file" id="bkFile" accept=".json,application/json" hidden></div>
       <p class="home-note">Öneri, istek, şikâyet ya da bir hata mı buldun? “Bize ulaşın” ile doğrudan bize yaz, her mesajı okuyoruz.</p>
       <div class="legalrow"><button type="button" class="linkbtn" id="legalBtn">Hakkında ve yasal bilgiler</button><span id="aboutLine" data-noi18n></span></div>
@@ -1048,7 +1079,7 @@ body{margin:0}
       </div>
     </div>
     <div class="list" id="list"><div class="empty">Şarkılar yükleniyor…</div></div>
-    <div class="side-foot"><button class="btn primary wide" id="addBtn">+ Yeni şarkı ekle</button><button class="btn wide" id="pickBtn" type="button" style="margin-top:8px">＋ Şarkılarımdan seç</button><div class="helprow"><button class="btn" id="myRBtn" type="button">✎ Ritim editörü</button><button type="button" class="btn" id="keysBtn">⌨ Tuş ayarları</button></div></div>
+    <div class="side-foot"><button class="btn primary wide" id="addBtn">+ Yeni şarkı ekle</button><div class="helprow" style="margin-top:8px"><button class="btn" id="pickBtn" type="button">＋ Şarkılarımdan seç</button><button class="btn" id="impBtn" type="button">⤓ İçe aktar</button></div><div class="helprow"><button class="btn" id="myRBtn" type="button">✎ Ritim editörü</button><button type="button" class="btn" id="keysBtn">⌨ Tuş ayarları</button></div></div>
   </aside>
 
   <main class="main">
@@ -1282,6 +1313,22 @@ body{margin:0}
   <p class="ks-help" id="ksMidi">MIDI pedal da öğretebilirsin (Android'de Chrome ya da bilgisayar). iPhone ve iPad tarayıcıları MIDI desteklemez.</p>
   <div class="kb-foot"><button type="button" class="btn" id="ksReset">Varsayılana dön (1 2 3 4)</button></div>
 </div></div>
+<div class="askwrap" id="impBox" hidden role="dialog" aria-label="Şarkı içe aktar"><div class="askbox lgbox impbox">
+  <div class="gm-top"><b>Şarkı içe aktar</b><button type="button" class="btn" id="impClose">Kapat</button></div>
+  <div id="impStep1">
+    <p class="imp-note">Not Defteri (.txt), Word (.docx) ya da ChordPro (.cho) dosyanı seç, veya akorlu metni aşağıya yapıştır. Akor satırları, sözler, şarkı adı, sanatçı ve kapo kendiliğinden ayrılır. Tek dosyada birden çok şarkı olabilir.</p>
+    <label class="imp-drop" id="impDrop"><input type="file" id="impFile" multiple accept=".txt,.text,.docx,.cho,.chopro,.chordpro,.pro,.crd,.rtf,.md,text/plain"><span class="imp-ico" aria-hidden="true">⤓</span><b>Dosya seç</b><small>ya da dosyayı buraya sürükle</small></label>
+    <div class="imp-or"><span>veya</span></div>
+    <textarea id="impText" class="paste" rows="7" placeholder="Akorlu şarkı metnini buraya yapıştır…"></textarea>
+    <div class="askbtns"><button type="button" class="pri" id="impParse">Şarkıları bul</button></div>
+    <p class="status" id="impErr" role="alert"></p>
+  </div>
+  <div id="impStep2" hidden>
+    <div class="imp-top"><b id="impCount"></b><label class="imp-rep">Eklenecek repertuar <select id="impRep" data-noi18n></select></label></div>
+    <div class="imp-list" id="impList"></div>
+    <div class="askbtns"><button type="button" id="impBack">‹ Geri</button><button type="button" class="pri" id="impSave">Ekle</button></div>
+  </div>
+</div></div>
 <div class="askwrap" id="legalBox" hidden role="dialog" aria-label="Hakkında ve yasal bilgiler"><div class="askbox lgbox">
   <div class="gm-top"><b>Hakkında ve yasal bilgiler</b><button type="button" class="btn" id="lgClose">Kapat</button></div>
   <div class="lg-bar"><div class="chips" id="lgTabs"><button type="button" class="chip" data-t="impressum">Künye</button><button type="button" class="chip" data-t="datenschutz">Gizlilik</button><button type="button" class="chip" data-t="agb">Kullanım koşulları</button><button type="button" class="chip" data-t="lizenzen">Lisanslar</button></div>
@@ -1413,6 +1460,244 @@ const CHORD = /^([A-G](?:#|b)?)((?:maj|min|dim|aug|sus|add|m|M|\+|°|ø)?(?:(?:m
 const FILLER = /^(\|+|x\d+|X\d+|\d+x|-+|\/+|\.{2,}|\(|\)|\*|%)$/;
 
 function stripWrap(tok){ return tok.replace(/^[\[(|]+/,"").replace(/[\])|,.]+$/,""); }
+/* ---- şarkı içe aktarma: metin / Word / ChordPro → şarkılar (uygulamaya gömülür; node ile de test edilir) ---- */
+const IMP = (() => {
+  const CH = typeof CHORD !== "undefined" ? CHORD : /^([A-G](?:#|b)?)((?:maj|min|dim|aug|sus|add|m|M|\+|°|ø)?(?:(?:maj|sus|add|dim|aug|b|#|\+|-)[0-9]*|[0-9]+)*(?:\([^)]*\))?)(?:\/([A-G](?:#|b)?))?$/;
+  const FIL = typeof FILLER !== "undefined" ? FILLER : /^(\||\|\||x\d+|\d+x|-+|\/+|\.+|%|:|\(|\)|N\.?C\.?)$/i;
+  const strip = t => t.replace(/^[\[(|]+/, "").replace(/[\])|,.:;]+$/, "");
+  const isChordTok = t => CH.test(strip(t));
+  function chordLine(line){
+    const toks = line.trim().split(/\s+/).filter(Boolean); if(!toks.length) return false;
+    let c = 0; for(const t of toks){ if(FIL.test(t)) continue; if(isChordTok(t)){ c++; continue; } return false; }
+    return c > 0;
+  }
+  // ---- kod çözme: UTF-8 / UTF-16 / Windows-1254 (eski Türkçe Not Defteri) ----
+  function decode(buf){
+    const u = new Uint8Array(buf);
+    if(u[0] === 0xFF && u[1] === 0xFE) return new TextDecoder("utf-16le").decode(u.subarray(2));
+    if(u[0] === 0xFE && u[1] === 0xFF) return new TextDecoder("utf-16be").decode(u.subarray(2));
+    if(u[0] === 0xEF && u[1] === 0xBB && u[2] === 0xBF) return new TextDecoder("utf-8").decode(u.subarray(3));
+    // BOM'suz UTF-16: her iki bayttan biri sıfırsa
+    let z = 0; for(let i = 1; i < Math.min(u.length, 400); i += 2) if(u[i] === 0) z++;
+    if(u.length > 4 && z > Math.min(u.length, 400) / 4) return new TextDecoder("utf-16le").decode(u);
+    try{ return new TextDecoder("utf-8", { fatal: true }).decode(u); }
+    catch(e){ try{ return new TextDecoder("windows-1254").decode(u); }catch(e2){ return new TextDecoder("latin1").decode(u); } }
+  }
+  // ---- .docx: zip içinden word/document.xml ----
+  async function unzipEntry(buf, name){
+    const u = new Uint8Array(buf), dv = new DataView(buf);
+    let eocd = -1; for(let i = u.length - 22; i >= Math.max(0, u.length - 66000); i--) if(dv.getUint32(i, true) === 0x06054b50){ eocd = i; break; }
+    if(eocd < 0) throw new Error("zip");
+    const n = dv.getUint16(eocd + 10, true); let p = dv.getUint32(eocd + 16, true);
+    for(let k = 0; k < n; k++){
+      const method = dv.getUint16(p + 10, true), csize = dv.getUint32(p + 20, true), nl = dv.getUint16(p + 28, true), el = dv.getUint16(p + 30, true), cl = dv.getUint16(p + 32, true), off = dv.getUint32(p + 42, true);
+      const fname = new TextDecoder().decode(u.subarray(p + 46, p + 46 + nl));
+      if(fname === name){
+        const lnl = dv.getUint16(off + 26, true), lel = dv.getUint16(off + 28, true), start = off + 30 + lnl + lel;
+        const data = u.subarray(start, start + csize);
+        if(method === 0) return new TextDecoder().decode(data);
+        if(method === 8){
+          const ds = new DecompressionStream("deflate-raw");
+          const out = await new Response(new Blob([data]).stream().pipeThrough(ds)).arrayBuffer();
+          return new TextDecoder().decode(out);
+        }
+        throw new Error("zip-method");
+      }
+      p += 46 + nl + el + cl;
+    }
+    throw new Error("nodoc");
+  }
+  function docxXmlToText(xml){
+    const doc = new DOMParser().parseFromString(xml, "application/xml");
+    const W = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
+    const out = [];
+    const walk = (node, line) => {
+      for(const c of node.childNodes){
+        if(c.nodeType !== 1) continue;
+        const ln = c.localName;
+        if(ln === "t") line.push(c.textContent);
+        else if(ln === "tab") line.push("\t");
+        else if(ln === "br"){ const t = c.getAttributeNS(W, "type") || c.getAttribute("w:type"); line.push(t === "page" ? "\n\f\n" : "\n"); }
+        else if(ln === "cr") line.push("\n");
+        else if(ln === "noBreakHyphen") line.push("-");
+        else if(ln === "pPr"){ if(c.getElementsByTagNameNS(W, "pageBreakBefore").length) line.unshift("\f\n"); }
+        else if(ln === "delText" || ln === "instrText" || ln === "fldChar") {}
+        else walk(c, line);
+      }
+    };
+    const body = doc.getElementsByTagNameNS(W, "body")[0] || doc.documentElement;
+    const paras = body.getElementsByTagNameNS(W, "p");
+    for(const p of paras){ const line = []; walk(p, line); out.push(line.join("")); }
+    return out.join("\n");
+  }
+  async function fileToText(file){
+    const name = (file.name || "").toLowerCase(), buf = await file.arrayBuffer();
+    if(/\.docx$/.test(name) || (new Uint8Array(buf)[0] === 0x50 && new Uint8Array(buf)[1] === 0x4B)){
+      if(typeof DecompressionStream === "undefined") throw new Error("nodecomp");
+      return docxXmlToText(await unzipEntry(buf, "word/document.xml"));
+    }
+    if(/\.(doc|pdf|pages|odt)$/.test(name)) throw new Error("unsupported:" + name.split(".").pop());
+    if(/\.rtf$/.test(name)) return rtfToText(decode(buf));
+    return decode(buf);
+  }
+  function rtfToText(r){
+    let s = r.replace(/\\par[d]?\b ?/g, "\n").replace(/\\line\b ?/g, "\n").replace(/\\tab\b ?/g, "\t").replace(/\\page\b ?/g, "\n\f\n")
+      .replace(/\\'([0-9a-f]{2})/gi, (m, h) => new TextDecoder("windows-1254").decode(new Uint8Array([parseInt(h, 16)])))
+      .replace(/\\u(-?\d+)\??/g, (m, n) => String.fromCharCode((+n + 65536) % 65536));
+    s = s.replace(/\{\\\*[^{}]*\}/g, "").replace(/\{\\(fonttbl|colortbl|stylesheet|info)[\s\S]*?\}\}?/g, "");
+    return s.replace(/\\[a-z]+-?\d* ?/gi, "").replace(/[{}]/g, "").replace(/\\\\/g, "\\");
+  }
+  // ---- normalleştirme ----
+  function expandTabs(line, w){ let o = ""; for(const ch of line){ if(ch === "\t"){ const n = w - (o.length % w); o += " ".repeat(n); } else o += ch; } return o; }
+  function normalize(text){
+    return text.replace(/\r\n?/g, "\n").replace(/\f/g, "\n\u241C\n").replace(/[   ]/g, " ").replace(/[​-‍﻿]/g, "")
+      .split("\n").map(l => expandTabs(l.replace(/\s+$/, ""), 8)).join("\n");
+  }
+  // ---- ChordPro / satır içi akor: "[Am]Perde [F]açıldı" → akor satırı + söz satırı ----
+  const INL = /\[([^\]\s]{1,12})\]/g;
+  function inlineToTwoLines(line){
+    const toks = [...line.matchAll(INL)].filter(m => isChordTok(m[1]));
+    if(!toks.length) return null;
+    let lyric = "", chords = "", last = 0;
+    for(const m of toks){
+      lyric += line.slice(last, m.index); last = m.index + m[0].length;
+      const pos = lyric.length; if(chords.length > pos) chords += " ";
+      chords = chords.padEnd(pos) + m[1];
+    }
+    lyric += line.slice(last);
+    if(!lyric.trim()) return [chords.replace(/\s+$/, "")];
+    return [chords.replace(/\s+$/, ""), lyric.replace(/\s+$/, "")];
+  }
+  const SEC = /^\s*[\[(]?\s*(nakarat|giri[sş]|k[ıi]ta|ara(?:\s+solo)?|solo|final|biti[sş]|chorus|verse|bridge|intro|outro|pre-?chorus|refrain|interlude|ending|coda)(\s*\d+|\s*x\s*\d+)?\s*[\])]?\s*:?\s*$/i;
+  function secLabel(l){ const m = l.match(SEC); if(!m) return null; const w = m[1]; return "[" + w.charAt(0).toLocaleUpperCase("tr") + w.slice(1).toLocaleLowerCase("tr") + (m[2] || "") .replace(/\s+/g, " ") + "]"; }
+  // ---- metni şarkılara ayır ----
+  const META = [
+    [/^\s*(?:kapo|capo)\s*[:.\-]?\s*(\d{1,2})\b/i, "capo"],
+    [/^\s*(?:(?:kapo|capo)\s*(?:yok|none|-)|ton|key|tonalite|akor\s*tonu)\b.*$/i, "skip"],
+    [/^\s*(?:tempo|bpm)\s*[:.\-]?\s*(\d{2,3})\b/i, "bpm"],
+    [/^\s*(\d{2,3})\s*bpm\s*$/i, "bpm"],
+    [/^\s*(?:söz(?:\s*[-&\/ ]\s*müzik)?|müzik|beste|lyrics|music|words|düzenleme|arr\.?|ritim|rhythm|tuning|akort)\s*[:\-].*$/i, "skip"],
+    [/^\s*(?:sanatçı|artist|şarkıcı|yorumcu|by)\s*[:\-]\s*(.+)$/i, "artist"],
+    [/^\s*(?:şarkı(?:\s*ad[ıi])?|title|eser)\s*[:\-]\s*(.+)$/i, "title"],
+  ];
+  const SEP = /^\s*([-=_*~#•·]\s*){3,}\s*$/;
+  function cleanTitle(t){
+    return t.replace(/\s*[\(\[]?\s*(akorlar[ıi]?|akoru|akor|chords?|tab(?:s|lar[ıi])?|gitar akor(?:lar[ıi])?)\s*[\)\]]?\s*$/i, "")
+      .replace(/^\s*\d{1,3}\s*[.)\-]\s+/, "").replace(/^["“”']+|["“”']+$/g, "").replace(/\s+/g, " ").trim();
+  }
+  function looksTitle(l){
+    const t = l.trim(); if(!t || t.length > 70) return false;
+    if(chordLine(t) || SEC.test(t) || SEP.test(t)) return false;
+    if(/[,;]$/.test(t)) return false;
+    return true;
+  }
+  function splitBlocks(text){
+    // kesin ayırıcılar: sayfa sonu, {new_song}, ---- satırları
+    const hard = []; let cur = [];
+    for(const l of text.split("\n")){
+      if(l.includes("\f") || l.trim() === "\u241C" || /^\s*\{\s*(new_song|ns)\s*\}\s*$/i.test(l) || SEP.test(l)){ hard.push(cur); cur = []; const rest = l.replace(/[\f\u241C]/g, ""); if(rest.trim() && !SEP.test(rest) && !/^\s*\{/.test(rest)) cur.push(rest); continue; }
+      cur.push(l);
+    }
+    hard.push(cur);
+    // yumuşak ayırıcı: 2+ boş satır ve ardından başlık gibi bir satır, sonra 4 satır içinde akor
+    const out = [];
+    for(const lines of hard){
+      let blk = [], blanks = 0;
+      const hasChords = b => b.some(x => chordLine(x) || /\[[A-G][^\]\s]{0,10}\]/.test(x));
+      for(let i = 0; i < lines.length; i++){
+        const l = lines[i];
+        if(!l.trim()){ blanks++; blk.push(l); continue; }
+        if(blanks >= 2 && blk.some(x => x.trim()) && hasChords(blk) && looksTitle(l)){
+          let soon = false; for(let j = i + 1, seen = 0; j < lines.length && seen < 4; j++){ if(!lines[j].trim()) continue; seen++; if(chordLine(lines[j]) || /\[[A-G]/.test(lines[j])){ soon = true; break; } }
+          if(soon){ out.push(blk); blk = []; }
+        }
+        blanks = 0; blk.push(l);
+      }
+      out.push(blk);
+    }
+    return out.map(b => b.join("\n")).filter(b => b.trim());
+  }
+  function parseSong(block, knownArtists){
+    let lines = block.split("\n");
+    const meta = { title: "", artist: "", capo: "", bpm: 0 };
+    // ChordPro yönergeleri
+    const body = [];
+    for(const l of lines){
+      const d = l.match(/^\s*\{\s*([a-z_]+)\s*(?::\s*(.*?))?\s*\}\s*$/i);
+      if(d){
+        const k = d[1].toLowerCase(), v = (d[2] || "").trim();
+        if(k === "title" || k === "t") meta.title = v;
+        else if(k === "artist" || k === "subtitle" || k === "st" || k === "su") meta.artist = meta.artist || v;
+        else if(k === "capo") meta.capo = v.replace(/\D/g, "");
+        else if(k === "tempo") meta.bpm = parseInt(v, 10) || 0;
+        else if(k === "start_of_chorus" || k === "soc") body.push(v ? "[" + v + "]" : "[Nakarat]");
+        else if(k === "start_of_verse" || k === "sov") body.push(v ? "[" + v + "]" : "[Kıta]");
+        else if(k === "start_of_bridge" || k === "sob") body.push(v ? "[" + v + "]" : "[Ara]");
+        else if(k === "comment" || k === "c" || k === "ci" || k === "comment_italic") body.push(v);
+        continue;
+      }
+      body.push(l);
+    }
+    lines = [];
+    for(const l of body){
+      if(/\[[^\]]+\]/.test(l) && chordLine(l)){ lines.push(l.replace(/\[([^\]\s]+)\]/g, " $1 ").replace(/^ /, "").replace(/\s+$/, "")); continue; }
+      const two = /\[[^\]]+\]/.test(l) ? inlineToTwoLines(l) : null; if(two) lines.push(...two); else lines.push(l); }
+    // baş kısım: ilk akor satırına kadar olan bilgi satırları
+    let first = lines.findIndex(l => chordLine(l));
+    if(first < 0) first = lines.length;
+    const head = [], rest = [];
+    lines.forEach((l, i) => (i < first ? head : rest).push(l));
+    const keepHead = [];
+    // birden çok başlık adayı varsa ve biri "Sanatçı - Şarkı" biçimindeyse, diğerleri (ör. belge başlığı) atılır
+    { const cands = head.filter(r => { const l = r.trim(); return l && looksTitle(l) && !META.some(([rx]) => rx.test(l)) && !secLabel(l); });
+      const dash = cands.find(r => /\s[-–—|]\s/.test(r));
+      if(dash && cands.length > 1) for(const c of cands) if(c !== dash){ const i = head.indexOf(c); if(i >= 0 && i < head.indexOf(dash)) head[i] = ""; } }
+    for(const raw of head){
+      const l = raw.trim(); if(!l) continue;
+      let used = false;
+      for(const [rx, kind] of META){ const m = l.match(rx); if(!m) continue; used = true;
+        if(kind === "capo") meta.capo = m[1]; else if(kind === "bpm") meta.bpm = +m[1]; else if(kind === "artist") meta.artist = meta.artist || m[1].trim(); else if(kind === "title") meta.title = meta.title || cleanTitle(m[1]);
+        break; }
+      if(used) continue;
+      if(secLabel(l)){ keepHead.push(secLabel(l)); continue; }
+      if(!meta.title && looksTitle(l)){
+        const t = cleanTitle(l), m = t.match(/^(.+?)\s+[-–—|]\s+(.+)$/);
+        if(m){
+          const a = m[1].trim(), b = m[2].trim(), ka = knownArtists || new Set();
+          const lowA = a.toLocaleLowerCase("tr"), lowB = b.toLocaleLowerCase("tr");
+          if(ka.has(lowB) && !ka.has(lowA)){ meta.title = a; meta.artist = meta.artist || b; }
+          else { meta.artist = meta.artist || a; meta.title = b; }
+        } else {
+          const p = t.match(/^(.+?)\s*\(([^)]{2,40})\)\s*$/);
+          if(p && !/^\s*(canl[ıi]|live|akustik|acoustic|cover|remix|\d{4})\s*$/i.test(p[2])){ meta.title = p[1].trim(); meta.artist = meta.artist || p[2].trim(); }
+          else meta.title = t;
+        }
+        continue;
+      }
+      if(meta.title && !meta.artist && looksTitle(l) && l.length <= 40 && keepHead.length === 0 && !/[.!?]$/.test(l)){ meta.artist = l; continue; }
+      keepHead.push(raw);
+    }
+    // gövde: bölüm etiketlerini düzelt, fazla boş satırları sıkıştır
+    let out = keepHead.concat(rest).map(l => { const s = secLabel(l); return s || l; });
+    // kapo satırı gövdenin ortasında da olabilir
+    out = out.filter(l => { const m = l.trim().match(/^(?:kapo|capo)\s*[:.\-]?\s*(\d{1,2})\s*(?:\.?\s*(?:perde|fret|th|st|nd|rd))?\s*$/i); if(m){ meta.capo = meta.capo || m[1]; return false; } return true; });
+    const txt = out.join("\n").replace(/\n{3,}/g, "\n\n").replace(/^\n+|\s+$/g, "");
+    // ortak girinti kaldır
+    const ls = txt.split("\n"), ind = Math.min(...ls.filter(l => l.trim()).map(l => l.match(/^ */)[0].length));
+    const bodyTxt = isFinite(ind) && ind > 0 ? ls.map(l => l.slice(ind)).join("\n") : txt;
+    const chordLines = bodyTxt.split("\n").filter(chordLine).length;
+    return { title: meta.title || "", artist: meta.artist || "", capo: meta.capo || "", bpm: meta.bpm >= 30 && meta.bpm <= 260 ? meta.bpm : 0, body: bodyTxt, chordLines };
+  }
+  function parse(text, knownArtists){
+    const t = normalize(text);
+    const songs = splitBlocks(t).map(b => parseSong(b, knownArtists)).filter(s => s.body.trim());
+    songs.forEach((s, i) => { if(!s.title){ const fl = s.body.split("\n").find(l => l.trim() && !chordLine(l) && !SEC.test(l)); s.title = fl ? cleanTitle(fl).slice(0, 60) : "Şarkı " + (i + 1); s.titleGuess = true; } });
+    return songs;
+  }
+  return { parse, fileToText, decode, normalize, chordLine, inlineToTwoLines, splitBlocks, parseSong, docxXmlToText, rtfToText };
+})();
+
+
 function isChordLine(line){
   const toks = line.trim().split(/\s+/).filter(Boolean);
   if(!toks.length) return false;
@@ -3867,6 +4152,100 @@ function armStop(i){
   drawHint(); stopArmT = setTimeout(disarmStop, 1500);
 }
 function disarmStop(){ if(!stopArm) return; stopArm = 0; stopArmIdx = -1; clearTimeout(stopArmT); drawHint(); }
+/* ---- şarkı içe aktar: arayüz ---- */
+let impSongs = [];
+function openImport(){
+  $("impStep1").hidden = false; $("impStep2").hidden = true; $("impErr").textContent = ""; $("impText").value = ""; $("impFile").value = "";
+  $("impBox").hidden = false;
+}
+function impErrText(e){
+  const m = String(e && e.message || e);
+  if(m.startsWith("unsupported:doc")) return rL("Eski Word (.doc) dosyası okunamıyor. Word'de “Farklı Kaydet → .docx” yap ya da metni kopyalayıp aşağıya yapıştır.", "Old Word (.doc) files can't be read. Save it as .docx in Word, or copy the text and paste it below.");
+  if(m.startsWith("unsupported:pdf")) return rL("PDF okunamıyor. PDF'teki metni seçip kopyala ve aşağıya yapıştır.", "PDF can't be read. Copy the text from the PDF and paste it below.");
+  if(m.startsWith("unsupported:")) return rL("Bu dosya türü okunamıyor. .txt, .docx ya da .cho kullan veya metni yapıştır.", "This file type can't be read. Use .txt, .docx or .cho, or paste the text.");
+  if(m === "nodecomp") return rL("Bu cihaz Word dosyasını açamıyor. Cihazı güncelle ya da metni kopyalayıp yapıştır.", "This device can't open Word files. Update it, or copy and paste the text.");
+  return rL("Dosya okunamadı. Metni kopyalayıp aşağıya yapıştırmayı dene.", "Couldn't read the file. Try copying the text and pasting it below.");
+}
+async function impRun(files){
+  $("impErr").textContent = ""; let text = "";
+  try{
+    if(files && files.length){ const parts = []; for(const f of files) parts.push(await IMP.fileToText(f)); text = parts.join("\n\f\n"); }
+    else text = $("impText").value;
+  }catch(e){ $("impErr").textContent = impErrText(e); return; }
+  if(!text.trim()){ $("impErr").textContent = rL("Önce bir dosya seç ya da metin yapıştır.", "Pick a file or paste some text first."); return; }
+  const known = new Set(songs.map(s => (s.artist || "").toLocaleLowerCase("tr")).filter(Boolean));
+  impSongs = IMP.parse(text, known).map(s => {
+    const dup = findDuplicate(s.title, s.body, null);
+    return Object.assign(s, { on: s.chordLines > 0 && !dup, dup: !!dup, open: false });
+  });
+  if(!impSongs.length){ $("impErr").textContent = rL("Bu metinde şarkı bulunamadı.", "No songs found in this text."); return; }
+  const sel = $("impRep"); sel.textContent = "";
+  const add = (v, t) => { const o = document.createElement("option"); o.value = v; o.textContent = t; sel.append(o); };
+  Object.keys(reps).sort((a, b) => coll.compare(repName(a), repName(b))).forEach(id => add(id, repName(id)));
+  add("", rL("Hiçbiri (sadece Tüm şarkılarım)", "None (only All my songs)"));
+  sel.value = curRep && curRep !== "*all" && reps[curRep] ? curRep : (Object.keys(reps)[0] || "");
+  $("impStep1").hidden = true; $("impStep2").hidden = false; drawImp();
+}
+function impPre(body){
+  const pre = document.createElement("div"); pre.className = "imp-pre"; pre.dataset.noi18n = "";
+  body.split("\n").forEach((l, i) => { if(i) pre.append("\n"); if(IMP.chordLine(l)){ const b = document.createElement("span"); b.className = "c"; b.textContent = l; pre.append(b); } else pre.append(l); });
+  return pre;
+}
+function drawImp(){
+  const L = $("impList"); L.textContent = "";
+  const n = impSongs.filter(s => s.on).length;
+  $("impCount").textContent = rL(impSongs.length + " şarkı bulundu", impSongs.length + " songs found");
+  $("impSave").textContent = n ? rL(n + " şarkıyı ekle", "Add " + n + " songs") : rL("Ekle", "Add"); $("impSave").disabled = !n;
+  impSongs.forEach((s, i) => {
+    const it = document.createElement("div"); it.className = "imp-it" + (s.on ? "" : " off");
+    const row = document.createElement("div"); row.className = "imp-row";
+    const cb = document.createElement("input"); cb.type = "checkbox"; cb.checked = s.on; cb.onchange = () => { s.on = cb.checked; drawImp(); };
+    const ti = document.createElement("input"); ti.type = "text"; ti.value = s.title; ti.placeholder = rL("Şarkı adı", "Song title"); ti.oninput = () => { s.title = ti.value; };
+    const sw = document.createElement("button"); sw.type = "button"; sw.className = "swap"; sw.textContent = "⇄"; sw.title = rL("Şarkı adı ile sanatçıyı değiştir", "Swap title and artist");
+    sw.onclick = () => { const t = s.title; s.title = s.artist; s.artist = t; drawImp(); };
+    const ar = document.createElement("input"); ar.type = "text"; ar.className = "ar"; ar.value = s.artist; ar.placeholder = rL("Sanatçı", "Artist"); ar.oninput = () => { s.artist = ar.value; };
+    const cp = document.createElement("input"); cp.type = "text"; cp.className = "cp"; cp.inputMode = "numeric"; cp.value = s.capo; cp.placeholder = rL("Kapo", "Capo"); cp.oninput = () => { s.capo = cp.value.replace(/\D/g, "").slice(0, 2); };
+    [ti, ar, cp].forEach(x => x.dataset.noi18n = "");
+    row.append(cb, ti, sw, ar, cp);
+    const meta = document.createElement("div"); meta.className = "imp-meta";
+    const lines = s.body.split("\n").filter(l => l.trim()).length;
+    const info = document.createElement("span"); info.textContent = rL(s.chordLines + " akor satırı · " + lines + " satır", s.chordLines + " chord lines · " + lines + " lines") + (s.bpm ? " · " + s.bpm + " BPM" : "");
+    meta.append(info);
+    if(!s.chordLines){ const w = document.createElement("span"); w.className = "warn"; w.textContent = rL("Akor bulunamadı", "No chords found"); meta.append(w); }
+    if(s.dup){ const w = document.createElement("span"); w.className = "warn"; w.textContent = rL("Bu şarkı zaten var", "Already in your songs"); meta.append(w); }
+    if(s.titleGuess){ const w = document.createElement("span"); w.className = "warn"; w.textContent = rL("Adı tahmin edildi, kontrol et", "Title guessed, please check"); meta.append(w); }
+    const pv = document.createElement("button"); pv.type = "button"; pv.textContent = s.open ? rL("Önizlemeyi kapat", "Hide preview") : rL("Önizle", "Preview");
+    pv.onclick = () => { s.open = !s.open; drawImp(); };
+    meta.append(pv);
+    it.append(row, meta); if(s.open) it.append(impPre(s.body));
+    L.append(it);
+  });
+}
+async function impSave(){
+  const list = impSongs.filter(s => s.on && s.body.trim()); if(!list.length || !db) return;
+  const rep = $("impRep").value; $("impSave").disabled = true;
+  let ok = 0;
+  for(const s of list){
+    const title = (s.title || "").trim() || rL("Adsız şarkı", "Untitled song");
+    const data = { title, artist: (s.artist || "").trim(), capo: (s.capo || "").trim(), tags: [], reps: rep ? [rep] : [], body: s.body, updatedAt: new Date().toISOString() };
+    if(s.bpm){ data.bpm = s.bpm; data.bpmEst = false; }
+    const id = slug(title) + "-" + Math.random().toString(36).slice(2, 6);
+    try{ await queued(() => db.collection("songs").doc(id).set(data)); upsert({ id, ...data }); ok++; }catch(e){}
+  }
+  $("impBox").hidden = true; renderList(); if(!$("home").hidden) drawHome();
+  toast(rL(ok + " şarkı eklendi", ok + " songs added"));
+  if(rep && $("home").hidden === false && reps[rep]) openRep(rep);
+}
+$("impClose").onclick = () => { $("impBox").hidden = true; };
+$("impParse").onclick = () => impRun(null);
+$("impFile").onchange = () => { const f = [...$("impFile").files]; if(f.length) impRun(f); };
+$("impBack").onclick = () => { $("impStep1").hidden = false; $("impStep2").hidden = true; };
+$("impSave").onclick = impSave;
+{ const d = $("impDrop");
+  ["dragenter", "dragover"].forEach(ev => d.addEventListener(ev, e => { e.preventDefault(); d.classList.add("over"); }));
+  ["dragleave", "drop"].forEach(ev => d.addEventListener(ev, () => d.classList.remove("over")));
+  d.addEventListener("drop", e => { e.preventDefault(); const f = [...(e.dataTransfer && e.dataTransfer.files || [])]; if(f.length) impRun(f); }); }
+$("impBtn").onclick = openImport; $("homeImpBtn").onclick = openImport;
 $("homeBtn").onclick = showHome;
 $("pickBtn").onclick = openPick;
 $("songPickClose").onclick = () => { $("songPickBox").hidden = true; };
@@ -4781,7 +5160,7 @@ const EN = {
   "Sıralama":"Sort","Sıralama: alfabetik / tempo":"Sort: A–Z / tempo","Alfabetik sıralı (tempoya göre için dokun)":"Sorted A–Z (tap to sort by tempo)","Tempoya göre sıralı (alfabetik için dokun)":"Sorted by tempo (tap for A–Z)",
   "Tempo yok":"No tempo","70 altı":"Under 70","130 ve üstü":"130 and up","hrk":"upb","krd":"bls","özg":"orig","oyun":"dance",
   "Listeyi gizle":"Hide list","Listeyi göster":"Show list","Listeye dön":"Back to list","Listenin başı":"Start of list","Listenin sonu":"End of list",
-  "Repertuarların":"Your repertoires","Bir repertuar seç ya da yenisini oluştur. Her mekan ya da program için ayrı bir repertuar yapabilirsin; şarkıların hepsinde ortaktır, birinde düzeltince hepsinde düzelir.":"Pick a repertoire or create a new one. Make a separate repertoire for each venue or show; your songs are shared, so a fix in one fixes them everywhere.","✉ Bize ulaşın":"✉ Contact us","Öneri, istek, şikâyet ya da bir hata mı buldun? “Bize ulaşın” ile doğrudan bize yaz, her mesajı okuyoruz.":"A suggestion, request, complaint or a bug? Write to us with “Contact us”, we read every message.","＋ Şarkılarımdan seç":"＋ Pick from my songs","Şarkılarımdan seç":"Pick from my songs","Tümünü seç":"Select all","Repertuarlar":"Repertoires","Sadece bu repertuardan çıkar":"Only remove from this repertoire","Tempo":"Tempo","İnsan":"Feel","Sesi azalt":"Volume down","Sesi artır":"Volume up","Daha düz":"Tighter","Daha canlı":"Looser","Ritim panelini gizle":"Hide rhythm panel","Ritim panelini göster":"Show rhythm panel","Paneli gizle":"Hide panel","Paneli göster":"Show panel","Sahneye hazır":"Ready for the stage","Düzenle":"Edit","Kapat":"Close","Kaydet":"Save","Vazgeç":"Cancel","Sil":"Delete","Evet, sil":"Yes, delete","Silinsin mi?":"Delete it?","Silindi":"Deleted","Silinemedi. Tekrar dene.":"Couldn't delete. Try again.",
+  "Repertuarların":"Your repertoires","Bir repertuar seç ya da yenisini oluştur. Her mekan ya da program için ayrı bir repertuar yapabilirsin; şarkıların hepsinde ortaktır, birinde düzeltince hepsinde düzelir.":"Pick a repertoire or create a new one. Make a separate repertoire for each venue or show; your songs are shared, so a fix in one fixes them everywhere.","✉ Bize ulaşın":"✉ Contact us","Öneri, istek, şikâyet ya da bir hata mı buldun? “Bize ulaşın” ile doğrudan bize yaz, her mesajı okuyoruz.":"A suggestion, request, complaint or a bug? Write to us with “Contact us”, we read every message.","＋ Şarkılarımdan seç":"＋ Pick from my songs","Şarkılarımdan seç":"Pick from my songs","Tümünü seç":"Select all","Repertuarlar":"Repertoires","Sadece bu repertuardan çıkar":"Only remove from this repertoire","Tempo":"Tempo","İnsan":"Feel","Sesi azalt":"Volume down","Sesi artır":"Volume up","Daha düz":"Tighter","Daha canlı":"Looser","Ritim panelini gizle":"Hide rhythm panel","Ritim panelini göster":"Show rhythm panel","Paneli gizle":"Hide panel","Paneli göster":"Show panel","Şarkı içe aktar":"Import songs","⤓ Şarkı içe aktar":"⤓ Import songs","⤓ İçe aktar":"⤓ Import","Dosya seç":"Choose file","ya da dosyayı buraya sürükle":"or drop the file here","veya":"or","Akorlu şarkı metnini buraya yapıştır…":"Paste the song text with chords here…","Şarkıları bul":"Find songs","Eklenecek repertuar":"Add to repertoire","‹ Geri":"‹ Back","Not Defteri (.txt), Word (.docx) ya da ChordPro (.cho) dosyanı seç, veya akorlu metni aşağıya yapıştır. Akor satırları, sözler, şarkı adı, sanatçı ve kapo kendiliğinden ayrılır. Tek dosyada birden çok şarkı olabilir.":"Choose a Notepad (.txt), Word (.docx) or ChordPro (.cho) file, or paste the text with chords below. Chord lines, lyrics, title, artist and capo are separated automatically. One file can hold many songs.","Sahneye hazır":"Ready for the stage","Düzenle":"Edit","Kapat":"Close","Kaydet":"Save","Vazgeç":"Cancel","Sil":"Delete","Evet, sil":"Yes, delete","Silinsin mi?":"Delete it?","Silindi":"Deleted","Silinemedi. Tekrar dene.":"Couldn't delete. Try again.",
   "Kaydedildi":"Saved","Kaydedilemedi":"Couldn't save","Kaydedilemedi, tekrar dene":"Couldn't save, try again","Kaydediliyor…":"Saving…","Kayıtlı ✓":"Saved ✓",
   "Kaydedilemedi. Bağlantını kontrol edip tekrar dene.":"Couldn't save. Check your connection and try again.","Bağlantı sorunu oldu. Tekrar dene.":"There was a connection problem. Try again.",
   "Kayıt alanı doldu. Birkaç eski şarkıyı silip tekrar dene.":"Storage is full. Delete a few old songs and try again.","Kayıt yeri şu an açılamadı. İnternet bağlantını kontrol edip tekrar dene.":"Storage couldn't be opened. Check your internet connection and try again.",
