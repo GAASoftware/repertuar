@@ -2596,8 +2596,9 @@ function player(){
     if(kalip === 4){ D.half = 1; D.hat = D0.hat === "ride" ? "ride" : "sparse"; }
   }
   if(section === "giris"){ P.hat = (D.hat === "ride" || D.hat === "tom") ? D.hat : "sparse"; P.vel = D.vel * .82; P.ghost = 0; P.crash = 0; P.kick = 0; P.dens = 0; P.phrase = "AAAM"; }
-  if(section === "nakarat"){ P.hat = D.hat === "ride" ? "ride" : D.hat === "tom" ? "tom" : D.hat === "sixteenth" ? "sixteenth" : D.hat === "rock" ? "rock" : "open"; P.vel = D.vel * 1.12; P.ghost = 1; P.crash = 4; P.kick = 1; P.dens = 1; P.phrase = "BABM"; }
+  if(section === "nakarat"){ P.hat = D.hat === "ride" ? "ride" : D.hat === "tom" ? "tom" : D.hat === "sixteenth" ? "sixteenth" : D.hat === "rock" ? "rock" : "open"; P.vel = D.vel * 1.12; P.ghost = 1; P.crash = softDr() ? 0 : 8; P.kick = 1; P.dens = 1; P.phrase = "BABM"; }
   if(section === "ara"){ P.hat = D.hat === "tom" ? "tom" : "ride"; P.vel = D.vel * .92; P.crash = 0; P.phrase = "ABAB"; }
+  if(section !== "nakarat") P.crash = 0;   // zil sadece nakaratta, seyrek
   return P;
 }
 function drawSecs(){
@@ -2767,6 +2768,7 @@ let barT = 0, barEv = [], ei = 0, barType = "groove", nextType = "groove", crash
 let ending = false, endWanted = false, endTimer = 0, grooveN = 0, chimeArm = false;
 const visQ = [];
 function spb(){ return 60 / liveBpm; }
+function softDr(){ const d = DRUMMERS[drummerId]; return !!(d && d.group === "Sade / balad"); }
 function startBar(type){
   let variant = "A";
   if(type === "groove" || type === "groove+fill"){
@@ -2817,7 +2819,8 @@ function schedule(){
       barT += barBeats(styleId) * spb(); barNo++;
       let type = "groove";
       if(ending && (endWanted || barType === "groove+fill")){ endWanted = false; startBar("end"); continue; }
-      if(barType === "intro" || barType === "groove+fill") crashNext = true;
+      // zil: yalnızca nakarata girerken, girişten sonra ya da elle atak yapılınca; balad davulcularında hiç
+      if(!softDr()){ if(barType === "intro") crashNext = true; else if(barType === "groove+fill") crashNext = pendingSection ? pendingSection === "nakarat" : (section === "nakarat" || section === "kita"); }
       if(switchWanted && (barType === "groove+fill" || STYLES[styleId].fam === "click")) applySwitch(switchWanted);
       if(pendingSection && barType === "groove+fill"){ section = pendingSection; pendingSection = null; grooveN = 0; if(section === "giris") crashNext = false; drawSecs(); }
       if(fillWanted){ fillWanted = false; type = "groove+fill"; }
@@ -2905,7 +2908,7 @@ async function startRhythm2(noCount){
   bassSong = current; bassPos = 0; bassJump = null; bassTLc = null; bassLast = null;
   if(bassOn){ try{ await ensureBass(bassType); }catch(e){} }
   nextType = "groove";
-  crashNext = section !== "giris" && STYLES[styleId].fam !== "click";
+  crashNext = section !== "giris" && !softDr() && STYLES[styleId].fam !== "click";
   barT = c.currentTime + 0.08;
   countLeft = $("rCount").checked && !noCount ? 4 : 0;
   chimeArm = $("rChime").checked && !noCount && STYLES[styleId].fam !== "click";
@@ -3462,7 +3465,7 @@ function applySwitch(S){
   $("rStyle").value = styleId; $("rDrummer").value = drummerId; $("rKit").value = setId;
   drawKalip(); drawBeats(); showKitSel();
   section = startSection = S.bolum || "giris"; pendingSection = null; drawSecs();   // yeni şarkı kendi başlangıç bölümünden (varsayılan Giriş) başlar
-  grooveN = 0; crashNext = true; carry = false; switchWanted = null;
+  grooveN = 0; crashNext = !softDr() && section !== "giris"; carry = false; switchWanted = null;
   bassSong = current; bassPos = 0; bassJump = null; bassTLc = null; markChord(-1);
   drawCarry(); refreshSave(); primeLoud();
 }
