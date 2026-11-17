@@ -1104,6 +1104,53 @@ body{margin:0}
   .main #rhythm.pedal .pd-lcd{height:auto !important}
   .main #rhythm.pedal .pd-lcd .pd-sub{display:none}
 }
+
+/* ====== tuş ayarları: pedalla aynı donanım görünümü (Fikir A) ====== */
+#keyBox .askbox{--pd-ink:#e8eaee;--pd-mute:#8d939e;--pd-slot:#15171b;--pd-slotb:#33373f;position:relative;width:min(560px,100%);
+  background:linear-gradient(160deg,#3a3f48 0%,#23262c 38%,#1a1c21 100%);color:var(--pd-ink);border:2px solid #0a0b0d;border-radius:20px;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.12),0 22px 60px rgba(0,0,0,.6);padding:16px 18px 18px}
+:root[data-theme="light"] #keyBox .askbox{--pd-ink:#1d2026;--pd-mute:#5d6470;--pd-slot:#f4f5f7;--pd-slotb:#aeb3bb;background:linear-gradient(160deg,#e9ebef,#d3d6dc 38%,#c3c7ce);border-color:#9aa0a9}
+#keyBox .askbox:after{content:"";position:absolute;pointer-events:none;inset:7px;border-radius:14px;
+  background:radial-gradient(circle at 5px 5px,#a7adb7 0 2.5px,#4a4f58 3px 4.5px,transparent 5px),radial-gradient(circle at calc(100% - 5px) 5px,#a7adb7 0 2.5px,#4a4f58 3px 4.5px,transparent 5px),radial-gradient(circle at 5px calc(100% - 5px),#a7adb7 0 2.5px,#4a4f58 3px 4.5px,transparent 5px),radial-gradient(circle at calc(100% - 5px) calc(100% - 5px),#a7adb7 0 2.5px,#4a4f58 3px 4.5px,transparent 5px)}
+#keyBox .gm-top{padding:0 6px}
+#keyBox .gm-top b{font:800 16px var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:#ffc233}
+:root[data-theme="light"] #keyBox .gm-top b{color:#b57f00}
+#keyBox .gm-top b:after{content:"  KEYPAD · SETUP";font:700 9px var(--f-ui);letter-spacing:.2em;color:var(--pd-mute);margin-left:6px}
+#keyBox .gm-top .btn,#keyBox .btn{background:var(--pd-slot);border:1px solid var(--pd-slotb);color:var(--pd-ink);border-radius:9px;font:800 11.5px var(--f-ui);letter-spacing:.06em;text-transform:uppercase;box-shadow:0 3px 0 rgba(0,0,0,.45)}
+#keyBox .btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.45)}
+#keyBox .ks-help{color:var(--pd-mute);font-size:12.5px;line-height:1.45;padding:0 4px}
+#keyBox .ks-help b{color:var(--pd-ink)}
+#ksRows{display:flex;flex-direction:column;gap:12px}
+.ks-pad{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;padding:16px 10px 20px;border-radius:14px;background:rgba(0,0,0,.25);box-shadow:inset 0 2px 6px rgba(0,0,0,.45)}
+:root[data-theme="light"] .ks-pad{background:rgba(255,255,255,.35);box-shadow:inset 0 2px 5px rgba(0,0,0,.15)}
+.ks-kc{all:unset;box-sizing:border-box;position:relative;width:64px;height:60px;border-radius:11px;display:grid;place-items:center;cursor:pointer;
+  background:linear-gradient(180deg,#f4f5f7,#c9ccd2);box-shadow:0 5px 0 #6b7078,0 8px 14px rgba(0,0,0,.5),inset 0 1px 0 #fff;color:#1d2026;transition:transform .05s,box-shadow .05s;-webkit-tap-highlight-color:transparent}
+.ks-kc .n{font:800 21px var(--f-ui);line-height:1;margin-top:-8px}
+.ks-kc small{position:absolute;bottom:6px;left:2px;right:2px;text-align:center;font:700 8px var(--f-ui);letter-spacing:.06em;color:#5d6470;text-transform:uppercase;white-space:nowrap;overflow:hidden}
+.ks-kc.sel{outline:3px solid #ffc233;outline-offset:3px}
+.ks-kc.hit{background:linear-gradient(180deg,#fff3c4,#ffc233);box-shadow:0 1px 0 #a37400,0 0 18px rgba(255,194,51,.75);transform:translateY(4px)}
+.ks-kc.learn{animation:ksLearn .8s ease-in-out infinite alternate}
+@keyframes ksLearn{from{box-shadow:0 5px 0 #6b7078,0 0 0 rgba(255,194,51,0)}to{box-shadow:0 5px 0 #6b7078,0 0 22px rgba(255,194,51,.9)}}
+.ks-kc.add{background:none;box-shadow:none;border:2px dashed #5d6470;color:var(--pd-mute);font:700 26px var(--f-ui)}
+.ks-kc.add.learn{border-color:#ffc233;color:#ffc233}
+#ksTest{margin:0;border-radius:9px;padding:8px 11px;background:linear-gradient(180deg,#1b2a1c,#122014);border:2px solid #07090a;box-shadow:inset 0 0 10px rgba(0,0,0,.8);font:700 11.5px/1.35 var(--f-mono);color:#9dff9a;text-shadow:0 0 6px rgba(120,255,120,.45);letter-spacing:.03em;text-transform:uppercase;min-height:20px}
+#ksTest.learn{color:#ffe066;text-shadow:0 0 6px rgba(255,224,102,.5)}
+.ks-ed{display:flex;flex-direction:column;gap:8px}
+.ks-er{display:grid;grid-template-columns:88px 1fr;align-items:center;gap:8px}
+.ks-el{display:flex;align-items:center;gap:7px;font:700 10px var(--f-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--pd-mute)}
+.ks-el i{font-style:normal;color:#ffc233;font-size:10px;letter-spacing:-1px;width:16px}
+.ks-er select{height:38px;border-radius:9px;background:var(--pd-slot);border:1px solid var(--pd-slotb);color:var(--pd-ink);font-size:14px;padding:0 10px;box-shadow:inset 0 2px 4px rgba(0,0,0,.25);width:100%;min-width:0}
+.ks-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px}
+.ks-btns .btn{height:36px}
+.ks-btns .ks-rm{color:#ff6b5a !important}
+#keyBox .ks-safe{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:10px;background:rgba(0,0,0,.22);font-size:12.5px;color:var(--pd-ink);cursor:pointer;margin:2px 0}
+:root[data-theme="light"] #keyBox .ks-safe{background:rgba(255,255,255,.4)}
+#keyBox .ks-safe input{appearance:none;-webkit-appearance:none;flex:none;width:38px;height:22px;border-radius:11px;background:#4a4f58;position:relative;cursor:pointer;transition:background .15s;margin:0}
+#keyBox .ks-safe input:after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#e8eaee;transition:transform .15s}
+#keyBox .ks-safe input:checked{background:#ffc233}
+#keyBox .ks-safe input:checked:after{transform:translateX(16px);background:#141414}
+#keyBox .kb-foot{display:flex;justify-content:center}
+@media (max-width:520px){.ks-kc{width:56px;height:52px}.ks-kc .n{font-size:18px}.ks-pad{gap:9px;padding:12px 6px 16px}.ks-er{grid-template-columns:74px 1fr}}
 </style>
 
 <script>try{ const t = JSON.parse(localStorage.getItem("sp.theme") || "null"); if(t === "light" || t === "dark") document.documentElement.dataset.theme = t; }catch(e){}</script>
@@ -1368,8 +1415,8 @@ body{margin:0}
 </div></div>
 <div class="askwrap" id="keyBox" hidden role="dialog" aria-label="Tuş ayarları"><div class="askbox lgbox">
   <div class="gm-top"><b>Tuş ayarları</b><button type="button" class="btn" id="ksClose">Kapat</button></div>
-  <p class="ks-help" id="ksHelp">Klavyeni, makro tuş takımını ya da ayak pedalını tablete Bluetooth ile bağla. <b>＋ Tuş ekle</b> ile istediğin kadar tuş ekle, her tuşa <b>tek basış</b>, <b>çift basış</b> ve <b>basılı tutma</b> için listeden bir işlem seç. Denemek için tuşlara bas: o tuşun satırı yanar.</p>
-  <label class="ks-safe"><input type="checkbox" id="ksSafe"> <span>Yanlış dokunmaya karşı koruma: ritim çalarken tek basışla durdurma için iki kez bas</span></label>
+  <p class="ks-help" id="ksHelp">Tuş takımını ya da ayak pedalını Bluetooth ile bağla. Bir tuşa dokun ya da tuş takımında bas: altında o tuşun <b>tek</b>, <b>çift</b> ve <b>basılı</b> ayarları açılır. Yeni tuş için <b>＋</b>.</p>
+  <label class="ks-safe"><input type="checkbox" id="ksSafe"> <span>Yanlış dokunmaya karşı koruma: ritim çalarken durdurmak için iki kez bas</span></label>
   <div id="ksRows"></div>
   <p class="ks-test" id="ksTest" data-noi18n></p>
   <p class="ks-help" id="ksMidi">MIDI pedal da öğretebilirsin (Android'de Chrome ya da bilgisayar). iPhone ve iPad tarayıcıları MIDI desteklemez.</p>
@@ -4451,40 +4498,63 @@ function actSelect(cur, empty){
   ACTIONS.forEach(a => { const o = document.createElement("option"); o.value = a.id; o.textContent = a.n; s.append(o); });
   s.value = cur || ""; return s;
 }
+var ksSel = 0;
 function drawKeySet(){
-  const box = $("ksRows"); box.textContent = "";
+  const box = $("ksRows"), lcd = $("ksTest"); box.textContent = "";
+  if(ksSel >= binds.length) ksSel = binds.length - 1; if(ksSel < 0) ksSel = 0;
+  // 1) tuş takımı
+  const pad = document.createElement("div"); pad.className = "ks-pad";
   binds.forEach((b, i) => {
-    const row = document.createElement("div"); row.className = "ks-row" + (keyLearn === i ? " learn" : ""); row.dataset.k = i;
-    const kc = document.createElement("div"); kc.className = "ks-key";
-    const cur = document.createElement("span"); cur.className = "ks-cur"; cur.dataset.noi18n = "";
-    cur.textContent = keyLearn === i ? LL("Şimdi tuşa / pedala bas…", "Press the key / pedal now…") : b.codes.map(keyLabel).join(" · ");
-    const ch = document.createElement("button"); ch.type = "button"; ch.className = "btn"; ch.textContent = keyLearn === i ? "Vazgeç" : "Değiştir";
-    ch.onclick = () => { keyLearn = keyLearn === i ? null : i; if(keyLearn != null) midiInit(true); drawKeySet(); };
-    const rm = document.createElement("button"); rm.type = "button"; rm.className = "btn ks-rm"; rm.textContent = "✕"; rm.setAttribute("aria-label", "Tuşu kaldır");
-    rm.onclick = () => { binds.splice(i, 1); keyLearn = null; saveBinds(); drawKeySet(); };
-    kc.append(cur, ch, rm);
-    const acts = document.createElement("div"); acts.className = "ks-acts";
-    for(const [f, lab, empty] of [["s", "Tek basış", true], ["d", "Çift basış", true], ["h", "Basılı tut", true]]){
-      const l = document.createElement("label"); const sp = document.createElement("span"); sp.textContent = lab;
-      const sel = actSelect(b[f], empty); sel.onchange = () => { b[f] = sel.value || null; saveBinds(); };
-      l.append(sp, sel); acts.append(l);
-    }
-    row.append(kc, acts); box.append(row);
+    const k = document.createElement("button"); k.type = "button"; k.className = "ks-kc" + (i === ksSel ? " sel" : "") + (keyLearn === i ? " learn" : ""); k.dataset.k = i;
+    const n = document.createElement("span"); n.className = "n"; n.textContent = i + 1;
+    const s = document.createElement("small"); s.dataset.noi18n = ""; { const c = b.codes.find(x => /^Numpad/.test(x)) || b.codes[0] || ""; s.textContent = !c ? "—" : /^Numpad(\w+)$/.test(c) ? "Num " + c.slice(6) : /^midi:/.test(c) ? "MIDI" : keyLabel(c).slice(0, 9); }
+    k.append(n, s); k.onclick = () => { ksSel = i; if(keyLearn !== null && keyLearn !== i) keyLearn = null; drawKeySet(); };
+    pad.append(k);
   });
-  const add = document.createElement("button"); add.type = "button"; add.className = "btn ks-add" + (keyLearn === "new" ? " learn" : "");
-  add.textContent = keyLearn === "new" ? LL("Şimdi eklemek istediğin tuşa / pedala bas…", "Press the key / pedal you want to add…") : LL("＋ Tuş ekle", "＋ Add key");
+  const add = document.createElement("button"); add.type = "button"; add.className = "ks-kc add" + (keyLearn === "new" ? " learn" : ""); add.textContent = "+";
+  add.title = LL("Tuş ekle", "Add key"); add.setAttribute("aria-label", add.title);
   add.onclick = () => { keyLearn = keyLearn === "new" ? null : "new"; if(keyLearn) midiInit(true); drawKeySet(); };
-  box.append(add);
+  pad.append(add);
+  box.append(pad);
+  // 2) ekran
+  if(keyLearn === "new") lcd.textContent = LL("Şimdi eklemek istediğin tuşa / pedala bas…", "Press the key / pedal you want to add…");
+  else if(keyLearn != null) lcd.textContent = LL("Tuş " + (keyLearn + 1) + " · şimdi yeni tuşa / pedala bas…", "Key " + (keyLearn + 1) + " · press the new key / pedal now…");
+  else if(!binds.length) lcd.textContent = LL("Henüz tuş yok · ＋ ile ekle", "No keys yet · add one with ＋");
+  else if(!lcd.dataset.keep) lcd.textContent = LL("Tuş ", "Key ") + (ksSel + 1) + " · " + binds[ksSel].codes.map(keyLabel).join(" · ") + LL(" · denemek için bas", " · press to test");
+  lcd.classList.toggle("learn", keyLearn != null);
+  box.append(lcd);
+  // 3) seçili tuşun üç ayarı
+  const b = binds[ksSel];
+  if(b){
+    const ed = document.createElement("div"); ed.className = "ks-ed";
+    for(const [f, lab, dots] of [["s", LL("Tek", "Single"), "●"], ["d", LL("Çift", "Double"), "●●"], ["h", LL("Basılı", "Hold"), "◉"]]){
+      const r = document.createElement("label"); r.className = "ks-er";
+      const sp = document.createElement("span"); sp.className = "ks-el"; const d = document.createElement("i"); d.textContent = dots; sp.append(d, document.createTextNode(lab));
+      const sel = actSelect(b[f], true); sel.onchange = () => { b[f] = sel.value || null; saveBinds(); drawHint(); };
+      r.append(sp, sel); ed.append(r);
+    }
+    const btns = document.createElement("div"); btns.className = "ks-btns";
+    const ch = document.createElement("button"); ch.type = "button"; ch.className = "btn"; ch.textContent = keyLearn === ksSel ? LL("Vazgeç", "Cancel") : LL("Tuşu değiştir", "Change key");
+    ch.onclick = () => { keyLearn = keyLearn === ksSel ? null : ksSel; if(keyLearn != null) midiInit(true); drawKeySet(); };
+    const rm = document.createElement("button"); rm.type = "button"; rm.className = "btn ks-rm"; rm.textContent = LL("Sil", "Delete");
+    rm.onclick = () => { binds.splice(ksSel, 1); keyLearn = null; ksSel = Math.max(0, ksSel - 1); saveBinds(); drawKeySet(); };
+    btns.append(ch, rm); ed.append(btns);
+    box.append(ed);
+  }
   $("ksMidi").hidden = !navigator.requestMIDIAccess;
 }
 let keyTestT = 0; const ksDown = {};
-function keyTest(i){ const r = $("ksRows").querySelector('.ks-row[data-k="' + i + '"]'); if(!r) return; r.classList.add("hit"); clearTimeout(keyTestT); keyTestT = setTimeout(() => r.classList.remove("hit"), 300); }
+function keyTest(i){
+  if(i !== ksSel){ ksSel = i; $("ksTest").dataset.keep = ""; delete $("ksTest").dataset.keep; drawKeySet(); }
+  const k = $("ksRows").querySelector('.ks-kc[data-k="' + i + '"]'); if(!k) return;
+  k.classList.add("hit"); clearTimeout(keyTestT); keyTestT = setTimeout(() => k.classList.remove("hit"), 260);
+}
 function ksReport(i, ms){
-  const held = ms >= HOLD_MS, b = binds[i];
-  $("ksTest").textContent = keyLabel(b.codes[0]) + " · " + (ms / 1000).toFixed(2) + LL(" sn · ", " s · ") + (held ? LL("basılı tutma algılandı ✓", "hold detected ✓") : LL("kısa basış", "short press"));
+  const held = ms >= HOLD_MS, b = binds[i]; $("ksTest").dataset.keep = "1"; clearTimeout(ksReport.t); ksReport.t = setTimeout(() => { delete $("ksTest").dataset.keep; }, 4000);
+  $("ksTest").textContent = LL("Tuş ", "Key ") + (i + 1) + " · " + keyLabel(b.codes[0]) + " · " + (ms / 1000).toFixed(2) + LL(" sn · ", " s · ") + (held ? LL("basılı tutma algılandı ✓", "hold detected ✓") : LL("kısa basış", "short press"));
   if(!held && ms < 60) $("ksTest").textContent += LL(" — Basılı tuttuğun hâlde böyle görünüyorsa cihazın basılı tutmayı iletmiyor; o tuş için “Çift basış”ı kullan.", " — If you held the key and still see this, your device doesn't send holds; use “Double press” for that key.");
 }
-function openKeySet(){ keyLearn = null; drawKeySet(); $("ksSafe").checked = safeStop; $("ksTest").textContent = LL("Denemek için tuşlara bas.", "Press keys to test."); $("keyBox").hidden = false; }
+function openKeySet(){ keyLearn = null; delete $("ksTest").dataset.keep; drawKeySet(); $("ksSafe").checked = safeStop; $("keyBox").hidden = false; }
 $("ksClose").onclick = () => { keyLearn = null; $("keyBox").hidden = true; };
 $("ksSafe").onchange = () => { safeStop = $("ksSafe").checked; LS.set("sp.safestop", safeStop); try{ savePrefs(); }catch(e){} };
 $("ksReset").onclick = () => { binds = JSON.parse(JSON.stringify(BINDS_DEFAULT)); keyLearn = null; saveBinds(); drawKeySet(); toast(LL("Varsayılan tuşlar: 1 2 3 4", "Default keys: 1 2 3 4")); };
@@ -5226,7 +5296,7 @@ const EN = {
   "Sıralama":"Sort","Sıralama: alfabetik / tempo":"Sort: A–Z / tempo","Alfabetik sıralı (tempoya göre için dokun)":"Sorted A–Z (tap to sort by tempo)","Tempoya göre sıralı (alfabetik için dokun)":"Sorted by tempo (tap for A–Z)",
   "Tempo yok":"No tempo","70 altı":"Under 70","130 ve üstü":"130 and up","hrk":"upb","krd":"bls","özg":"orig","oyun":"dance",
   "Listeyi gizle":"Hide list","Listeyi göster":"Show list","Listeye dön":"Back to list","Listenin başı":"Start of list","Listenin sonu":"End of list",
-  "Repertuarların":"Your repertoires","Bir repertuar seç ya da yenisini oluştur. Her mekan ya da program için ayrı bir repertuar yapabilirsin; şarkıların hepsinde ortaktır, birinde düzeltince hepsinde düzelir.":"Pick a repertoire or create a new one. Make a separate repertoire for each venue or show; your songs are shared, so a fix in one fixes them everywhere.","✉ Bize ulaşın":"✉ Contact us","Öneri, istek, şikâyet ya da bir hata mı buldun? “Bize ulaşın” ile doğrudan bize yaz, her mesajı okuyoruz.":"A suggestion, request, complaint or a bug? Write to us with “Contact us”, we read every message.","＋ Şarkılarımdan seç":"＋ Pick from my songs","Şarkılarımdan seç":"Pick from my songs","Tümünü seç":"Select all","Repertuarlar":"Repertoires","Sadece bu repertuardan çıkar":"Only remove from this repertoire","Tempo":"Tempo","İnsan":"Feel","Sesi azalt":"Volume down","Sesi artır":"Volume up","Daha düz":"Tighter","Daha canlı":"Looser","Ritim panelini gizle":"Hide rhythm panel","Ritim panelini göster":"Show rhythm panel","Paneli gizle":"Hide panel","Paneli göster":"Show panel","Şarkı içe aktar":"Import songs","⤓ Şarkı içe aktar":"⤓ Import songs","⤓ İçe aktar":"⤓ Import","Dosya seç":"Choose file","ya da dosyayı buraya sürükle":"or drop the file here","veya":"or","Akorlu şarkı metnini buraya yapıştır…":"Paste the song text with chords here…","Şarkıları bul":"Find songs","Eklenecek repertuar":"Add to repertoire","‹ Geri":"‹ Back","Not Defteri (.txt), Word (.docx) ya da ChordPro (.cho) dosyanı seç, veya akorlu metni aşağıya yapıştır. Akor satırları, sözler, şarkı adı, sanatçı ve kapo kendiliğinden ayrılır. Tek dosyada birden çok şarkı olabilir.":"Choose a Notepad (.txt), Word (.docx) or ChordPro (.cho) file, or paste the text with chords below. Chord lines, lyrics, title, artist and capo are separated automatically. One file can hold many songs.","Sahneye hazır":"Ready for the stage","Düzenle":"Edit","Kapat":"Close","Kaydet":"Save","Vazgeç":"Cancel","Sil":"Delete","Evet, sil":"Yes, delete","Silinsin mi?":"Delete it?","Silindi":"Deleted","Silinemedi. Tekrar dene.":"Couldn't delete. Try again.",
+  "Repertuarların":"Your repertoires","Bir repertuar seç ya da yenisini oluştur. Her mekan ya da program için ayrı bir repertuar yapabilirsin; şarkıların hepsinde ortaktır, birinde düzeltince hepsinde düzelir.":"Pick a repertoire or create a new one. Make a separate repertoire for each venue or show; your songs are shared, so a fix in one fixes them everywhere.","✉ Bize ulaşın":"✉ Contact us","Öneri, istek, şikâyet ya da bir hata mı buldun? “Bize ulaşın” ile doğrudan bize yaz, her mesajı okuyoruz.":"A suggestion, request, complaint or a bug? Write to us with “Contact us”, we read every message.","＋ Şarkılarımdan seç":"＋ Pick from my songs","Şarkılarımdan seç":"Pick from my songs","Tümünü seç":"Select all","Repertuarlar":"Repertoires","Sadece bu repertuardan çıkar":"Only remove from this repertoire","Tempo":"Tempo","İnsan":"Feel","Sesi azalt":"Volume down","Sesi artır":"Volume up","Daha düz":"Tighter","Daha canlı":"Looser","Ritim panelini gizle":"Hide rhythm panel","Ritim panelini göster":"Show rhythm panel","Paneli gizle":"Hide panel","Paneli göster":"Show panel","Şarkı içe aktar":"Import songs","⤓ Şarkı içe aktar":"⤓ Import songs","⤓ İçe aktar":"⤓ Import","Dosya seç":"Choose file","ya da dosyayı buraya sürükle":"or drop the file here","veya":"or","Akorlu şarkı metnini buraya yapıştır…":"Paste the song text with chords here…","Şarkıları bul":"Find songs","Eklenecek repertuar":"Add to repertoire","‹ Geri":"‹ Back","Not Defteri (.txt), Word (.docx) ya da ChordPro (.cho) dosyanı seç, veya akorlu metni aşağıya yapıştır. Akor satırları, sözler, şarkı adı, sanatçı ve kapo kendiliğinden ayrılır. Tek dosyada birden çok şarkı olabilir.":"Choose a Notepad (.txt), Word (.docx) or ChordPro (.cho) file, or paste the text with chords below. Chord lines, lyrics, title, artist and capo are separated automatically. One file can hold many songs.","Tuş takımını ya da ayak pedalını Bluetooth ile bağla. Bir tuşa dokun ya da tuş takımında bas: altında o tuşun <b>tek</b>, <b>çift</b> ve <b>basılı</b> ayarları açılır. Yeni tuş için <b>＋</b>.":"Connect your keypad or foot pedal via Bluetooth. Tap a key or press it on the keypad: its single, double and hold settings open below. Add a key with ＋.","Yanlış dokunmaya karşı koruma: ritim çalarken durdurmak için iki kez bas":"Accidental-press guard: press twice to stop while playing","Sahneye hazır":"Ready for the stage","Düzenle":"Edit","Kapat":"Close","Kaydet":"Save","Vazgeç":"Cancel","Sil":"Delete","Evet, sil":"Yes, delete","Silinsin mi?":"Delete it?","Silindi":"Deleted","Silinemedi. Tekrar dene.":"Couldn't delete. Try again.",
   "Kaydedildi":"Saved","Kaydedilemedi":"Couldn't save","Kaydedilemedi, tekrar dene":"Couldn't save, try again","Kaydediliyor…":"Saving…","Kayıtlı ✓":"Saved ✓",
   "Kaydedilemedi. Bağlantını kontrol edip tekrar dene.":"Couldn't save. Check your connection and try again.","Bağlantı sorunu oldu. Tekrar dene.":"There was a connection problem. Try again.",
   "Kayıt alanı doldu. Birkaç eski şarkıyı silip tekrar dene.":"Storage is full. Delete a few old songs and try again.","Kayıt yeri şu an açılamadı. İnternet bağlantını kontrol edip tekrar dene.":"Storage couldn't be opened. Check your internet connection and try again.",
