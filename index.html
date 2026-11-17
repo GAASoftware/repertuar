@@ -1235,6 +1235,12 @@ body{margin:0}
 #rhythm.pedal .pd-plan{position:absolute;right:10px;top:var(--plan-top,58px);font:700 9.5px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:#9dff9a;opacity:.85;white-space:nowrap}
 #rhythm.pedal .pd-plan.free{color:#ffe066}
 #rhythm.pedal .pd-plan:empty{display:none}
+
+/* ücretsiz planda (deneme ya da Pro değilse) kilitli özelliklerde küçük PRO etiketi; Pro ve denemede görünmez */
+.sp-free #rhythm.pedal .go:after{content:"PRO" !important;display:inline-block !important;position:static !important;width:auto !important;height:auto !important;margin-left:auto;padding:2px 6px;border-radius:5px;background:#ffc233 !important;color:#141414;font:800 9px var(--f-ui);letter-spacing:.08em;text-shadow:none;box-shadow:none !important}
+.sp-free #myRBtn:after{content:"PRO";margin-left:6px;padding:1px 5px;border-radius:4px;background:#ffc233;color:#141414;font:800 8.5px var(--f-ui);letter-spacing:.06em;vertical-align:middle}
+.sp-free #tUp{position:relative}
+.sp-free #tUp:after{content:"PRO";position:absolute;bottom:3px;right:50%;transform:translateX(50%);padding:1px 4px;border-radius:4px;background:#ffc233;color:#141414;font:800 7.5px/1.2 var(--f-ui);letter-spacing:.05em;pointer-events:none;z-index:1}
 </style>
 
 <script>try{ const t = JSON.parse(localStorage.getItem("sp.theme") || "null"); if(t === "light" || t === "dark") document.documentElement.dataset.theme = t; }catch(e){}</script>
