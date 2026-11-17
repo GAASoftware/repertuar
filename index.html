@@ -1180,6 +1180,12 @@ body{margin:0}
 .home .home-note,.home .home-foot .legalrow{flex-basis:100%}
 @media (prefers-reduced-transparency: reduce){.home .repcard,.home .home-tools .btn{-webkit-backdrop-filter:none;backdrop-filter:none;background:var(--gl-bg2)}}
 @media (max-width:560px){.home-bg svg{opacity:.3}}
+
+/* açılış ekranı dil seçimi: dünya simgesi kutunun içinde */
+.home .home-set .langrow{display:inline-flex;align-items:center;gap:6px;margin:0;height:40px;padding:0 4px 0 12px;font-size:15px;line-height:1}
+.home .home-set .langrow > span{flex:none;display:grid;place-items:center;width:18px}
+.home .home-set .langrow select{height:38px;min-width:96px;padding:0 6px;border:0;background:transparent;flex:1}
+.home .home-set .themesw{height:40px}
 </style>
 
 <script>try{ const t = JSON.parse(localStorage.getItem("sp.theme") || "null"); if(t === "light" || t === "dark") document.documentElement.dataset.theme = t; }catch(e){}</script>
@@ -5318,7 +5324,7 @@ $("aboutLine").textContent = APP_NAME + " · " + LEGAL_OWNER.brand;
 /* ---------- dil (Türkçe / English) ----------
    Arayüz Türkçe yazılı; İngilizce seçilince ekrandaki her yazı (sonradan değişenler dahil) sözlükten çevrilir.
    Şarkı adları, sözler ve akorlar hiç çevrilmez. */
-const LANG = (() => { const v = LS.get("sp.lang", null); return v === "en" || v === "tr" ? v : ((navigator.language || "").toLowerCase().indexOf("tr") === 0 ? "tr" : "en"); })();
+const LANG = (() => { const v = LS.get("sp.lang", null); return v === "en" || v === "tr" ? v : "tr"; })();   // varsayılan dil İngilizce; Türkçe açılış ekranından seçilir
 document.documentElement.lang = LANG;
 const EN = {
   // genel
