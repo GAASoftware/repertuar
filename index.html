@@ -87,162 +87,160 @@
 .picklist .empty{padding:16px}
 @media (max-width:560px){.home-h{font-size:24px;margin-top:24px}.repgrid{grid-template-columns:1fr 1fr;gap:10px}.repcard{min-height:112px;padding:13px}}
 
-/* ====== ritim paneli: pedal görünümü ====== */
-#rhythm.pedal{--pd1:#3a3f48;--pd2:#23262c;--pd3:#1a1c21;--pd-ink:#e8eaee;--pd-mute:#8d939e;--pd-slot:#15171b;--pd-slotb:#33373f;--pd-lab:#b9bec7;--pd-plate:rgba(0,0,0,.25);
+/* ====== ritim paneli: pedal görünümü (v2) ====== */
+#rhythm.pedal{--pd1:#3a3f48;--pd2:#23262c;--pd3:#1a1c21;--pd-ink:#e8eaee;--pd-mute:#8d939e;--pd-slot:#15171b;--pd-slotb:#33373f;--pd-lab:#b9bec7;--pd-plate:rgba(0,0,0,.25);--st:64px;--gs:78px;--kn:60px;
   position:relative;color:var(--pd-ink);border:0;
   background:linear-gradient(160deg,var(--pd1) 0%,var(--pd2) 38%,var(--pd3) 100%);
   box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -3px 0 rgba(0,0,0,.55)}
 :root[data-theme="light"] #rhythm.pedal{--pd1:#e9ebef;--pd2:#d3d6dc;--pd3:#c3c7ce;--pd-ink:#1d2026;--pd-mute:#5d6470;--pd-slot:#f4f5f7;--pd-slotb:#aeb3bb;--pd-lab:#3b4049;--pd-plate:rgba(255,255,255,.35);box-shadow:inset 0 2px 0 rgba(255,255,255,.8),inset 0 -3px 0 rgba(0,0,0,.18)}
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]) #rhythm.pedal{--pd1:#e9ebef;--pd2:#d3d6dc;--pd3:#c3c7ce;--pd-ink:#1d2026;--pd-mute:#5d6470;--pd-slot:#f4f5f7;--pd-slotb:#aeb3bb;--pd-lab:#3b4049;--pd-plate:rgba(255,255,255,.35);box-shadow:inset 0 2px 0 rgba(255,255,255,.8),inset 0 -3px 0 rgba(0,0,0,.18)}}
-#rhythm.pedal:before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px);border-radius:inherit}
+#rhythm.pedal:before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px)}
 #rhythm.pedal > *{position:relative}
-#rhythm.pedal .pd-screw{position:absolute;width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#a7adb7,#4a4f58 70%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.45);z-index:1;pointer-events:none}
-#rhythm.pedal .pd-screw:after{content:"";position:absolute;left:2px;right:2px;top:4.5px;height:2px;background:#2a2d33;transform:rotate(35deg)}
-#rhythm.pedal .pd-screw.a{top:7px;left:7px}#rhythm.pedal .pd-screw.b{top:7px;right:7px}#rhythm.pedal .pd-screw.c{bottom:7px;left:7px}#rhythm.pedal .pd-screw.d{bottom:7px;right:7px}
+#rhythm.pedal .pd-screw{position:absolute;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#a7adb7,#4a4f58 70%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.45);z-index:1;pointer-events:none}
+#rhythm.pedal .pd-screw:after{content:"";position:absolute;left:2px;right:2px;top:4px;height:2px;background:#2a2d33;transform:rotate(35deg)}
+#rhythm.pedal .pd-screw.a{top:6px;left:6px}#rhythm.pedal .pd-screw.b{top:6px;right:6px}#rhythm.pedal .pd-screw.c{bottom:6px;left:6px}#rhythm.pedal .pd-screw.d{bottom:6px;right:6px}
 #rhythm.pedal .pd-brand{display:flex;justify-content:space-between;align-items:center;padding:0 10px}
-#rhythm.pedal .pd-brand b{font:800 16px var(--f-display);color:#ffc233;letter-spacing:.04em;text-shadow:0 1px 0 rgba(0,0,0,.5)}
+#rhythm.pedal .pd-brand b{font:800 15px var(--f-display);color:#ffc233;letter-spacing:.04em;text-shadow:0 1px 0 rgba(0,0,0,.5)}
 :root[data-theme="light"] #rhythm.pedal .pd-brand b{color:#c58a00;text-shadow:0 1px 0 rgba(255,255,255,.6)}
-#rhythm.pedal .pd-brand span{font:700 8.5px var(--f-ui);color:var(--pd-mute);letter-spacing:.2em}
+#rhythm.pedal .pd-brand span{font:700 8px var(--f-ui);color:var(--pd-mute);letter-spacing:.2em}
 /* ekran */
-#rhythm.pedal .pd-lcd{border-radius:11px;padding:9px 11px 10px;background:linear-gradient(180deg,#1b2a1c,#122014);border:2px solid #07090a;box-shadow:inset 0 0 16px rgba(0,0,0,.8),0 1px 0 rgba(255,255,255,.08);font-family:var(--f-mono);color:#9dff9a;text-shadow:0 0 7px rgba(120,255,120,.45);min-width:0}
-#rhythm.pedal .pd-top{display:flex;justify-content:space-between;gap:8px;font-size:10.5px;opacity:.8;text-transform:uppercase;letter-spacing:.03em}
+#rhythm.pedal .pd-lcd{border-radius:10px;padding:8px 10px 9px;background:linear-gradient(180deg,#1b2a1c,#122014);border:2px solid #07090a;box-shadow:inset 0 0 16px rgba(0,0,0,.8),0 1px 0 rgba(255,255,255,.08);font-family:var(--f-mono);color:#9dff9a;text-shadow:0 0 7px rgba(120,255,120,.45);min-width:0}
+#rhythm.pedal .pd-top{display:flex;justify-content:space-between;gap:8px;font-size:10px;opacity:.8;text-transform:uppercase;letter-spacing:.03em}
 #rhythm.pedal .pd-top span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#rhythm.pedal .pd-lcd .bpm{all:unset;display:flex;align-items:baseline;gap:6px;margin:3px 0 2px;flex-wrap:nowrap}
-#rhythm.pedal .pd-lcd .bpm input{all:unset;width:3.3ch;font:700 40px/1 var(--f-mono);color:#9dff9a;text-shadow:inherit;font-variant-numeric:tabular-nums;cursor:text}
+#rhythm.pedal .pd-lcd .bpm{all:unset;display:flex;align-items:baseline;gap:6px;margin:2px 0;flex-wrap:nowrap}
+#rhythm.pedal .pd-lcd .bpm input{all:unset;width:3.3ch;font:700 36px/1 var(--f-mono);color:#9dff9a;text-shadow:inherit;font-variant-numeric:tabular-nums;cursor:text}
 #rhythm.pedal .pd-lcd .bpm input::placeholder{color:rgba(157,255,154,.35)}
-#rhythm.pedal .pd-lcd .bpm .unit{all:unset;font-size:12px;opacity:.7}
-#rhythm.pedal .pd-lcd .bpm .savebpm{all:unset;margin-left:auto;align-self:center;font:700 10.5px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;border-radius:5px;border:1px solid rgba(157,255,154,.35);color:#9dff9a;cursor:pointer;white-space:nowrap}
+#rhythm.pedal .pd-lcd .bpm .unit{all:unset;font-size:11px;opacity:.7}
+#rhythm.pedal .pd-lcd .bpm .savebpm{all:unset;margin-left:auto;align-self:center;font:700 9.5px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;border-radius:5px;border:1px solid rgba(157,255,154,.35);color:#9dff9a;cursor:pointer;white-space:nowrap}
 #rhythm.pedal .pd-lcd .bpm .savebpm[hidden]{display:none}
 #rhythm.pedal .pd-lcd .bpm .savebpm.dirty{background:#9dff9a;color:#0f1a10;text-shadow:none}
 #rhythm.pedal .pd-lcd .bpm .savebpm:disabled{opacity:.55;cursor:default}
-#rhythm.pedal .pd-sub{font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase;letter-spacing:.02em}
-#rhythm.pedal .pd-lcd .beats{all:unset;display:flex;gap:5px;margin-top:7px}
-#rhythm.pedal .pd-lcd .beats i{width:auto;flex:0 1 20px;height:6px;border-radius:2px;background:rgba(157,255,154,.17);display:block}
+#rhythm.pedal .pd-sub{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase;letter-spacing:.02em}
+#rhythm.pedal .pd-lcd .beats{all:unset;display:flex;gap:5px;margin-top:6px}
+#rhythm.pedal .pd-lcd .beats i{width:auto;flex:0 1 20px;height:5px;border-radius:2px;background:rgba(157,255,154,.17);display:block}
 #rhythm.pedal .pd-lcd .beats i.on{background:#9dff9a;box-shadow:0 0 7px #9dff9a}
 #rhythm.pedal .pd-lcd .beats i.on.one{background:#ffe066;box-shadow:0 0 7px #ffe066}
 /* program seçiciler */
 #rhythm.pedal .pd-prog{display:grid;grid-template-columns:1fr auto;gap:6px}
-#rhythm.pedal .pd-prog .rsel{height:36px;max-width:none;width:100%;min-width:0;border-radius:8px;background:var(--pd-slot);border:1px solid var(--pd-slotb);color:var(--pd-ink);font-size:13.5px;box-shadow:inset 0 2px 4px rgba(0,0,0,.25)}
+#rhythm.pedal .pd-prog .rsel{height:32px;max-width:none;width:100%;min-width:0;border-radius:8px;background:var(--pd-slot);border:1px solid var(--pd-slotb);color:var(--pd-ink);font-size:12.5px;box-shadow:inset 0 2px 4px rgba(0,0,0,.25)}
 #rhythm.pedal .pd-prog #rDrummer,#rhythm.pedal .pd-prog #rKit{grid-column:1 / -1}
 #rhythm.pedal .pd-prog #rKit[hidden]{display:none}
-#rhythm.pedal .pd-prog .redit{height:36px;min-width:0;width:auto;padding:0 10px;border-radius:8px;background:var(--pd-slot);border:1px solid var(--pd-slotb);color:var(--pd-ink);font-size:13px;font-weight:700}
-/* düğmeler */
-#rhythm.pedal .pd-knobs{display:flex;justify-content:space-around;gap:4px}
-#rhythm.pedal .pd-kn{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0}
-#rhythm.pedal .pd-knob{width:54px;height:54px;border-radius:50%;position:relative;touch-action:none;cursor:ns-resize;
+#rhythm.pedal .pd-prog .redit{height:32px;min-width:0;width:auto;padding:0 11px;border-radius:8px;background:var(--pd-slot);border:1px solid var(--pd-slotb);color:var(--pd-ink);font-size:13px;font-weight:700}
+/* döner düğmeler: değer ortada, etrafında dolu yay */
+#rhythm.pedal .pd-knobs{display:flex;justify-content:space-around;gap:4px;padding-top:6px}
+#rhythm.pedal .pd-kn{display:flex;flex-direction:column;align-items:center;gap:9px;min-width:0}
+#rhythm.pedal .pd-knob{width:var(--kn);height:var(--kn);border-radius:50%;position:relative;touch-action:none;cursor:ns-resize;display:grid;place-items:center;
   background:radial-gradient(circle at 40% 32%,#5a606b,#24272d 62%,#141518);box-shadow:0 5px 9px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18),0 0 0 3px #101114}
-#rhythm.pedal .pd-knob:after{content:"";position:absolute;left:50%;top:6px;width:3px;height:14px;margin-left:-1.5px;border-radius:2px;background:#ffc233;transform-origin:50% 21px;transform:rotate(var(--rot,0deg))}
-#rhythm.pedal .pd-kn label{font:700 9.5px var(--f-ui);letter-spacing:.15em;color:var(--pd-lab);text-transform:uppercase}
-#rhythm.pedal .pd-pm{display:flex;gap:5px}
-#rhythm.pedal .pd-pm button{width:30px;height:26px;border-radius:7px;background:var(--pd-slot);border:1px solid var(--pd-slotb);color:var(--pd-ink);font-size:16px;font-weight:700;line-height:1;padding:0;display:grid;place-items:center}
-#rhythm.pedal .pd-pm button:active{transform:translateY(1px)}
-/* kalıp */
-#rhythm.pedal .kalip{all:unset;display:flex;align-items:center;justify-content:center;gap:6px}
-#rhythm.pedal .kalip span{font:700 9.5px var(--f-ui);letter-spacing:.15em;color:var(--pd-mute);text-transform:uppercase;padding:0 4px 0 0}
-#rhythm.pedal .kalip button{width:32px;height:32px;flex:none;border-radius:8px;background:var(--pd-slot);border:1px solid var(--pd-slotb);color:var(--pd-ink);font:700 13px var(--f-mono);padding:0}
-#rhythm.pedal .kalip button.cur{background:#ffc233;border-color:#ffc233;color:#141414;box-shadow:0 0 11px rgba(255,194,51,.45)}
-/* ayak düğmeleri (bölümler) */
-#rhythm.pedal .secs{all:unset;display:grid;grid-template-columns:1fr 1fr;gap:8px 8px}
-#rhythm.pedal .secs button{all:unset;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:6px;padding:2px 0 4px;cursor:pointer;font:800 11.5px var(--f-ui);letter-spacing:.11em;text-transform:uppercase;color:var(--pd-ink);min-width:0;text-align:center;-webkit-tap-highlight-color:transparent}
-#rhythm.pedal .secs button:before{content:"";order:-2;width:10px;height:10px;border-radius:50%;background:#3b2a12;box-shadow:inset 0 0 2px rgba(0,0,0,.8)}
-#rhythm.pedal .secs button:after{content:"";order:-1;width:62px;height:62px;border-radius:50%;
-  background:radial-gradient(circle at 50% 50%,#c9ccd2 0 34%,transparent 35%),radial-gradient(circle at 38% 30%,#f2f3f5,#a9adb5 45%,#5f646d 75%,#3a3e45);
+#rhythm.pedal .pd-knob:before{content:"";position:absolute;inset:-7px;border-radius:50%;pointer-events:none;
+  background:conic-gradient(from 225deg,#ffc233 0 var(--p,0deg),rgba(255,255,255,.1) var(--p,0deg) 270deg,transparent 270deg);
+  -webkit-mask:radial-gradient(circle,transparent calc(var(--kn) / 2 + 3px),#000 calc(var(--kn) / 2 + 4px));mask:radial-gradient(circle,transparent calc(var(--kn) / 2 + 3px),#000 calc(var(--kn) / 2 + 4px))}
+:root[data-theme="light"] #rhythm.pedal .pd-knob:before{background:conic-gradient(from 225deg,#d99a00 0 var(--p,0deg),rgba(0,0,0,.12) var(--p,0deg) 270deg,transparent 270deg)}
+#rhythm.pedal .pd-knob:after{content:"";position:absolute;left:50%;top:4px;width:3px;height:8px;margin-left:-1.5px;border-radius:2px;background:#ffc233;transform-origin:50% calc(var(--kn) / 2 - 4px);transform:rotate(var(--rot,0deg))}
+#rhythm.pedal .pd-val{font:700 16px/1 var(--f-mono);color:#f1f1ef;text-shadow:0 1px 2px rgba(0,0,0,.6);pointer-events:none;font-variant-numeric:tabular-nums}
+#rhythm.pedal .pd-val small{font-size:10px;opacity:.7;margin-left:1px}
+#rhythm.pedal .pd-kn label{font:700 9px var(--f-ui);letter-spacing:.15em;color:var(--pd-lab);text-transform:uppercase}
+#rhythm.pedal .pd-pm{display:none}
+/* ayak düğmeleri + kalıp + bitiş: tek blok */
+#rhythm.pedal .pd-foot{display:grid;grid-template-columns:1fr 1fr;gap:8px 6px;padding:0 8px}
+#rhythm.pedal .pd-foot .secs{display:contents}
+#rhythm.pedal .secs button{all:unset;position:relative;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:5px;padding:2px 0 0;cursor:pointer;font:800 11px var(--f-ui);letter-spacing:.11em;text-transform:uppercase;color:var(--pd-ink);min-width:0;text-align:center;-webkit-tap-highlight-color:transparent}
+#rhythm.pedal .secs button:after{content:"";order:-1;width:var(--st);height:var(--st);border-radius:50%;
+  background:radial-gradient(circle at 50% 50%,#8b9099 0 calc(var(--st) * .2 + 2px),transparent calc(var(--st) * .2 + 3px)),radial-gradient(circle at 38% 30%,#f2f3f5,#a9adb5 45%,#5f646d 75%,#3a3e45);
   box-shadow:0 6px 0 #0b0c0e,0 9px 15px rgba(0,0,0,.55),inset 0 -3px 6px rgba(0,0,0,.35);transition:transform .06s,box-shadow .06s}
+#rhythm.pedal .secs button:before{content:"";position:absolute;z-index:1;left:50%;top:calc(2px + var(--st) / 2);width:calc(var(--st) * .4);height:calc(var(--st) * .4);border-radius:50%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle at 40% 35%,#4a3614,#2a1e0a);box-shadow:inset 0 2px 3px rgba(0,0,0,.6);transition:transform .06s}
 #rhythm.pedal .secs button:active:after{transform:translateY(4px);box-shadow:0 2px 0 #0b0c0e,0 4px 8px rgba(0,0,0,.5),inset 0 -3px 6px rgba(0,0,0,.35)}
+#rhythm.pedal .secs button:active:before{transform:translate(-50%,calc(-50% + 4px))}
 #rhythm.pedal .secs button.cur{background:none;color:#ffc233}
 :root[data-theme="light"] #rhythm.pedal .secs button.cur{color:#9a6a00}
-#rhythm.pedal .secs button.cur:before{background:#ffc233;box-shadow:0 0 10px #ffc233,inset 0 0 2px #fff}
+#rhythm.pedal .secs button.cur:before{background:radial-gradient(circle at 40% 35%,#fff3c4,#ffc233 55%,#d99a00);box-shadow:0 0 14px 4px rgba(255,194,51,.75)}
 #rhythm.pedal .secs button.next{background:none;color:var(--pd-ink);animation:none}
-#rhythm.pedal .secs button.next:before{background:#ffc233;animation:blink .6s steps(2) infinite}
-#rhythm.pedal .secs button[data-sec="bitis"]{grid-column:1 / -1;flex-direction:row;justify-content:center;gap:8px;padding:8px;border-radius:9px;background:var(--pd-slot);border:1px solid var(--pd-slotb);color:#ff6b5a;font-size:11.5px}
+#rhythm.pedal .secs button.next:before{background:radial-gradient(circle at 40% 35%,#fff3c4,#ffc233 55%,#d99a00);box-shadow:0 0 10px 3px rgba(255,194,51,.6);animation:pdBlink .5s steps(2,jump-none) infinite alternate}
+@keyframes pdBlink{from{opacity:1}to{opacity:.15}}
+#rhythm.pedal .secs button[data-sec="bitis"]{order:2;grid-column:1 / -1;flex-direction:row;justify-content:center;gap:7px;padding:0;height:30px;border-radius:8px;background:var(--pd-slot);border:1px solid var(--pd-slotb);color:#ff6b5a;font-size:11px}
 #rhythm.pedal .secs button[data-sec="bitis"]:after{display:none}
-#rhythm.pedal .secs button[data-sec="bitis"]:before{order:0;width:8px;height:8px;background:#4a1d17}
+#rhythm.pedal .secs button[data-sec="bitis"]:before{position:static;transform:none;order:0;width:8px;height:8px;background:#ff6b5a;box-shadow:none}
 #rhythm.pedal .secs button[data-sec="bitis"]:disabled{opacity:.4}
 #rhythm.pedal .secs button + button{border-left:0}
+#rhythm.pedal .pd-foot .kalip{all:unset;order:1;grid-column:1 / -1;display:grid;grid-template-columns:repeat(4,1fr);gap:4px 6px;margin-top:2px}
+#rhythm.pedal .kalip span{grid-row:2;grid-column:1 / -1;text-align:center;font:700 9px var(--f-ui);letter-spacing:.2em;color:var(--pd-mute);text-transform:uppercase;padding:0}
+#rhythm.pedal .kalip button{width:auto;height:30px;border-radius:8px;background:var(--pd-slot);border:1px solid var(--pd-slotb);color:var(--pd-ink);font:700 13px var(--f-mono);padding:0}
+#rhythm.pedal .kalip button.cur{background:#ffc233;border-color:#ffc233;color:#141414;box-shadow:0 0 11px rgba(255,194,51,.45)}
 /* sonraki şarkı */
-#rhythm.pedal .nextsong{height:auto;min-height:44px;border-radius:10px;background:#ffc233;color:#141414;border:0;font-weight:800;padding:6px 10px;white-space:normal;line-height:1.25;font-size:13px}
+#rhythm.pedal .nextsong{height:auto;min-height:42px;border-radius:10px;background:#ffc233;color:#141414;border:0;font-weight:800;padding:6px 10px;white-space:normal;line-height:1.25;font-size:13px}
 #rhythm.pedal .nextsong[hidden]{display:none}
-/* başlat: büyük ayak düğmesi */
-#rhythm.pedal .go{all:unset;position:relative;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px 12px 14px;border-radius:14px;background:var(--pd-plate);box-shadow:inset 0 2px 6px rgba(0,0,0,.45);cursor:pointer;font:800 18px var(--f-display);letter-spacing:.02em;color:#3ecf8e;text-transform:uppercase;min-height:96px;-webkit-tap-highlight-color:transparent;line-height:1.1}
+/* başlat: büyük ayak düğmesi, ışık ortada */
+#rhythm.pedal .go{all:unset;position:relative;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px 12px 14px;border-radius:14px;background:var(--pd-plate);box-shadow:inset 0 2px 6px rgba(0,0,0,.45);cursor:pointer;font:800 18px var(--f-display);letter-spacing:.02em;color:#3ecf8e;text-transform:uppercase;-webkit-tap-highlight-color:transparent;line-height:1.1}
 :root[data-theme="light"] #rhythm.pedal .go{color:#16884f}
-#rhythm.pedal .go:after{content:"";flex:none;width:76px;height:76px;border-radius:50%;
-  background:radial-gradient(circle at 50% 50%,#c9ccd2 0 33%,transparent 34%),radial-gradient(circle at 38% 30%,#f2f3f5,#a9adb5 45%,#5f646d 75%,#3a3e45);
-  box-shadow:0 7px 0 #0b0c0e,0 10px 18px rgba(0,0,0,.55),inset 0 -3px 6px rgba(0,0,0,.35);transition:transform .06s,box-shadow .06s}
-#rhythm.pedal .go:before{content:"";position:absolute;right:46px;top:6px;width:10px;height:10px;border-radius:50%;background:#123b27;box-shadow:inset 0 0 2px rgba(0,0,0,.8)}
-#rhythm.pedal .go:active:after{transform:translateY(5px);box-shadow:0 2px 0 #0b0c0e,0 4px 8px rgba(0,0,0,.5),inset 0 -3px 6px rgba(0,0,0,.35)}
+#rhythm.pedal .go:after{content:"";flex:none;width:var(--gs);height:var(--gs);border-radius:50%;
+  background:radial-gradient(circle at 50% 50%,#8b9099 0 calc(var(--gs) * .2 + 2px),transparent calc(var(--gs) * .2 + 3px)),radial-gradient(circle at 38% 30%,#f2f3f5,#a9adb5 45%,#5f646d 75%,#3a3e45);
+  box-shadow:0 6px 0 #0b0c0e,0 9px 16px rgba(0,0,0,.55),inset 0 -3px 6px rgba(0,0,0,.35);transition:transform .06s,box-shadow .06s}
+#rhythm.pedal .go:before{content:"";position:absolute;z-index:1;right:calc(12px + var(--gs) / 2);top:calc(50% - 2px);width:calc(var(--gs) * .4);height:calc(var(--gs) * .4);border-radius:50%;transform:translate(50%,-50%);
+  background:radial-gradient(circle at 40% 35%,#1d4a33,#0f2a1c);box-shadow:inset 0 2px 3px rgba(0,0,0,.6);transition:transform .06s,box-shadow .08s,filter .08s}
+#rhythm.pedal .go:active:after{transform:translateY(5px);box-shadow:0 1px 0 #0b0c0e,0 4px 8px rgba(0,0,0,.5),inset 0 -3px 6px rgba(0,0,0,.35)}
+#rhythm.pedal .go:active:before{transform:translate(50%,calc(-50% + 5px))}
 #rhythm.pedal .go[aria-pressed="true"]{color:#ff8a7a}
-#rhythm.pedal .go[aria-pressed="true"]:before{background:#3ecf8e;box-shadow:0 0 12px #3ecf8e}
+#rhythm.pedal .go[aria-pressed="true"]:before{background:radial-gradient(circle at 40% 35%,#d6ffe9,#3ecf8e 55%,#1f9d65);box-shadow:0 0 14px 4px rgba(62,207,142,.65)}
+#rhythm.pedal .go[aria-pressed="true"].beat:before{filter:brightness(1.35);box-shadow:0 0 22px 8px rgba(62,207,142,.9)}
+#rhythm.pedal .go[aria-pressed="true"].beat1:before{background:radial-gradient(circle at 40% 35%,#fffbe0,#ffe066 55%,#d9b400);box-shadow:0 0 22px 8px rgba(255,224,102,.85)}
 /* küçük düğmeler */
-#rhythm.pedal .pd-minis{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
-#rhythm.pedal .pd-minis .tapbig{all:unset;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:5px;height:36px;padding:0 10px;border-radius:8px;background:var(--pd-slot);border:1px solid var(--pd-slotb);color:var(--pd-ink);font:800 11.5px var(--f-ui);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;flex:1 1 auto;white-space:nowrap}
+#rhythm.pedal .pd-minis{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+#rhythm.pedal .pd-minis .tapbig{all:unset;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:5px;height:34px;padding:0 8px;border-radius:8px;background:var(--pd-slot);border:1px solid var(--pd-slotb);color:var(--pd-ink);font:800 11px var(--f-ui);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;min-width:0;overflow:hidden}
 #rhythm.pedal .pd-minis .tapbig[hidden]{display:none}
 #rhythm.pedal .pd-minis .tapbig:disabled{opacity:.4;cursor:default}
 #rhythm.pedal .pd-minis .tapbig.armed,#rhythm.pedal .pd-minis .tapbig.hit{background:#ffc233;border-color:#ffc233;color:#141414}
-#rhythm.pedal .pd-minis .mixbtn svg{width:14px;height:14px}
+#rhythm.pedal .pd-minis .mixbtn svg{width:14px;height:14px;flex:none}
 #rhythm.pedal .pd-minis .mixbtn b{color:#ffc233}
-#rhythm.pedal .rmore{display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:center}
-#rhythm.pedal .rmore label{color:var(--pd-mute);font-size:12px}
-#rhythm.pedal > .keyhint{background:var(--pd-plate);border-radius:10px;border:0;color:var(--pd-ink)}
+#rhythm.pedal .pd-minis #pdMore{display:none}
+#rhythm.pedal .rmore{display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:space-between;padding:0 4px}
+#rhythm.pedal .rmore label{color:var(--pd-mute);font-size:11.5px}
+#rhythm.pedal .rmore input[type=checkbox]{width:16px;height:16px}
+#rhythm.pedal > .keyhint{position:static !important;inset:auto !important;width:auto;background:var(--pd-plate);border-radius:10px;border:0;color:var(--pd-ink);box-shadow:none}
 /* --- dikey (sağda) --- */
-.app .main.rright{grid-template-columns:minmax(0,1fr) clamp(250px,29vw,330px)}
-.main.rright #rhythm.pedal{display:flex;flex-direction:column;gap:12px;padding:14px 12px 18px;overflow-y:auto;border-left:2px solid #0a0b0d}
+.app .main.rright{grid-template-columns:minmax(0,1fr) clamp(256px,30vw,330px)}
+.main.rright #rhythm.pedal{display:flex;flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:9px;padding:12px 12px 16px;overflow-y:auto;overflow-x:hidden;min-width:0;border-left:2px solid #0a0b0d}
 .main.rright #rhythm.pedal > *{flex:none;width:auto;grid-column:auto}
 .main.rright #rhythm.pedal .pd-brand{order:1}.main.rright #rhythm.pedal .pd-lcd{order:2}.main.rright #rhythm.pedal .pd-prog{order:3}
-.main.rright #rhythm.pedal .pd-knobs{order:4}.main.rright #rhythm.pedal .kalip{order:5}.main.rright #rhythm.pedal .nextsong{order:6}
-.main.rright #rhythm.pedal .secs{order:7}.main.rright #rhythm.pedal .go{order:8}.main.rright #rhythm.pedal .pd-minis{order:9}
-.main.rright #rhythm.pedal .rmore{order:10;flex-direction:row;align-items:center}.main.rright #rhythm.pedal > .keyhint{order:11}
-.main.rright #rhythm.pedal{overflow-x:hidden;min-width:0}.main.rright #rhythm.pedal .pd-knob{width:50px;height:50px}.main.rright #rhythm.pedal .pd-pm button{width:27px}
+.main.rright #rhythm.pedal .pd-knobs{order:4}.main.rright #rhythm.pedal .nextsong{order:5}.main.rright #rhythm.pedal .pd-foot{order:6}
+.main.rright #rhythm.pedal .go{order:7}.main.rright #rhythm.pedal .pd-minis{order:8}
+.main.rright #rhythm.pedal .rmore{order:9;flex-direction:row;align-items:center}.main.rright #rhythm.pedal > .keyhint{order:10}
+/* alçak ekran: biraz daha sıkı */
+@media (max-height:900px){ .main.rright #rhythm.pedal{--st:56px;--gs:66px;--kn:52px;gap:7px} .main.rright #rhythm.pedal .pd-brand{display:none} }
 /* --- yatay (altta) --- */
-.main:not(.rright) #rhythm.pedal{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px))}
+.main:not(.rright) #rhythm.pedal{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));--st:52px;--gs:62px;--kn:54px}
 .main:not(.rright) #rhythm.pedal .pd-brand{display:none}
+.main:not(.rright) #rhythm.pedal .pd-knobs{gap:16px;padding:6px 6px 0}
 .main:not(.rright) #rhythm.pedal .pd-lcd{flex:0 1 210px}
 .main:not(.rright) #rhythm.pedal .pd-prog{flex:1 1 200px;max-width:280px}
-.main:not(.rright) #rhythm.pedal .secs{grid-template-columns:repeat(4,auto) auto;align-items:end}
-.main:not(.rright) #rhythm.pedal .secs button[data-sec="bitis"]{grid-column:auto;align-self:center}
-.main:not(.rright) #rhythm.pedal .secs button:after{width:52px;height:52px}
-.main:not(.rright) #rhythm.pedal .go{min-height:80px;flex:0 0 auto}
-.main:not(.rright) #rhythm.pedal .go:after{width:62px;height:62px}
-.main:not(.rright) #rhythm.pedal .pd-minis{flex:1 1 260px}
+.main:not(.rright) #rhythm.pedal .pd-foot{grid-template-columns:repeat(4,64px);padding:0}
+.main:not(.rright) #rhythm.pedal .go{flex:0 0 auto}
+.main:not(.rright) #rhythm.pedal .pd-minis{flex:0 1 230px;grid-template-columns:1fr 1fr}
+.main:not(.rright) #rhythm.pedal .rmore{flex:0 1 auto}
 .main:not(.rright) #rhythm.pedal .nextsong{flex:1 1 100%}
 .main:not(.rright) #rhythm.pedal > .keyhint{flex-basis:100%}
+/* --- telefon: kompakt, ayarlar ⚙ ile --- */
 @media (max-width:760px){
-  .main:not(.rright) #rhythm.pedal{gap:8px 10px;padding:10px 10px calc(10px + env(safe-area-inset-bottom,0px))}
-  .main:not(.rright) #rhythm.pedal .pd-lcd{flex:1 1 150px}
-  .main:not(.rright) #rhythm.pedal .pd-knobs{flex:1 1 100%}
-  #rhythm.pedal .pd-knob{width:44px;height:44px}
-  #rhythm.pedal .pd-knob:after{top:5px;height:11px;transform-origin:50% 17px}
-  .main:not(.rright) #rhythm.pedal .secs{flex:1 1 100%;grid-template-columns:repeat(4,1fr)}
-  .main:not(.rright) #rhythm.pedal .secs button[data-sec="bitis"]{grid-column:1 / -1}
-  .main:not(.rright) #rhythm.pedal .secs button:after{width:46px;height:46px}
-  .main:not(.rright) #rhythm.pedal .go{flex:1 1 100%;min-height:70px}
-}
-
-/* --- telefon: kompakt pedal, ayarlar ⚙ ile açılır --- */
-#rhythm.pedal .pd-minis #pdMore{display:none}
-@media (max-width:760px){
-  #rhythm.pedal .pd-minis #pdMore{display:inline-flex;flex:0 0 auto}
-  .main #rhythm.pedal{gap:8px !important;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px)) !important}
-  .main #rhythm.pedal .pd-lcd{order:1;flex:1 1 140px;padding:6px 9px 7px}
+  #rhythm.pedal .pd-minis #pdMore{display:inline-flex}
+  .main #rhythm.pedal{--st:40px;--gs:46px;--kn:42px;gap:8px !important;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px)) !important}
+  .main #rhythm.pedal .pd-lcd{order:1;flex:1 1 0 !important;min-width:0;padding:6px 9px 7px}
   .main #rhythm.pedal .pd-lcd .bpm input{font-size:28px}
   .main #rhythm.pedal .pd-lcd .beats{margin-top:4px}
-  .main #rhythm.pedal .go{order:2;flex:0 0 auto !important;min-height:62px !important;padding:6px 8px 8px 10px;font-size:14px;gap:6px}
-  .main #rhythm.pedal .go:after{width:46px !important;height:46px !important;box-shadow:0 4px 0 #0b0c0e,0 6px 10px rgba(0,0,0,.5)}
-  .main #rhythm.pedal .go:before{right:26px;top:3px;width:8px;height:8px}
+  .main #rhythm.pedal .go{order:2;flex:0 0 auto !important;padding:6px 8px 8px 10px;font-size:14px;gap:6px}
+  .main #rhythm.pedal .go:before{right:calc(8px + var(--gs) / 2)}
   .main #rhythm.pedal .nextsong{order:3}
-  .main #rhythm.pedal .secs{order:4;flex:1 1 100% !important;grid-template-columns:repeat(4,1fr) auto !important;gap:4px}
-  .main #rhythm.pedal .secs button{font-size:10px;gap:4px;letter-spacing:.06em}
-  .main #rhythm.pedal .secs button:after{width:40px !important;height:40px !important;box-shadow:0 4px 0 #0b0c0e,0 6px 10px rgba(0,0,0,.5)}
-  .main #rhythm.pedal .secs button:before{width:8px;height:8px}
-  .main #rhythm.pedal .secs button[data-sec="bitis"]{grid-column:auto !important;flex-direction:column;align-self:end;padding:6px 6px;font-size:10px}
-  .main #rhythm.pedal .pd-knobs{order:5;flex:1 1 100% !important}
-  .main #rhythm.pedal .pd-knob{display:none}
-  .main #rhythm.pedal .pd-kn{flex-direction:row;gap:5px}
-  .main #rhythm.pedal .pd-minis{order:6;flex:1 1 100% !important}
-  .main #rhythm.pedal .pd-minis .tapbig{height:32px;padding:0 8px;font-size:10.5px}
-  .main #rhythm.pedal .pd-prog,.main #rhythm.pedal .kalip,.main #rhythm.pedal .rmore,.main #rhythm.pedal > .keyhint{display:none !important}
+  .main #rhythm.pedal .pd-foot{order:4;flex:1 1 100% !important;grid-template-columns:repeat(4,1fr) !important;gap:5px 4px}
+  .main #rhythm.pedal .secs button{font-size:9.5px;gap:3px;letter-spacing:.06em}
+  .main #rhythm.pedal .pd-knobs{order:5;flex:1 1 100% !important;padding-top:4px}
+  .main #rhythm.pedal .pd-kn{flex-direction:row;gap:8px}
+  .main #rhythm.pedal .pd-val{font-size:13px}
+  .main #rhythm.pedal .pd-minis{order:6;flex:1 1 100% !important;grid-template-columns:repeat(4,1fr) auto}
+  .main #rhythm.pedal .pd-minis .tapbig{height:32px;font-size:10px}
+  .main #rhythm.pedal .pd-minis #rPos{display:none}
+  .main #rhythm.pedal .pd-prog,.main #rhythm.pedal .pd-foot .kalip,.main #rhythm.pedal .rmore,.main #rhythm.pedal > .keyhint{display:none !important}
   .main #rhythm.pedal.open .pd-prog{display:grid !important;order:7;flex:1 1 100%}
-  .main #rhythm.pedal.open .kalip{display:flex !important;order:8;flex:1 1 100%}
+  .main #rhythm.pedal.open .pd-foot .kalip{display:grid !important}
   .main #rhythm.pedal.open .rmore{display:flex !important;order:9;flex:1 1 100%}
+  .main #rhythm.pedal.open .pd-minis #rPos{display:inline-flex}
   .main #rhythm.pedal .pd-screw{display:none}
 }
 </style>
@@ -866,15 +864,15 @@ label.f{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:var(--
       </div>
       <div class="pd-prog"><select class="rsel" id="rStyle" aria-label="Ritim"></select><button class="tapbig redit" id="rEdit" type="button" title="Ritmi düzenle ya da kendi ritmini yap">✎</button><select class="rsel" id="rDrummer" aria-label="Kajoncu"></select><select class="rsel" id="rKit" aria-label="Davul seti"></select></div>
       <div class="pd-knobs">
-        <div class="pd-kn"><div class="pd-knob" id="knTempo" role="slider" aria-label="Tempo"></div><label>Tempo</label><div class="pd-pm"><button id="rDown" aria-label="Tempoyu düşür">−</button><button id="rUp" aria-label="Tempoyu artır">+</button></div></div>
-        <div class="pd-kn"><div class="pd-knob" id="knVol" role="slider" aria-label="Ses"></div><label>Ses</label><div class="pd-pm"><button id="vDown" type="button" aria-label="Sesi azalt">−</button><button id="vUp" type="button" aria-label="Sesi artır">+</button></div></div>
-        <div class="pd-kn"><div class="pd-knob" id="knHum" role="slider" aria-label="İnsan hissi"></div><label>İnsan</label><div class="pd-pm"><button id="hDown" type="button" aria-label="Daha düz">−</button><button id="hUp" type="button" aria-label="Daha canlı">+</button></div></div>
+        <div class="pd-kn"><div class="pd-knob" id="knTempo" role="slider" aria-label="Tempo"><b class="pd-val" id="knTempoV"></b></div><label>Tempo</label><div class="pd-pm"><button id="rDown" aria-label="Tempoyu düşür">−</button><button id="rUp" aria-label="Tempoyu artır">+</button></div></div>
+        <div class="pd-kn"><div class="pd-knob" id="knVol" role="slider" aria-label="Ses"><b class="pd-val" id="knVolV"></b></div><label>Ses</label><div class="pd-pm"><button id="vDown" type="button" aria-label="Sesi azalt">−</button><button id="vUp" type="button" aria-label="Sesi artır">+</button></div></div>
+        <div class="pd-kn"><div class="pd-knob" id="knHum" role="slider" aria-label="İnsan hissi"><b class="pd-val" id="knHumV"></b></div><label>İnsan</label><div class="pd-pm"><button id="hDown" type="button" aria-label="Daha düz">−</button><button id="hUp" type="button" aria-label="Daha canlı">+</button></div></div>
       </div>
-      <div class="kalip" id="rKalip" role="group" aria-label="Kalıp"><span>Kalıp</span><button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button><button data-k="4">4</button></div>
       <button class="tapbig nextsong" id="rNext" hidden title="Çalan ritim devam ediyor. Dokununca bir dolgu çalar ve ölçü başında bu şarkının ritmine geçer."></button>
+      <div class="pd-foot">
       <div class="secs" id="rSecs" role="group" aria-label="Bölüm">
         <button data-sec="giris">Giriş</button><button data-sec="kita">Kıta</button><button data-sec="nakarat">Nakarat</button><button data-sec="ara">Ara</button><button data-sec="bitis">Bitiş</button>
-      </div>
+      </div><div class="kalip" id="rKalip" role="group" aria-label="Kalıp"><span>Kalıp</span><button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button><button data-k="4">4</button></div></div>
       <button class="go" id="rGo" aria-pressed="false">▶ Başlat</button>
       <div class="pd-minis"><button class="tapbig atak" id="rFill" title="Ölçü sonunda atak (dolgu + zil)" disabled>Atak</button><button class="tapbig" id="rTap" title="Ritme göre birkaç kez dokun">Vur</button><button class="tapbig mixbtn" id="rMix" aria-expanded="false" aria-controls="mixWrap" title="Ritmin ses seviyesi ve EQ ayarı"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4v16M12 4v16M19 4v16"/><rect x="2.5" y="13" width="5" height="3.2" rx="1" fill="currentColor"/><rect x="9.5" y="7" width="5" height="3.2" rx="1" fill="currentColor"/><rect x="16.5" y="11" width="5" height="3.2" rx="1" fill="currentColor"/></svg>Ses · EQ <b id="mixVol">80</b></button><button hidden class="tapbig bassbtn" id="rBass" aria-pressed="false" title="Akorlara göre bas gitar eşliği (aç / kapat)">Bas</button><button class="tapbig" id="pdMore" type="button" aria-expanded="false" aria-label="Ritim ayarları">⚙</button><button class="tapbig posbtn" id="rPos" type="button" title="Ritim çubuğunu sağa (dikey) ya da alta (yatay) al"></button></div>
       <div class="rmore">
@@ -2989,7 +2987,8 @@ $("rUp").onclick = () => setBpm((liveBpm || 90) + 1);
 (() => {
   const P = $("rhythm"); if(!P || !P.classList.contains("pedal")) return;
   const optText = s => { const o = s && s.options[s.selectedIndex]; return o ? o.textContent : ""; };
-  const rot = (el, v, lo, hi) => { if(el) el.style.setProperty("--rot", (Math.max(lo, Math.min(hi, v)) - lo) / (hi - lo) * 270 - 135 + "deg"); };
+  const rot = (el, v, lo, hi) => { if(!el) return; const f = (Math.max(lo, Math.min(hi, v)) - lo) / (hi - lo); el.style.setProperty("--rot", f * 270 - 135 + "deg"); el.style.setProperty("--p", f * 270 + "deg"); };
+  const val = (id, html) => { const e = $(id); if(e && e.innerHTML !== html) e.innerHTML = html; };
   const L = (tr, en) => { try{ return LL(tr, en); }catch(e){ return tr; } };
   function upd(){
     if(P.hidden) return;
@@ -3000,8 +2999,12 @@ $("rUp").onclick = () => setBpm((liveBpm || 90) + 1);
     rot($("knTempo"), +$("rBpm").value || 90, 40, 220);
     rot($("knVol"), +$("rVol").value, 0, 100);
     rot($("knHum"), Math.round(humanAmt * 100), 0, 100);
+    val("knTempoV", String(+$("rBpm").value || liveBpm || "—")); val("knVolV", (+$("rVol").value) + "<small>%</small>"); val("knHumV", Math.round(humanAmt * 100) + "<small>%</small>");
   }
   setInterval(upd, 250); upd();
+  // Başlat düğmesinin ortası her vuruşta parlar (ilk vuruş sarı)
+  const go = $("rGo");
+  new MutationObserver(() => { const on = $("rBeats").querySelector("i.on"); go.classList.toggle("beat", !!on); go.classList.toggle("beat1", !!(on && on.classList.contains("one"))); clearTimeout(go._bt); if(on) go._bt = setTimeout(() => go.classList.remove("beat", "beat1"), 110); }).observe($("rBeats"), { subtree: true, attributes: true, attributeFilter: ["class"], childList: true });
   const setHum = v => { v = Math.max(0, Math.min(100, Math.round(v))); humanAmt = v / 100; LS.set("sp.human", v); savePrefs(); upd(); };
   const vol = d => { setVolValue(+$("rVol").value + d); upd(); };
   const tempo = d => { setBpm((liveBpm || +$("rBpm").value || 90) + d); upd(); };
@@ -3573,7 +3576,7 @@ function drawHint2(){
     sub.textContent = extra.join(" · ");
     t.append(main); if(extra.length) t.append(sub); row.append(k, t); box.append(row);
   });
-  const host = isRight() || innerWidth <= 760 ? $("rhythm") : document.querySelector(".stage");
+  const host = innerWidth <= 760 ? $("rhythm") : document.querySelector(".stage");   // pedalın içinde yer kaplamasın: akor alanının köşesinde durur
   const before = host === $("rhythm") && $("rPos").parentNode === host ? $("rPos") : null;
   if(h.parentNode !== host || (before && h.nextSibling !== before)){ host.insertBefore(h, before); relayout(); }
 }
