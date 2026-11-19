@@ -493,54 +493,8 @@ button{cursor:pointer}
 .main.rright .secs button:not(:nth-child(3n+1)){border-left:1px solid var(--line)}
 .main.rright .rmore{flex-direction:column;align-items:flex-start;gap:6px}
 /* ---------- ritim editörü (adım sıralayıcı) ---------- */
-.red{position:fixed;inset:0;z-index:40;background:var(--bg);display:flex;flex-direction:column;
   padding:max(10px,env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) max(10px,env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
-.red-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.red-top .red-name{flex:1 1 180px;min-width:0;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--raise);color:var(--fg);padding:0 12px;font:600 17px var(--f-ui)}
-.red button,.red select{font-family:var(--f-ui)}
-.red .rbtn{height:44px;min-width:44px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:var(--raise);color:var(--fg);font-weight:600;font-size:15px;display:inline-flex;align-items:center;justify-content:center;gap:6px}
-.red .rbtn.pri{background:var(--chord);border-color:var(--chord);color:var(--chord-ink)}
-.red .rbtn.play[aria-pressed="true"]{background:var(--ok);border-color:var(--ok);color:#04150c}
-.red .rbtn.danger{color:var(--danger)}
-.red-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:8px}
-.red-tools label{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
-.red-tools select{height:40px;border-radius:10px;border:1px solid var(--line);background:var(--raise);color:var(--fg);padding:0 8px;font-size:14px;max-width:210px}
-.red-tempo{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden;height:40px;background:var(--raise)}
-.red-tempo button{width:36px;height:100%;border:0;background:transparent;color:var(--fg);font-size:18px}
-.red-tempo input{width:52px;height:100%;border:0;border-left:1px solid var(--line);border-right:1px solid var(--line);background:transparent;color:var(--fg);text-align:center;font:600 16px var(--f-mono)}
-.red-tools input[type=range]{width:110px;accent-color:var(--chord)}
-.red-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center}
-.red-tabs .tab{height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--fg);font-weight:600;font-size:14px;position:relative}
-.red-tabs .tab.cur{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.red-tabs .tab.empty{color:var(--muted);border-style:dashed}
-.red-tabs .sp{flex:1}
-.red-tabs .small{height:36px;padding:0 10px;border-radius:10px;border:1px solid var(--line);background:var(--raise);color:var(--fg);font-size:13px}
-.red-seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;height:36px}
-.red-seg button{border:0;background:transparent;color:var(--muted);padding:0 12px;font-size:13px;font-weight:600}
-.red-seg button.cur{background:var(--raise);color:var(--fg)}
-.red-gridwrap{flex:1;min-height:0;overflow:auto;margin-top:10px;border:1px solid var(--line);border-radius:14px;background:var(--panel);overscroll-behavior:contain;touch-action:pan-x pan-y}
-.red-grid{display:grid;gap:3px;padding:10px;min-width:max-content}
-.red-grid .lab{position:sticky;left:0;z-index:2;display:flex;align-items:center;gap:8px;padding:0 10px;height:var(--cell,44px);border-radius:10px;background:var(--raise);border:1px solid var(--line);color:var(--fg);font-size:14px;font-weight:600;white-space:nowrap;min-width:126px;cursor:pointer;user-select:none;-webkit-user-select:none}
-.red-grid .lab i{width:10px;height:10px;border-radius:50%;background:var(--rc,var(--chord));flex:none}
-.red-grid .lab:active{filter:brightness(1.2)}
-.red-grid .cell{height:var(--cell,44px);min-width:var(--cw,30px);border-radius:7px;border:1px solid var(--line);background:var(--bg);padding:0;position:relative;touch-action:none;user-select:none;-webkit-user-select:none}
-.red-grid .cell.g1{background:color-mix(in srgb,var(--bg) 82%,var(--line))}
-.red-grid .cell.beat{border-left:2px solid var(--muted)}
-.red-grid .cell[data-l="X"]{background:var(--rc,var(--chord));border-color:var(--rc,var(--chord))}
-.red-grid .cell[data-l="x"]{background:color-mix(in srgb,var(--rc,var(--chord)) 62%,var(--bg));border-color:color-mix(in srgb,var(--rc,var(--chord)) 70%,var(--bg))}
-.red-grid .cell[data-l="g"]{background:color-mix(in srgb,var(--rc,var(--chord)) 26%,var(--bg));border-color:color-mix(in srgb,var(--rc,var(--chord)) 55%,var(--bg))}
-.red-grid .cell[data-l]::after{content:attr(data-t);position:absolute;inset:auto 0 3px 0;text-align:center;font:700 10px var(--f-mono);color:var(--bg);opacity:.85}
-.red-grid .cell[data-l="g"]::after{color:var(--fg)}
-.red-grid .cell.now{outline:2px solid var(--fg);outline-offset:1px}
-.red-grid .num{height:20px;font:600 11px var(--f-mono);color:var(--muted);display:flex;align-items:flex-end;justify-content:flex-start;padding-left:3px}
-.red-grid .num.beatn{color:var(--fg)}
-.red-help{margin:8px 2px 0;font-size:12.5px;color:var(--muted);line-height:1.4}
-.red-menu{position:absolute;right:12px;top:58px;z-index:3;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.3);padding:6px;display:flex;flex-direction:column;min-width:220px}
-.red-menu button{height:42px;border:0;background:transparent;color:var(--fg);text-align:left;padding:0 12px;border-radius:8px;font-size:14px}
-.red-menu button:hover{background:var(--raise)}
-.red-menu button.danger{color:var(--danger)}
 .redit{width:44px;min-width:44px;padding:0;display:inline-flex;align-items:center;justify-content:center}
-@media (max-width:760px){.red-grid .lab{min-width:96px;font-size:12.5px;padding:0 8px}.red .rbtn{padding:0 10px}}
 .main.rright .rhythm > .tapbig.redit{grid-column:1 / -1;width:100%}
 .redit{white-space:nowrap}
 .chip-add{border-style:dashed}
@@ -1241,6 +1195,291 @@ body{margin:0}
 .sp-free #myRBtn:after{content:"PRO";margin-left:6px;padding:1px 5px;border-radius:4px;background:#ffc233;color:#141414;font:800 8.5px var(--f-ui);letter-spacing:.06em;vertical-align:middle}
 .sp-free #tUp{position:relative}
 .sp-free #tUp:after{content:"PRO";position:absolute;bottom:3px;right:50%;transform:translateX(50%);padding:1px 4px;border-radius:4px;background:#ffc233;color:#141414;font:800 7.5px/1.2 var(--f-ui);letter-spacing:.05em;pointer-events:none;z-index:1}
+/* ---------- Ritim stüdyosu ---------- */
+.st{--s-bg:#0c0d10;--s-p1:#14161a;--s-p2:#1b1d22;--s-p3:#262930;--s-ln:#2a2d34;--s-tx:#eceef1;--s-mu:#8f949d;--s-cell:#16181c;--s-cell2:#1b1d22;--s-cb:#23262c;--s-beat:#454a53;--s-y:#ffc233;--s-yt:#15171c;
+  position:fixed;inset:0;z-index:60;background:var(--s-bg);color:var(--s-tx);font-family:var(--f-ui);display:grid;grid-template-columns:240px minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;-webkit-user-select:none;user-select:none}
+:root[data-theme="light"] .st{--s-bg:#f4f3f0;--s-p1:#ffffff;--s-p2:#f0efec;--s-p3:#e4e3df;--s-ln:#dcdad4;--s-tx:#17191d;--s-mu:#626670;--s-cell:#ffffff;--s-cell2:#f6f5f2;--s-cb:#dedcd6;--s-beat:#9da1a8;--s-y:#e8a400;--s-yt:#17191d}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .st{--s-bg:#f4f3f0;--s-p1:#ffffff;--s-p2:#f0efec;--s-p3:#e4e3df;--s-ln:#dcdad4;--s-tx:#17191d;--s-mu:#626670;--s-cell:#ffffff;--s-cell2:#f6f5f2;--s-cb:#dedcd6;--s-beat:#9da1a8;--s-y:#e8a400;--s-yt:#17191d}}
+.st[hidden]{display:none}
+:where(.st) button,:where(.st) select,:where(.st) input{font-family:inherit;color:inherit}
+.st button{-webkit-tap-highlight-color:transparent;cursor:pointer}
+.st input,.st select{-webkit-user-select:text;user-select:text}
+.st ::selection{background:var(--s-y);color:var(--s-yt)}
+.st :focus-visible{outline:2px solid var(--s-y);outline-offset:2px}
+.st svg{display:block;flex:none}
+.st-sp{flex:1}
+/* üst çubuk */
+.st-top{grid-column:1/-1;display:flex;align-items:center;flex-wrap:wrap;gap:8px 10px;padding:9px 14px;padding-top:max(9px,env(safe-area-inset-top));border-bottom:1px solid var(--s-ln);background:var(--s-p1);position:relative;z-index:5}
+.st-back{display:flex;align-items:center;gap:6px;height:38px;padding:0 12px 0 4px;border:0;background:none;color:var(--s-mu);border-right:1px solid var(--s-ln);border-radius:0}
+.st-back b{font:700 15px var(--f-display);color:var(--s-tx)}
+.st-back:hover svg{color:var(--s-tx)}
+.st-libbtn{display:none}
+.st-name{display:flex;align-items:center;gap:2px;min-width:0;flex:0 1 300px;position:relative}
+.st-name input{min-width:0;flex:1;height:38px;border:1px solid transparent;border-radius:9px;background:transparent;padding:0 8px;font:700 17px var(--f-display);color:var(--s-tx);text-overflow:ellipsis}
+.st-name input:hover{border-color:var(--s-ln)}
+.st-name input:focus{border-color:var(--s-y);outline:0;background:var(--s-bg)}
+.st-act{display:flex;align-items:center;gap:4px}
+.st-act .st-save{margin-left:6px}
+.st-ctl{display:flex;align-items:center;flex-wrap:wrap;gap:8px;flex:1 1 100%;order:9}
+.st-ib{width:38px;height:38px;flex:none;border:0;border-radius:9px;background:none;color:var(--s-mu);display:grid;place-items:center}
+.st-ib:hover{background:var(--s-p3);color:var(--s-tx)}
+.st-ib:disabled{opacity:.35;pointer-events:none}
+.st-ib[aria-pressed="true"]{background:var(--s-p3);color:var(--s-y)}
+.st-trans{display:flex;align-items:center;gap:2px;height:40px;padding:3px;border:1px solid var(--s-ln);border-radius:11px;background:var(--s-bg)}
+.st-trans .st-ib{width:34px;height:32px}
+.st-play{width:42px;height:32px;border:0;border-radius:8px;background:var(--s-y);color:var(--s-yt);display:grid;place-items:center;box-shadow:0 1px 2px rgba(0,0,0,.3)}
+.st-play .i-stop,.st-play[aria-pressed="true"] .i-play{display:none}
+.st-play[aria-pressed="true"] .i-stop{display:block}
+.st-play:active{transform:translateY(1px)}
+.st-seg{display:flex;gap:2px}
+.st-seg button{height:32px;padding:0 11px;border:0;border-radius:8px;background:none;color:var(--s-mu);font:600 12.5px var(--f-ui);display:flex;align-items:center;gap:6px;white-space:nowrap}
+.st-seg button:hover{color:var(--s-tx)}
+.st-seg button.on{background:var(--s-p3);color:var(--s-tx)}
+.st-fld{display:flex;align-items:center;gap:6px;height:40px;padding:0 4px 0 11px;border:1px solid var(--s-ln);border-radius:11px;background:var(--s-bg);white-space:nowrap}
+.st-fld i{font:500 9.5px var(--f-mono);font-style:normal;letter-spacing:.12em;color:var(--s-mu)}
+.st-fld select{border:0;background:transparent;height:36px;font:600 13px var(--f-ui);padding:0 4px;max-width:170px;cursor:pointer}
+.st-fld select option{background:var(--s-p1);color:var(--s-tx)}
+.st-tempo{padding-right:3px}
+.st-tempo button{width:26px;height:32px;border:0;border-radius:7px;background:none;color:var(--s-mu);font:500 17px var(--f-ui)}
+.st-tempo button:hover{background:var(--s-p3);color:var(--s-tx)}
+.st-tempo input{width:3ch;border:0;background:transparent;text-align:center;font:600 16px var(--f-mono);font-variant-numeric:tabular-nums;padding:0}
+.st-tempo input:focus{outline:0;color:var(--s-y)}
+.st-tempo .st-tap{width:auto;padding:0 9px;margin-left:2px;border-left:1px solid var(--s-ln);border-radius:0 7px 7px 0;font:700 10px var(--f-mono);letter-spacing:.12em;color:var(--s-y)}
+.st-tempo .st-tap.hit{background:var(--s-y);color:var(--s-yt)}
+.st-swf{padding-right:11px}
+.st-swf input{width:78px;accent-color:var(--s-y)}
+.st-ctl .st-sp{display:block}
+.st-swf b{font:600 13px var(--f-mono);min-width:2.2ch;text-align:right;font-variant-numeric:tabular-nums}
+.st-save{height:40px;padding:0 16px;border:0;border-radius:11px;background:var(--s-tx);color:var(--s-bg);font:700 13.5px var(--f-ui);display:flex;align-items:center;gap:8px}
+.st-save i{width:7px;height:7px;border-radius:50%;background:#ff7a3d;display:none}
+.st.dirty .st-save i{display:block}
+.st-save:active{transform:translateY(1px)}
+.st-menu{position:absolute;left:0;top:44px;right:auto;z-index:8;min-width:220px;background:var(--s-p1);border:1px solid var(--s-ln);border-radius:12px;box-shadow:0 18px 40px -10px rgba(0,0,0,.5);padding:6px;display:flex;flex-direction:column}
+.st-menu[hidden]{display:none}
+.st-menu button{height:40px;border:0;background:none;text-align:left;padding:0 12px;border-radius:8px;font:500 14px var(--f-ui);color:var(--s-tx)}
+.st-menu button:hover{background:var(--s-p3)}
+.st-menu button.danger{color:#ff6b5a}
+/* kütüphane */
+.st-lib{grid-row:2/3;border-right:1px solid var(--s-ln);background:var(--s-p1);display:flex;flex-direction:column;min-height:0}
+.st-q{display:flex;align-items:center;gap:8px;margin:12px 12px 4px;height:36px;padding:0 10px;border:1px solid var(--s-ln);border-radius:9px;background:var(--s-bg);color:var(--s-mu)}
+.st-q input{flex:1;min-width:0;border:0;background:transparent;font:500 13px var(--f-ui);color:var(--s-tx)}
+.st-q input:focus{outline:0}
+.st-scroll{flex:1;min-height:0;overflow:auto;padding-bottom:10px}
+.st-lib h4{margin:14px 14px 6px;font:700 11.5px var(--f-ui);color:var(--s-mu);display:flex;justify-content:space-between;align-items:center}
+.st-lib h4 button{border:0;background:none;color:var(--s-y);font:700 12px var(--f-ui);padding:2px 0}
+.st-it{display:flex;flex-direction:column;gap:6px;width:calc(100% - 16px);margin:0 8px 2px;padding:9px 10px;border:0;border-radius:9px;background:none;text-align:left}
+.st-it:hover{background:var(--s-p2)}
+.st-it.cur{background:var(--s-p3)}
+.st-it .a{display:flex;justify-content:space-between;gap:8px;font:600 13px var(--f-ui);color:var(--s-tx)}
+.st-it .a b{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.st-it .a span{font:500 10.5px var(--f-mono);color:var(--s-mu);flex:none}
+.st-mini{display:flex;gap:1.5px;height:10px;align-items:flex-end}
+.st-mini i{flex:1;border-radius:1px;background:var(--s-p3);min-height:2px}
+.st-it.cur .st-mini i{background:var(--s-ln)}
+.st-mini i.k{background:#ff8a3d;height:10px}.st-mini i.s{background:var(--s-y);height:7px}.st-mini i.h{height:4px}
+.st-empty{margin:4px 14px 8px;font-size:12.5px;color:var(--s-mu);line-height:1.45}
+.st-grp{margin:0 8px}
+.st-grp summary{list-style:none;display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border-radius:9px;font:500 13px var(--f-ui);color:var(--s-tx);cursor:pointer}
+.st-grp summary::-webkit-details-marker{display:none}
+.st-grp summary:hover{background:var(--s-p2)}
+.st-grp summary span{font:500 11px var(--f-mono);color:var(--s-mu)}
+.st-grp summary:after{content:"";width:6px;height:6px;border-right:1.6px solid var(--s-mu);border-bottom:1.6px solid var(--s-mu);transform:rotate(-45deg);margin-left:8px}
+.st-grp[open] summary:after{transform:rotate(45deg)}
+.st-grp summary span{margin-left:auto}
+.st-pre{display:block;width:100%;border:0;background:none;text-align:left;padding:7px 10px 7px 20px;border-radius:8px;font:500 12.5px var(--f-ui);color:var(--s-mu)}
+.st-pre:hover{background:var(--s-p2);color:var(--s-tx)}
+.st-libfoot{display:flex;gap:6px;padding:10px 12px;padding-bottom:max(10px,env(safe-area-inset-bottom));border-top:1px solid var(--s-ln)}
+.st-libfoot button{flex:1;height:34px;border:0;border-radius:9px;background:var(--s-p3);font:600 12.5px var(--f-ui)}
+.st-libfoot button:hover{filter:brightness(1.12)}
+/* ana alan */
+.st-main{grid-row:2/3;display:flex;flex-direction:column;min-width:0;min-height:0}
+.st-arr{display:flex;gap:8px;padding:12px 16px 10px;border-bottom:1px solid var(--s-ln);overflow-x:auto;scrollbar-width:none}
+.st-arr::-webkit-scrollbar{display:none}
+.st-sec{flex:1 0 118px;position:relative;display:flex;flex-direction:column;gap:7px;padding:9px 10px;border:1px solid var(--s-ln);border-radius:11px;background:var(--s-p2);text-align:left;min-width:0}
+.st-sec:hover{border-color:var(--s-beat)}
+.st-sec .h{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font:700 13px var(--f-ui);color:var(--s-tx)}
+.st-sec .h span{font:500 10px var(--f-mono);color:var(--s-mu);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st-sec .th{display:grid;grid-auto-flow:column;gap:1px;height:27px}
+.st-sec .th i{display:grid;grid-template-rows:repeat(9,1fr);gap:1px}
+.st-sec .th b{background:var(--s-p3);border-radius:.5px}
+.st-sec.cur{border-color:var(--s-y);box-shadow:inset 0 0 0 1px var(--s-y)}
+.st-sec.empty{background:transparent;border-style:dashed}
+.st-sec.empty .th{opacity:.45}
+.st-sec .k{position:absolute;right:7px;bottom:6px;font:600 9px var(--f-mono);color:var(--s-mu);opacity:0}
+.st-sec:hover .k{opacity:1}
+.st-sec.play:before{content:"";position:absolute;left:10px;right:10px;top:-1px;height:2px;border-radius:2px;background:var(--s-y)}
+.st-tools{display:flex;align-items:center;gap:8px;padding:10px 16px;flex-wrap:wrap}
+.st-tools .st-seg{padding:3px;border:1px solid var(--s-ln);border-radius:10px;background:var(--s-p1)}
+.st-tools .st-seg button{height:30px}
+.st-chip{height:38px;display:flex;align-items:center;gap:6px;padding:0 12px;border:1px solid var(--s-ln);border-radius:10px;background:none;font:600 12.5px var(--f-ui);color:var(--s-tx);white-space:nowrap}
+.st-chip:hover{border-color:var(--s-beat)}
+.st-chip span{color:var(--s-mu);font-weight:500}
+.st-chip select{border:0;background:transparent;font:600 12.5px var(--f-ui);height:34px;cursor:pointer;max-width:150px}
+.st-chip select option{background:var(--s-p1);color:var(--s-tx)}
+.st-info{font:500 12px var(--f-mono);color:var(--s-mu);white-space:nowrap}
+.st-info b{color:var(--s-tx);font-weight:600}
+/* ızgara */
+.st-gridw{flex:1;min-height:0;overflow:auto;padding:0 16px 14px;overscroll-behavior:contain}
+.st-grid{display:grid;column-gap:3px;row-gap:5px;min-width:max-content;--rh:44px}
+.st-grid .num{position:sticky;top:0;z-index:2;height:20px;background:var(--s-bg);font:600 10px var(--f-mono);color:var(--s-mu);display:flex;align-items:flex-end;padding:0 0 3px 3px;opacity:.7}
+.st-grid .num.b{color:var(--s-tx);opacity:1}
+.st-grid .num.c0{left:0;z-index:4}
+.st-row{position:sticky;left:0;z-index:3;display:flex;align-items:center;gap:7px;height:var(--rh);padding:0 6px 0 8px;border-radius:9px;background:var(--s-p2);box-shadow:6px 0 8px -6px rgba(0,0,0,.35)}
+.st-row .c{width:4px;height:22px;border-radius:2px;background:var(--rc);flex:none}
+.st-row .n{flex:1;min-width:0;border:0;background:none;padding:0;text-align:left;font:600 12.5px var(--f-ui);color:var(--s-tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;height:100%}
+.st-row .n:active{color:var(--rc)}
+.st-row input[type=range]{-webkit-appearance:none;appearance:none;width:44px;height:18px;background:transparent;margin:0;cursor:pointer}
+.st-row input[type=range]::-webkit-slider-runnable-track{height:3px;border-radius:2px;background:linear-gradient(90deg,var(--rc) 0 calc(var(--v,66%)),var(--s-p3) calc(var(--v,66%)))}
+.st-row input[type=range]::-moz-range-track{height:3px;border-radius:2px;background:var(--s-p3)}
+.st-row input[type=range]::-moz-range-progress{height:3px;border-radius:2px;background:var(--rc)}
+.st-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;margin-top:-4px;border-radius:50%;background:var(--s-tx);box-shadow:0 1px 2px rgba(0,0,0,.4)}
+.st-row input[type=range]::-moz-range-thumb{width:11px;height:11px;border:0;border-radius:50%;background:var(--s-tx)}
+.st-row .ms{display:flex;gap:3px}
+.st-row .ms button{width:22px;height:22px;border:0;border-radius:5px;background:var(--s-p3);font:700 10px var(--f-mono);color:var(--s-mu);display:grid;place-items:center;padding:0}
+.st-row .ms button[aria-pressed="true"].m{background:#4a2a22;color:#ff9d7a}
+.st-row .ms button[aria-pressed="true"].s{background:var(--s-y);color:var(--s-yt)}
+.st-row.off .n,.st-row.off .c{opacity:.4}
+.st-grid .cell{position:relative;height:var(--rh);min-width:var(--cw,30px);border:0;padding:0;border-radius:6px;background:var(--s-cell);box-shadow:inset 0 0 0 1px var(--s-cb);overflow:hidden;touch-action:none}
+.st-grid .cell.g1{background:var(--s-cell2)}
+.st-grid .cell.bt{box-shadow:inset 0 0 0 1px var(--s-cb),inset 2px 0 0 var(--s-beat)}
+.st-grid .cell .v{position:absolute;left:0;right:0;bottom:0;height:var(--h,0%);background:linear-gradient(180deg,var(--rc),color-mix(in srgb,var(--rc) 62%,transparent));pointer-events:none}
+.st-grid .cell .v:before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:rgba(255,255,255,.9)}
+.st-grid .cell.off .v{filter:saturate(.25);opacity:.45}
+.st-grid .cell.now{box-shadow:inset 0 0 0 1px var(--s-y),inset 0 0 0 40px color-mix(in srgb,var(--s-y) 7%,transparent)}
+.st-grid .cell.act{box-shadow:inset 0 0 0 2px var(--s-tx);overflow:visible;z-index:1}
+.st-grid .cell .tip{position:absolute;left:50%;bottom:calc(100% + 7px);transform:translateX(-50%);background:var(--s-tx);color:var(--s-bg);font:700 11px var(--f-mono);padding:4px 7px;border-radius:5px;white-space:nowrap;pointer-events:none;z-index:5}
+.st[data-tool="erase"] .st-grid .cell{cursor:crosshair}
+.st[data-tool="vel"] .st-grid .cell{cursor:ns-resize}
+/* alt çubuk */
+.st-bot{grid-column:1/-1;display:flex;align-items:center;gap:16px;padding:9px 16px;padding-bottom:max(9px,env(safe-area-inset-bottom));border-top:1px solid var(--s-ln);background:var(--s-p1);font:500 12px var(--f-ui);color:var(--s-mu);overflow:hidden;white-space:nowrap}
+.st-bot span:last-child{overflow:hidden;text-overflow:ellipsis}
+.st-bot kbd{font:600 10px var(--f-mono);color:var(--s-tx);background:var(--s-p3);border-radius:4px;padding:2px 5px;margin-right:5px}
+.st .kitwrap{z-index:20}
+/* dar ekranlar: kütüphane çekmece olur */
+@media (max-width:1100px){
+  .st{grid-template-columns:minmax(0,1fr)}
+  .st-libbtn{display:grid}
+  .st-lib{position:absolute;z-index:12;left:0;top:0;bottom:0;width:min(300px,86vw);box-shadow:20px 0 50px rgba(0,0,0,.45);transform:translateX(-102%);transition:transform .22s cubic-bezier(.2,.8,.2,1);visibility:hidden}
+  .st.libopen .st-lib{transform:none;visibility:visible}
+  .st.libopen:after{content:"";position:absolute;inset:0;z-index:11;background:rgba(0,0,0,.35)}
+  .st-main,.st-lib{grid-row:2/3}
+}
+@media (max-width:1100px) and (pointer:coarse),(max-width:900px){.st-bot .kb{display:none}}
+@media (max-width:640px){
+  .st-top{padding:8px 10px;gap:6px}
+  .st-back{padding-right:8px}.st-back b{display:none}
+  .st-name{flex:1 1 0}
+  .st-ctl{gap:6px}
+  .st-fld i{display:none}
+  .st-fld{padding-left:6px}
+  .st-seg button{padding:0 9px}
+  .st-swf input{width:56px}
+  .st-arr{padding:10px 10px 8px}.st-tools{padding:8px 10px}.st-gridw{padding:0 10px 10px}
+  .st-sec{flex-basis:104px}
+  .st-row{gap:5px;padding:0 4px 0 6px}
+  .st-row input[type=range]{display:none}
+  .st-bot{display:none}
+  .st-grid{--rh:40px}
+}
+@media (prefers-reduced-motion:reduce){.st-lib{transition:none}}
+
+/* ana ekran: stüdyo kartı */
+.home-studio{margin-top:18px;width:100%;display:flex;align-items:center;gap:18px;padding:16px 18px;border-radius:16px;border:1px solid var(--gl-br);background:var(--gl-bg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:var(--gl-tx);text-align:left;cursor:pointer;font-family:var(--f-ui);transition:border-color .15s,background .15s}
+.home-studio:hover{border-color:rgba(255,194,51,.6);background:var(--gl-bg2)}
+.home-studio .hs-pat{display:grid;grid-template-columns:repeat(16,7px);grid-template-rows:repeat(3,7px);gap:3px;flex:none;padding:10px;border-radius:10px;background:rgba(0,0,0,.28)}
+.home-studio .hs-pat i{border-radius:1.5px;background:rgba(255,255,255,.1)}
+.home-studio .hs-pat i.a{background:#ff8a3d}.home-studio .hs-pat i.b{background:#ffc233}.home-studio .hs-pat i.c{background:#3ecf8e}
+.home-studio .hs-t{flex:1;min-width:0}
+.home-studio .hs-t b{display:block;font:700 18px var(--f-display);margin-bottom:3px}
+.home-studio .hs-t span{font-size:13.5px;color:var(--gl-mu);line-height:1.45}
+.home-studio .hs-go{flex:none;display:flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:10px;background:#ffc233;color:#15171c;font:700 13px var(--f-ui)}
+.sp-free .home-studio .hs-t b:after{content:"PRO";margin-left:8px;padding:1px 6px;border-radius:4px;background:#ffc233;color:#141414;font:800 9px var(--f-ui);letter-spacing:.06em;vertical-align:middle}
+@media (max-width:560px){.home-studio{flex-wrap:wrap;gap:12px;padding:14px}.home-studio .hs-pat{display:none}.home-studio .hs-go{width:100%;justify-content:center}}
+
+/* ---------- Sahne paneli: Grafit (mat koyu gövde, alüminyum düğmeler, kauçuk pedler, ışık şeritleri) ---------- */
+#rhythm.pedal,#mixWrap .mix{--pd1:#2a2d33 !important;--pd2:#1f2126 !important;--pd3:#17181c !important;--pd-ink:#d6d9de !important;--pd-mute:#80858e !important;--pd-slot:#111216 !important;--pd-slotb:#2b2e35 !important;--pd-lab:#8b9099 !important;--pd-plate:rgba(255,255,255,.03) !important}
+#rhythm.pedal.pedal{background:linear-gradient(180deg,#2a2d33,#1e2025 38%,#17181c) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 -1px 0 rgba(0,0,0,.6),inset 1px 0 0 rgba(255,255,255,.03) !important;color:var(--pd-ink)}
+#rhythm.pedal .pd-screw{background:radial-gradient(circle at 35% 35%,#6c7078,#2a2c31 70%) !important;box-shadow:0 1px 0 rgba(255,255,255,.07),inset 0 0 0 .5px rgba(0,0,0,.6) !important}
+#rhythm.pedal .pd-screw:after,#rhythm.pedal .pd-screw:before{background:#1a1b1f !important}
+#rhythm.pedal .pd-brand b{color:#eceef1 !important;letter-spacing:.26em}
+#rhythm.pedal .pd-brand span{color:#80858e !important}
+/* ekran */
+#rhythm.pedal .pd-lcd{background:linear-gradient(180deg,#0c1a10,#09140c) !important;border:1px solid #050806 !important;box-shadow:inset 0 2px 7px rgba(0,0,0,.85),0 1px 0 rgba(255,255,255,.06) !important}
+#rhythm.pedal .go{background:linear-gradient(180deg,#0c1a10,#09140c) !important;border:1px solid #050806 !important;box-shadow:inset 0 2px 6px rgba(0,0,0,.85),0 1px 0 rgba(255,255,255,.06) !important}
+/* seçim kutuları: gövdeye gömülü */
+.main #rhythm.pedal .pd-prog .rsel,#rhythm.pedal .pd-prog .rsel{background:#111216 !important;border:1px solid #08090b !important;color:#e6e8eb !important;box-shadow:inset 0 1px 3px rgba(0,0,0,.7),0 1px 0 rgba(255,255,255,.05) !important;font-weight:600}
+#rhythm.pedal .pd-prog #rEdit{display:none !important}
+#rhythm.pedal .pd-prog #rStyle{grid-column:1 / -1}
+#rhythm.pedal.haskit .pd-prog #rStyle{grid-column:1 / -1}
+/* düğmeler: tırtıklı alüminyum, nokta ışıklı halka */
+#rhythm.pedal .pd-knob{background:radial-gradient(circle at 42% 30%,#f1f2f4 0,#c3c6cb 28%,#9a9ea5 62%,#7f838a 100%) !important;box-shadow:0 0 0 3px #a6a9af,0 0 0 4px #5f636a,0 6px 10px rgba(0,0,0,.6),0 2px 3px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.7) !important}
+#rhythm.pedal .pd-knob:after{background:#17181c !important;width:2.5px !important;margin-left:-1.25px !important;top:3px !important;box-shadow:none !important}
+#rhythm.pedal .pd-knob:before{inset:-9px !important;background:conic-gradient(from 225deg,#ffc233 0 var(--p,0deg),#34363c var(--p,0deg) 270deg,transparent 270deg) !important;
+  -webkit-mask:radial-gradient(circle,transparent calc(var(--kn) / 2 + 5px),#000 calc(var(--kn) / 2 + 5.5px),#000 calc(var(--kn) / 2 + 8px),transparent calc(var(--kn) / 2 + 8.5px)),repeating-conic-gradient(from 225deg,#000 0 7deg,transparent 7deg 13.5deg) !important;-webkit-mask-composite:source-in !important;
+  mask:radial-gradient(circle,transparent calc(var(--kn) / 2 + 5px),#000 calc(var(--kn) / 2 + 5.5px),#000 calc(var(--kn) / 2 + 8px),transparent calc(var(--kn) / 2 + 8.5px)),repeating-conic-gradient(from 225deg,#000 0 7deg,transparent 7deg 13.5deg) !important;mask-composite:intersect !important;filter:drop-shadow(0 0 2px rgba(255,194,51,.45))}
+.main #rhythm.pedal .pd-knob:before{inset:-8px !important}
+#rhythm.pedal .pd-val{color:#17181c !important;text-shadow:0 1px 0 rgba(255,255,255,.55) !important;font-weight:700}
+#rhythm.pedal .pd-kn label{color:#8b9099 !important;letter-spacing:.2em !important}
+/* bölüm tuşları: kauçuk ped + üstte ışık şeridi */
+#rhythm.pedal .secs button{color:#8b9099 !important;letter-spacing:.18em !important}
+#rhythm.pedal .secs button.cur{color:#ffc233 !important}
+#rhythm.pedal .secs button:not([data-sec="bitis"]):after{width:min(100%,calc(var(--st) * 1.75)) !important;height:calc(var(--st) * .86) !important;border-radius:10px !important;
+  background:linear-gradient(180deg,#2b2d33,#1c1d21 70%,#18191d) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 -2px 0 rgba(0,0,0,.45),0 4px 0 #0c0d0f,0 7px 12px rgba(0,0,0,.5) !important}
+#rhythm.pedal .secs button:not([data-sec="bitis"]):active:after{transform:translateY(3px) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(0,0,0,.4),0 1px 0 #0c0d0f,0 3px 6px rgba(0,0,0,.45) !important}
+#rhythm.pedal .secs button:not([data-sec="bitis"]):before{top:calc(2px + var(--st) * .17) !important;width:calc(var(--st) * .62) !important;height:3px !important;border-radius:2px !important;transform:translateX(-50%) !important;background:#3a3d44 !important;box-shadow:inset 0 1px 1px rgba(0,0,0,.5) !important}
+#rhythm.pedal .secs button:not([data-sec="bitis"]):active:before{transform:translate(-50%,3px) !important}
+#rhythm.pedal .secs button.cur:not([data-sec="bitis"]):before{background:#ffc233 !important;box-shadow:0 0 9px 1px rgba(255,194,51,.85),0 0 2px #fff3c4 !important}
+#rhythm.pedal .secs button.next:not([data-sec="bitis"]):before{background:#ffc233 !important;box-shadow:0 0 8px rgba(255,194,51,.7) !important}
+/* küçük tuşlar: kalıp, bitiş, atak, vur, ses, alta al */
+#rhythm.pedal .kalip button,#rhythm.pedal .pd-minis .tapbig,#rhythm.pedal .secs button[data-sec="bitis"]{background:linear-gradient(180deg,#2a2c31,#1e1f23) !important;border:1px solid #0b0c0e !important;color:#c9ccd2 !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 2px 0 #0c0d0f,0 3px 5px rgba(0,0,0,.35) !important;position:relative}
+#rhythm.pedal .kalip button:active,#rhythm.pedal .pd-minis .tapbig:active,#rhythm.pedal .secs button[data-sec="bitis"]:active{transform:translateY(1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 1px 0 #0c0d0f !important}
+#rhythm.pedal .kalip button:before{content:"";position:absolute;top:4px;left:50%;width:10px;height:2px;margin-left:-5px;border-radius:1px;background:#3a3d44}
+#rhythm.pedal .kalip button.cur{color:#ffc233 !important}
+#rhythm.pedal .kalip button.cur:before{background:#ffc233;box-shadow:0 0 5px rgba(255,194,51,.9)}
+#rhythm.pedal .kalip span{color:#80858e !important}
+#rhythm.pedal .secs button[data-sec="bitis"]{color:#ff8a7a !important}
+#rhythm.pedal .secs button[data-sec="bitis"]:before{background:#ff6b5a !important;box-shadow:0 0 6px rgba(255,107,90,.7) !important;width:6px !important;height:6px !important}
+#rhythm.pedal .secs button[data-sec="bitis"]:disabled:before{background:#5a2a26 !important;box-shadow:none !important}
+#rhythm.pedal .pd-minis .tapbig b{color:#ffc233}
+#rhythm.pedal .pd-minis .tapbig.armed,#rhythm.pedal .pd-minis .tapbig.hit{background:linear-gradient(180deg,#3a3016,#2a230f) !important;color:#ffc233 !important;border-color:#5a4612 !important;box-shadow:inset 0 0 10px rgba(255,194,51,.25),0 2px 0 #0c0d0f !important}
+#rhythm.pedal .pd-minis .tapbig:disabled{opacity:.5}
+#rhythm.pedal .rmore label{color:#8b9099 !important}
+#rhythm.pedal .rmore input[type=checkbox]{accent-color:#ffc233}
+#rhythm.pedal .pd-hide{background:#111216 !important;border-color:#2b2e35 !important;color:#c9ccd2 !important}
+#rhythm.pedal.folded{background:linear-gradient(180deg,#2a2d33,#1b1c20) !important}
+#rhythm.pedal.folded .pd-fold{color:#c9ccd2 !important}
+/* mikser penceresi de aynı gövde */
+#mixWrap .mix{background:linear-gradient(180deg,#2a2d33,#1b1c20) !important;border-color:#0b0c0e !important;color:#d6d9de}
+
+
+/* ana ekran sayfaları */
+.home-tabs{position:relative;display:inline-flex;align-self:flex-start;gap:2px;margin-top:26px;padding:4px;border-radius:12px;border:1px solid var(--gl-br);background:var(--gl-bg);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.home-tabs button{position:relative;z-index:1;height:36px;padding:0 16px;border:0;border-radius:9px;background:none;color:var(--gl-mu);font:600 14px var(--f-ui);cursor:pointer;transition:color .15s}
+.home-tabs button[aria-selected="true"]{color:#15171c}
+.home-tabs .ht-ink{position:absolute;z-index:0;top:4px;bottom:4px;left:0;width:0;border-radius:9px;background:#ffc233;box-shadow:0 2px 8px rgba(255,194,51,.3);transition:transform .32s cubic-bezier(.2,.8,.2,1),width .32s cubic-bezier(.2,.8,.2,1)}
+.home-pages{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;margin:0 -22px;align-items:flex-start}
+.home-pages::-webkit-scrollbar{display:none}
+.home-page{flex:0 0 100%;min-width:0;scroll-snap-align:start;scroll-snap-stop:always;padding:0 22px 34px;box-sizing:border-box}
+.home-dots{margin-top:-18px !important}
+.home-page .home-h{margin-top:22px}
+.home-dots{display:flex;justify-content:center;gap:7px;margin:14px 0 4px}
+.home-dots i{width:6px;height:6px;border-radius:3px;background:var(--gl-br);transition:width .25s,background .25s}
+.home-dots i.on{width:18px;background:#ffc233}
+.home-page .home-studio{margin:0 0 16px}
+.hp-card{min-height:118px}
+.hp-card .rc-name{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.hp-card .hp-pat{display:flex;gap:2px;height:16px;align-items:flex-end;margin:10px 0 8px}
+.hp-card .hp-pat i{flex:1;border-radius:1.5px;background:var(--gl-br);height:3px}
+.hp-card .hp-pat i.k{background:#ff8a3d;height:16px}.hp-card .hp-pat i.s{background:#ffc233;height:11px}.hp-card .hp-pat i.h{background:#3ecf8e;height:6px}
+.hp-card .rc-meta{font-size:12.5px;color:var(--gl-mu)}
+.hp-play{flex:none;width:38px;height:38px;border-radius:50%;border:0;background:#ffc233;color:#15171c;display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.hp-play svg{margin-left:2px}
+.hp-play.on{animation:hpPulse .5s ease-in-out infinite alternate}
+@keyframes hpPulse{to{box-shadow:0 0 0 6px rgba(255,194,51,.25)}}
+.hp-tag{font:700 9.5px var(--f-mono);letter-spacing:.08em;color:var(--gl-mu);text-transform:uppercase}
+.hp-edit{margin-top:8px;align-self:flex-start;height:30px;padding:0 12px;border-radius:8px;border:1px solid var(--gl-br);background:none;color:var(--gl-tx);font:600 12.5px var(--f-ui);cursor:pointer}
+@media (max-width:560px){.home-tabs{align-self:stretch}.home-tabs button{flex:1;padding:0 8px}.home-pages{margin:0 -16px}.home-page{padding:0 16px 6px}}
+@media (prefers-reduced-motion:reduce){.home-tabs .ht-ink{transition:none}.home-pages{scroll-behavior:auto}}
 </style>
 
 <script>try{ const t = JSON.parse(localStorage.getItem("sp.theme") || "null"); if(t === "light" || t === "dark") document.documentElement.dataset.theme = t; }catch(e){}</script>
@@ -1255,10 +1494,32 @@ body{margin:0}
           <svg class="tmoon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
         </button></div>
     </header>
+    <nav class="home-tabs" id="homeTabs" role="tablist" aria-label="Bölümler">
+      <button type="button" role="tab" data-pg="0" aria-selected="true">Repertuarlar</button>
+      <button type="button" role="tab" data-pg="1" aria-selected="false">Stüdyo</button>
+      <button type="button" role="tab" data-pg="2" aria-selected="false">Sesler</button>
+      <span class="ht-ink" aria-hidden="true"></span>
+    </nav>
+    <div class="home-pages" id="homePages">
+    <section class="home-page" data-pg="0" aria-label="Repertuarlar">
     <h2 class="home-h">Repertuarların</h2>
     <div class="plan-chip" id="planChip" hidden data-noi18n></div>
     <p class="home-sub">Bir repertuar seç ya da yenisini oluştur. Her mekan ya da program için ayrı bir repertuar yapabilirsin; şarkıların hepsinde ortaktır, birinde düzeltince hepsinde düzelir.</p>
     <div class="repgrid" id="repGrid"><div class="empty">Yükleniyor…</div></div>
+    </section>
+    <section class="home-page" data-pg="1" aria-label="Ritim stüdyosu">
+    <h2 class="home-h">Ritim stüdyosu</h2>
+    <p class="home-sub">Kendi ritmini yaz, hazır bir ritmi kendine göre değiştir. Kaydettiğin ritimler şarkılarının ritim listesinde çıkar.</p>
+    <button type="button" class="home-studio" id="studioBtn"><span class="hs-pat" aria-hidden="true"><i class="a"></i><i></i><i></i><i></i><i class="a"></i><i></i><i class="a"></i><i></i><i class="a"></i><i></i><i></i><i></i><i class="a"></i><i></i><i class="a"></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i></i><i></i><i class="b"></i><i class="c"></i><i></i><i class="c"></i><i></i><i class="c"></i><i></i><i class="c"></i><i></i><i class="c"></i><i></i><i class="c"></i><i></i><i class="c"></i><i></i><i class="c"></i><i></i></span><span class="hs-t"><b>Ritim yazmaya başla</b><span>Kendi ritimlerini yaz: giriş, kıta, nakarat, dolgu ve bitiş. Vuruşların şiddetini ayarla, şarkılarında seç.</span></span><span class="hs-go" id="studioGo">Stüdyoyu aç<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+    <div class="repgrid hp-grid" id="homeRhy"></div>
+    </section>
+    <section class="home-page" data-pg="2" aria-label="Sesler">
+    <h2 class="home-h">Sesler</h2>
+    <p class="home-sub">Ritimlerin çaldığı davul ve kajon setleri. Dinlemek için ▶'ye dokun. Kendi kayıtlarınla yeni bir set de yapabilirsin.</p>
+    <div class="repgrid hp-grid" id="homeSets"></div>
+    </section>
+    </div>
+    <div class="home-dots" id="homeDots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
     <footer class="home-foot">
       <div class="home-tools"><button type="button" class="btn" id="guideBtn">❓ Kılavuz</button><button type="button" class="btn" id="contactBtn">✉ Bize ulaşın</button></div>
       <div class="bkrow" id="bkSlot"><button class="btn" id="bkExport" type="button">Yedek al</button><button class="btn" id="bkImport" type="button">Yedekten yükle</button><input type="file" id="bkFile" accept=".json,application/json" hidden></div>
@@ -1280,7 +1541,7 @@ body{margin:0}
       </div>
     </div>
     <div class="list" id="list"><div class="empty">Şarkılar yükleniyor…</div></div>
-    <div class="side-foot"><button class="btn primary wide" id="addBtn">+ Yeni şarkı ekle</button><div class="helprow" style="margin-top:8px"><button class="btn" id="pickBtn" type="button">＋ Şarkılarımdan seç</button><button class="btn" id="impBtn" type="button">⤓ İçe aktar</button></div><div class="helprow"><button class="btn" id="myRBtn" type="button">✎ Ritim editörü</button><button type="button" class="btn" id="keysBtn">⌨ Tuş ayarları</button></div></div>
+    <div class="side-foot"><button class="btn primary wide" id="addBtn">+ Yeni şarkı ekle</button><div class="helprow" style="margin-top:8px"><button class="btn" id="pickBtn" type="button">＋ Şarkılarımdan seç</button><button class="btn" id="impBtn" type="button">⤓ İçe aktar</button></div><div class="helprow"><button type="button" class="btn" id="keysBtn">⌨ Tuş ayarları</button></div></div>
   </aside>
 
   <main class="main">
@@ -1451,41 +1712,65 @@ body{margin:0}
 </div>
 <div class="toast" id="toast" hidden></div>
 
-<div class="red" id="rEd" hidden role="dialog" aria-label="Ritim editörü">
-  <div class="red-top">
-    <button class="rbtn" id="reClose" type="button" aria-label="Editörü kapat">✕</button>
-    <input class="red-name" id="reName" type="text" maxlength="40" placeholder="Ritmin adı" aria-label="Ritmin adı">
-    <button class="rbtn play" id="rePlay" type="button" aria-pressed="false">▶ Çal</button>
-    <button class="rbtn pri" id="reSave" type="button">Kaydet</button>
-    <button class="rbtn" id="reMore" type="button" aria-label="Diğer işlemler" aria-haspopup="true">⋯</button>
-    <div class="red-menu" id="reMenu" hidden>
-      <button type="button" data-act="dup">Kopyasını oluştur</button>
-      <button type="button" data-act="export">Dışa aktar (dosya)</button>
-      <button type="button" data-act="import">İçe aktar (dosyadan)</button>
-      <button type="button" data-act="del" class="danger">Bu ritmi sil</button>
+<div class="red st" id="rEd" hidden role="dialog" aria-label="Ritim stüdyosu">
+  <header class="st-top">
+    <button class="st-back" id="reClose" type="button" aria-label="Stüdyodan çık"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><b>Stüdyo</b></button>
+    <button class="st-ib st-libbtn" id="stLibBtn" type="button" aria-label="Ritimlerim" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button>
+    <div class="st-name"><input id="reName" type="text" maxlength="40" placeholder="Ritmin adı" aria-label="Ritmin adı" autocomplete="off"><button class="st-ib" id="reMore" type="button" aria-label="Diğer işlemler" aria-haspopup="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
+      <div class="red-menu st-menu" id="reMenu" hidden>
+        <button type="button" data-act="dup">Kopyasını oluştur</button>
+        <button type="button" data-act="export">Dışa aktar (dosya)</button>
+        <button type="button" data-act="import">İçe aktar (dosyadan)</button>
+        <button type="button" data-act="del" class="danger">Bu ritmi sil</button>
+      </div>
+    </div>
+    <span class="st-sp"></span>
+    <div class="st-act">
+      <button class="st-ib" id="stUndo" type="button" aria-label="Geri al" title="Geri al"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 010 12h-3"/></svg></button>
+      <button class="st-ib" id="stRedo" type="button" aria-label="Yinele" title="Yinele"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M15 14l5-5-5-5"/><path d="M20 9H10a6 6 0 000 12h3"/></svg></button>
+      <button class="st-save" id="reSave" type="button"><i aria-hidden="true"></i>Kaydet</button>
+    </div>
+    <div class="st-ctl">
+      <div class="st-trans">
+        <button class="st-play" id="rePlay" type="button" aria-pressed="false" aria-label="Çal"><svg class="i-play" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg><svg class="i-stop" width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2" fill="currentColor"/></svg></button>
+        <div class="st-seg" id="stPm" role="group" aria-label="Çalma biçimi"><button type="button" data-pm="loop" class="on">Bölüm döngüsü</button><button type="button" data-pm="flow">Akış</button></div>
+        <button class="st-ib" id="stMet" type="button" aria-pressed="false" aria-label="Metronom" title="Metronom"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 3h6l4 18H5z"/><path d="M12 17l5-9"/></svg></button>
+      </div>
+      <div class="st-fld st-tempo"><i>TEMPO</i><button type="button" id="reTDn" aria-label="Tempo azalt">−</button><input id="reBpm" type="text" inputmode="numeric" aria-label="Tempo" value="96"><button type="button" id="reTUp" aria-label="Tempo artır">+</button><button type="button" class="st-tap" id="stTap" title="Ritme göre birkaç kez dokun">TAP</button></div>
+      <label class="st-fld"><i>ÖLÇÜ</i><select id="reMeter" aria-label="Ölçü"></select></label>
+      <label class="st-fld st-setf"><i>SET</i><select id="reSet" aria-label="Ses seti"></select></label>
+      <button class="st-ib" id="reKit" type="button" aria-label="Seslerim" title="Kendi seslerin"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 18V6l11-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></button>
+      <label class="st-fld st-swf"><i>SWING</i><input type="range" id="reSwing" min="0" max="60" value="0" aria-label="Sallantı"><b id="stSwV">0</b></label>
+
     </div>
     <input type="file" id="reFile" accept=".json,application/json" hidden>
+  </header>
+  <aside class="st-lib" id="stLib" aria-label="Ritimlerim">
+    <label class="st-q"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="stQ" type="search" placeholder="Ritim ara" autocomplete="off" aria-label="Ritim ara"></label>
+    <div class="st-scroll">
+      <h4>Ritimlerim <button type="button" id="stNew">＋ Yeni</button></h4>
+      <div id="stMine"></div>
+      <h4>Hazırdan başla</h4>
+      <div id="stPre"></div>
+    </div>
+    <div class="st-libfoot"><button type="button" id="stImp">İçe aktar</button><button type="button" id="stExp">Dışa aktar</button></div>
+  </aside>
+  <div class="st-main">
+    <div class="st-arr" id="reTabs" role="tablist" aria-label="Bölümler"></div>
+    <div class="st-tools">
+      <div class="st-seg" id="reMode" role="group" aria-label="Araç">
+        <button type="button" data-m="draw" class="on"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16z"/></svg>Çiz</button>
+        <button type="button" data-m="erase"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 20h11M5 15l8-9 6 6-6 7H9z"/></svg>Sil</button>
+        <button type="button" data-m="vel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 20V10M12 20V4M18 20v-7"/></svg>Güç</button>
+      </div>
+      <label class="st-chip"><span>Kopyala</span><select id="reCopy" aria-label="Başka bölümden kopyala"></select></label>
+      <button type="button" class="st-chip" id="reClear">Temizle</button>
+      <span class="st-sp"></span>
+      <span class="st-info" id="stInfo" aria-live="polite"></span>
+    </div>
+    <div class="st-gridw" id="reWrap"><div class="st-grid" id="reGrid"></div></div>
   </div>
-  <div class="red-tools">
-    <label>Ölçü <select id="reMeter"></select></label>
-    <label>Tempo <span class="red-tempo"><button type="button" id="reTDn" aria-label="Tempo azalt">−</button><input id="reBpm" type="number" inputmode="numeric" min="40" max="240" value="96" aria-label="Tempo"><button type="button" id="reTUp" aria-label="Tempo artır">+</button></span></label>
-    <label>Ses seti <select id="reSet"></select></label>
-    <button class="rbtn" id="reKit" type="button" style="height:40px">Seslerim…</button>
-    <label>Sallantı (swing) <input type="range" id="reSwing" min="0" max="60" value="0" aria-label="Sallantı"></label>
-    <label>Aç <select id="reFrom"><option value="">Ritim aç ya da hazırdan başla…</option></select></label>
-  </div>
-  <div class="red-tabs" id="reTabs">
-    <button class="tab" data-p="giris" type="button">Giriş</button>
-    <button class="tab" data-p="kita" type="button">Kıta</button>
-    <button class="tab" data-p="nakarat" type="button">Nakarat</button>
-    <button class="tab" data-p="ara" type="button">Ara</button>
-    <button class="tab" data-p="dolgu" type="button">Dolgu</button>
-    <span class="sp"></span>
-    <span class="red-seg" id="reMode" role="group" aria-label="Dokunma modu"><button type="button" data-m="hit" class="cur">Vuruş</button><button type="button" data-m="vel">Güç</button></span>
-    <button class="small" id="reCopy" type="button">Kıta'dan kopyala</button>
-    <button class="small" id="reClear" type="button">Temizle</button>
-  </div>
-  <div class="red-gridwrap" id="reWrap"><div class="red-grid" id="reGrid"></div></div>
+  <footer class="st-bot" id="reHelp"><span class="kb"><kbd>Boşluk</kbd>çal / durdur</span><span class="kb"><kbd>1–6</kbd>bölüm</span><span class="kb"><kbd>Ctrl Z</kbd>geri al</span><span>Dolu kutuyu yukarı ya da aşağı sürükle: ses şiddeti. Satır adına dokun: sesi dinle. Boş bölüm Kıta'yı çalar.</span></footer>
   <div class="kitwrap" id="kitEd" hidden>
     <div class="kitbox" role="dialog" aria-label="Kendi ses setim">
       <div class="kb-top"><b>Kendi ses setim</b><span class="sp"></span><button type="button" class="rbtn" id="kbClose" aria-label="Kapat">✕</button></div>
@@ -1499,7 +1784,6 @@ body{margin:0}
       <input type="file" id="kbFile" accept="audio/*,.wav,.mp3,.m4a,.aif,.aiff,.ogg" hidden>
     </div>
   </div>
-  <p class="red-help" id="reHelp">Kutucuğa dokun: vuruş ekle / sil. Parmağını sürükleyerek art arda doldurabilirsin. <b>Güç</b> modunda dokundukça vuruş sertleşir / yumuşar (S sert · N normal · Y yumuşak). Satır adına dokun: sesi dinle. Boş bıraktığın bölüm Kıta'yı çalar.</p>
 </div>
 <div class="askwrap" id="guideBox" hidden role="dialog" aria-label="Kullanım kılavuzu"><div class="askbox lgbox">
   <div class="gm-top"><b>Kullanım kılavuzu</b><button type="button" class="btn" id="gdClose">Kapat</button></div>
@@ -3440,12 +3724,12 @@ function applyDrummer(ev, type){
 /* bar building: events are {b: beat offset, v: voice, a: strong} */
 function barBeats(id){ const st = STYLES[id]; return st.t[Object.keys(st.t)[0]].length / st.per; }
 const GROOVES = {"s1": {"A": {"k": "X.......X.x.....", "s": "....X..g....X...", "h": "X.x.x.x.X.x.x.x."}, "B": {"k": "X.......X.x...x.", "s": "....X..g....X..g", "h": "X.x.x.x.X.x.x...", "o": "..............x."}, "M": {"k": "X.......X.x.....", "s": "....X..g....X.X.", "h": "X.x.x.x.X.x.....", "1": ".............x..", "2": "...............X"}}, "s2": {"A": {"k": "X.........x.....", "s": "........X.......", "h": "X.x.x.x.X.x.x.x."}, "B": {"k": "X.........x...x.", "s": "........X......g", "h": "X.x.x.x.X.x.x...", "o": "..............x."}, "M": {"k": "X.........x.....", "s": "........X...X.X.", "h": "X.x.x.x.X.x.....", "1": ".............x..", "2": "...............X"}}, "s3": {"A": {"k": "X......x..x.....", "s": "....X.......X...", "h": "X.xgX.xgX.xgX.xg"}, "B": {"k": "X......x..x...x.", "s": "....X.......X..g", "h": "X.xgX.xgX.xgX..g", "o": "..............x."}, "M": {"k": "X......x..x.....", "s": "....X.......X.X.", "h": "X.xgX.xgX.xg....", "1": ".............x..", "2": "...............X"}}, "s4": {"A": {"k": "X.......X.......", "s": "....x.......x...", "h": "X...X...X...X..."}, "B": {"k": "X.......X.....x.", "s": "....x.......x..g", "h": "X...X...X...X..."}, "M": {"k": "X.......X.......", "s": "....x.......X.X.", "h": "X...X...X.......", "1": ".............x..", "2": "...............X"}}, "s5": {"A": {"k": "X.....x...x.....", "s": "....X.......X...", "h": "X.x.x.x.X.x.x.x."}, "B": {"k": "X.....x...x...x.", "s": "....X.......X..g", "h": "X.x.x.x.X.x.x...", "o": "..............x."}, "M": {"k": "X.....x...x.....", "s": "....X.......X.X.", "h": "X.x.x.x.X.x.....", "1": ".............x..", "2": "...............X"}}, "s6": {"A": {"k": "X.......X.......", "s": "....X.......X...", "h": "XgxgXgxgXgxgXgxg"}, "B": {"k": "X.......X.....x.", "s": "....X.......X..g", "h": "XgxgXgxgXgxgXg.g", "o": "..............x."}, "M": {"k": "X.......X.......", "s": "....X.......X.X.", "h": "XgxgXgxgXgxg....", "1": ".............x..", "2": "...............X"}}, "s7": {"A": {"k": "X..x....X..x....", "s": "....X.......X...", "h": "X.x.x.x.X.x.x.x."}, "B": {"k": "X..x....X..x..x.", "s": "....X.......X..g", "h": "X.x.x.x.X.x.x...", "o": "..............x."}, "M": {"k": "X..x....X..x....", "s": "....X.......X.X.", "h": "X.x.x.x.X.x.....", "1": ".............x..", "2": "...............X"}}, "s8": {"A": {"k": "X.......x.x.....", "s": "....X.......X..g", "r": "X.x.x.x.X.x.x.x."}, "B": {"k": "X.......x.x...x.", "s": "....X.......X..g", "r": "X.x.x.x.X.x.x.x."}, "M": {"k": "X.......x.x.....", "s": "....X.......X.X.", "r": "X.x.x.x.X.x.....", "1": ".............x..", "2": "...............X"}}, "p1": {"A": {"k": "X.....x.X.....x.", "s": "....X..g.g..X...", "h": "XgxgXgxgXgxgXgxg"}, "B": {"k": "X.....x.X.....x.", "s": "....X..g.g..X..g", "h": "XgxgXgxgXgxgXg.g", "o": "..............x."}, "M": {"k": "X.....x.X.......", "s": "....X..g.g..X.X.", "h": "XgxgXgxgXgxg....", "1": ".............x..", "2": "...............X"}}, "p2": {"A": {"k": "X..x..x.X.x...x.", "s": "....X..g.g..X..g", "h": "XgxgXgxgXgxgXgxg"}, "B": {"k": "X..x..x.X.x...x.", "s": "....X..g.g..X..g", "h": "XgxgXgxgXgxgXg.g", "o": "..............x."}, "M": {"k": "X..x..x.X.x.....", "s": "....X..g.g..X.X.", "h": "XgxgXgxgXgxg....", "1": ".............x..", "2": "...............X"}}, "p3": {"A": {"k": "X.......X.X.....", "s": "....X.......X...", "h": "X.X.X.X.X.X.X.X."}, "B": {"k": "X.......X.X...x.", "s": "....X.......X..g", "h": "X.X.X.X.X.X.X...", "o": "..............x."}, "M": {"k": "X.......X.X.....", "s": "....X.......X.X.", "h": "X.X.X.X.X.X.....", "1": ".............x..", "2": "...............X"}}, "p4": {"A": {"k": "X..X..X.X..X....", "s": "....X.......X...", "h": "x.x.x.x.x.x.x.x."}, "B": {"k": "X..X..X.X..X..x.", "s": "....X.......X..g", "h": "x.x.x.x.x.x.x...", "o": "..............x."}, "M": {"k": "X..X..X.X..X....", "s": "....X.......X.X.", "h": "x.x.x.x.x.x.....", "1": ".............x..", "2": "...............X"}}, "p5": {"A": {"k": "X.x.....X.x.....", "s": "....X.......X.X.", "h": "X.x.X.x.X.x.X.x."}, "B": {"k": "X.x.....X.x...x.", "s": "....X.......X.Xg", "h": "X.x.X.x.X.x.X...", "o": "..............x."}, "M": {"k": "X.x.....X.x.....", "s": "....X.......X.X.", "h": "X.x.X.x.X.x.....", "1": ".............x..", "2": "...............X"}}, "p6": {"A": {"k": "X...X...X...X...", "s": "....X.......X...", "h": "x.x.x.x.x.x.x.x."}, "B": {"k": "X...X...X...X.x.", "s": "....X.......X..g", "h": "x.x.x.x.x.x.x...", "o": "..............x."}, "M": {"k": "X...X...X...X...", "s": "....X.......X.X.", "h": "x.x.x.x.x.x.....", "1": ".............x..", "2": "...............X"}}, "p7": {"A": {"k": "X..X......X.....", "s": "....X..X....X...", "h": "XgxgXgxgXgxgXgxg"}, "B": {"k": "X..X......X...x.", "s": "....X..X....X..g", "h": "XgxgXgxgXgxgXg.g", "o": "..............x."}, "M": {"k": "X..X......X.....", "s": "....X..X....X.X.", "h": "XgxgXgxgXgxg....", "1": ".............x..", "2": "...............X"}}, "p8": {"A": {"k": "X...X...X...X...", "s": "...X..X....X..X.", "h": "x.x.x.x.x.x.x.x."}, "B": {"k": "X...X...X...X.x.", "s": "...X..X....X..Xg", "h": "x.x.x.x.x.x.x...", "o": "..............x."}, "M": {"k": "X...X...X...X...", "s": "...X..X....XX.X.", "h": "x.x.x.x.x.x.....", "1": ".............x..", "2": "...............X"}}, "d1": {"A": {"k": "X...X...X...X...", "s": "....X.......X...", "o": "..x...x...x...x.", "h": "xg..xg..xg..xg.."}, "B": {"k": "X...X...X...X.x.", "s": "....X.......X..g", "o": "..x...x...x...x.", "h": "xg..xg..xg..xg.."}, "M": {"k": "X...X...X...X...", "s": "....X.......X.X.", "o": "..x...x...x.....", "h": "xg..xg..xg......", "1": ".............x..", "2": "...............X"}}, "d2": {"A": {"k": "X..X..X.X..X..X.", "s": "....X.......X...", "o": "..x...x...x...x.", "h": "x...x...x...x..."}, "B": {"k": "X..X..X.X..X..X.", "s": "....X.......X..g", "o": "..x...x...x...x.", "h": "x...x...x...x..."}, "M": {"k": "X..X..X.X..X....", "s": "....X.......X.X.", "o": "..x...x...x.....", "h": "x...x...x.......", "1": ".............x..", "2": "...............X"}}, "d3": {"A": {"k": "X.......X.......", "s": "..X...x.....X...", "h": "x.x.x.x.x.x.x.x.", "2": "X.......X......."}, "B": {"k": "X.......X.....x.", "s": "..X...x.....X..g", "h": "x.x.x.x.x.x.x...", "2": "X.......X.......", "o": "..............x."}, "M": {"k": "X.......X.......", "s": "..X...x.....X.X.", "h": "x.x.x.x.x.x.....", "2": "...............X", "1": ".............x.."}}, "d4": {"A": {"k": "X.X...X.X.X...X.", "s": "....X.......X...", "h": "xgxgxgxgxgxgxgxg"}, "B": {"k": "X.X...X.X.X...X.", "s": "....X.......X..g", "h": "xgxgxgxgxgxgxg.g", "o": "..............x."}, "M": {"k": "X.X...X.X.X.....", "s": "....X.......X.X.", "h": "xgxgxgxgxgxg....", "1": ".............x..", "2": "...............X"}}, "d5": {"A": {"k": "X...X...X...X...", "s": "....X.......X...", "o": "..X...X...X...X.", "h": "xg..xg..xg..xg.."}, "B": {"k": "X...X...X...X.x.", "s": "....X.......X..g", "o": "..X...X...X...X.", "h": "xg..xg..xg..xg.."}, "M": {"k": "X...X...X...X...", "s": "....X.......X.X.", "o": "..X...X...X.....", "h": "xg..xg..xg......", "1": ".............x..", "2": "...............X"}}, "d6": {"A": {"k": "X..X..X...X..X..", "s": "....X..X....X...", "h": "x.x.x.x.x.x.x.x."}, "B": {"k": "X..X..X...X..Xx.", "s": "....X..X....X..g", "h": "x.x.x.x.x.x.x...", "o": "..............x."}, "M": {"k": "X..X..X...X.....", "s": "....X..X....X.X.", "h": "x.x.x.x.x.x.....", "1": ".............x..", "2": "...............X"}}, "d7": {"A": {"k": "X..X....X..X....", "s": "......X.......X.", "h": "x.x.x.x.x.x.x.x."}, "B": {"k": "X..X....X..X..x.", "s": "......X.......Xg", "h": "x.x.x.x.x.x.x...", "o": "..............x."}, "M": {"k": "X..X....X..X....", "s": "......X.....X.X.", "h": "x.x.x.x.x.x.....", "1": ".............x..", "2": "...............X"}}, "d8": {"A": {"k": "X.......X.......", "s": "..X..X......X...", "h": "x...x...x...x...", "2": "X..x....X......."}, "B": {"k": "X.......X.....x.", "s": "..X..X......X..g", "h": "x...x...x...x...", "2": "X..x....X......."}, "M": {"k": "X.......X.......", "s": "..X..X......X.X.", "h": "x...x...x.......", "2": "...............X", "1": ".............x.."}}, "r1": {"A": {"k": "X.....X.X.......", "s": "....X.......X...", "h": "X.x.X.x.X.x.X.x."}, "B": {"k": "X.....X.X.....x.", "s": "....X.......X..g", "h": "X.x.X.x.X.x.X...", "o": "..............x."}, "M": {"k": "X.....X.X.......", "s": "....X.......X.X.", "h": "X.x.X.x.X.x.....", "1": ".............x..", "2": "...............X"}}, "r2": {"A": {"k": "X.....x.........", "s": "........X.......", "h": "X.x.X.x.X.x.X.x."}, "B": {"k": "X.....x.......x.", "s": "........X......g", "h": "X.x.X.x.X.x.X...", "o": "..............x."}, "M": {"k": "X.....x.........", "s": "........X...X.X.", "h": "X.x.X.x.X.x.....", "1": ".............x..", "2": "...............X"}}, "r3": {"A": {"k": "X.X.X.X.X.X.X.X.", "s": "....X.......X...", "h": "X.x.X.x.X.x.X.x."}, "B": {"k": "X.X.X.X.X.X.X.X.", "s": "....X.......X..g", "h": "X.x.X.x.X.x.X...", "o": "..............x."}, "M": {"k": "X.X.X.X.X.X.X...", "s": "....X.......X.X.", "h": "X.x.X.x.X.x.....", "1": ".............x..", "2": "...............X"}}, "r4": {"A": {"k": "X..x..X...X..x..", "s": "....X..g....X...", "h": "X.x.X.x.X.x.X.x."}, "B": {"k": "X..x..X...X..xx.", "s": "....X..g....X..g", "h": "X.x.X.x.X.x.X...", "o": "..............x."}, "M": {"k": "X..x..X...X.....", "s": "....X..g....X.X.", "h": "X.x.X.x.X.x.....", "1": ".............x..", "2": "...............X"}}, "r5": {"A": {"k": "X.....X.X.....x.", "s": "....X.......X...", "h": "X..xX..xX..xX..x"}, "B": {"k": "X.....X.X.....x.", "s": "....X.......X..g", "h": "X..xX..xX..xX..x"}, "M": {"k": "X.....X.X.......", "s": "....X.......X.X.", "h": "X..xX..xX..x....", "1": ".............x..", "2": "...............X"}}, "r6": {"A": {"k": "X.....X.X.......", "s": "....X.......X...", "2": "X.x.X.x.X.x.X.x."}, "B": {"k": "X.....X.X.....x.", "s": "....X.......X..g", "2": "X.x.X.x.X.x.X.x."}, "M": {"k": "X.....X.X.......", "s": "....X.......X.X.", "2": "...............X", "1": ".............x.."}}, "c1": {"A": {"k": "X.........x.....", "s": "........X.......", "h": "x...x...x...x..."}, "B": {"k": "X.........x...x.", "s": "........X......g", "h": "x...x...x...x...", "o": "..............x."}, "M": {"k": "X.........x.X...", "s": "........X...X.xX", "h": "x...x...x.......", "1": ".............x..", "2": "...............X"}}, "c2": {"A": {"k": "X.......x.x.....", "s": "..g.X.g...g.X.g."}, "B": {"k": "X.......x.x...x.", "s": "..g.X.g...g.X.gg"}, "M": {"k": "X.......x.x.X...", "s": "..g.X.g...g.X.xX", "1": ".............x..", "2": "...............X"}}, "c3": {"A": {"k": "X.......X.x.....", "s": "....X.......X...", "h": "x.x.x.x.x.x.x.x."}, "B": {"k": "X.......X.x...x.", "s": "....X.......X..g", "h": "x.x.x.x.x.x.x.x.", "o": "..............x."}, "M": {"k": "X.......X.x.X...", "s": "....X.......X.xX", "h": "x.x.x.x.x.x.....", "1": ".............x..", "2": "...............X"}}, "c4": {"A": {"k": "X.....x.X.......", "s": "g.g.X.g.g.g.X.g."}, "B": {"k": "X.....x.X.....x.", "s": "g.g.X.g.g.g.X.gg"}, "M": {"k": "X.....x.X...X...", "s": "g.g.X.g.g.g.X.xX", "1": ".............x..", "2": "...............X"}}, "c5": {"A": {"k": "X.....x.X.....x.", "s": "....X..g.g..X...", "h": "x.x.x.x.x.x.x.x."}, "B": {"k": "X.....x.X.....x.", "s": "....X..g.g..X..g", "h": "x.x.x.x.x.x.x.x.", "o": "..............x."}, "M": {"k": "X.....x.X...X...", "s": "....X..g.g..X.xX", "h": "x.x.x.x.x.x.....", "1": ".............x..", "2": "...............X"}}, "c6": {"A": {"k": "X.....X.X.....X.", "s": "..g.X.g...g.X.g.", "1": ".......x.......x"}, "B": {"k": "X.....X.X.....X.", "s": "..g.X.g...g.X.gg", "1": ".......x.......x"}, "M": {"k": "X.....X.X...X...", "s": "..g.X.g...g.X.xX", "1": ".............x..", "2": "...............X"}}, "c7": {"A": {"k": "X..x..x.X..x....", "s": "gg.gX.gg.g.gX.gg"}, "B": {"k": "X..x..x.X..x..x.", "s": "gg.gX.gg.g.gX.gg"}, "M": {"k": "X..x..x.X..xX...", "s": "gg.gX.gg.g.gX.xX", "1": ".............x..", "2": "...............X"}}, "c8": {"A": {"k": "X..x..x...x..x..", "s": "....X..g.g..X..g", "h": "x.x.x.x.x.x.x.x."}, "B": {"k": "X..x..x...x..xx.", "s": "....X..g.g..X..g", "h": "x.x.x.x.x.x.x.x.", "o": "..............x."}, "M": {"k": "X..x..x...x.X...", "s": "....X..g.g..X.xX", "h": "x.x.x.x.x.x.....", "1": ".............x..", "2": "...............X"}}, "c9": {"A": {"k": "X..x....X..x....", "s": "..x..x....x..x..", "h": "xgxgxgxgxgxgxgxg"}, "B": {"k": "X..x....X..x..x.", "s": "..x..x....x..x.g", "h": "xgxgxgxgxgxgxgxg", "o": "..............x."}, "M": {"k": "X..x....X..xX...", "s": "..x..x....x.X.xX", "h": "xgxgxgxgxgxg....", "1": ".............x..", "2": "...............X"}}, "c10": {"A": {"k": "X...X...X...X...", "s": "....X.......X...", "h": "..x...x...x...x."}, "B": {"k": "X...X...X...X.x.", "s": "....X.......X..g", "h": "..x...x...x...x.", "o": "..............x."}, "M": {"k": "X...X...X...X...", "s": "....X.......X.xX", "h": "..x...x...x.....", "1": ".............x..", "2": "...............X"}}, "c11": {"A": {"k": "X..x....X..x....", "s": "....X.......X.x.", "h": "x.x.x.x.x.x.x.x."}, "B": {"k": "X..x....X..x..x.", "s": "....X.......X.xg", "h": "x.x.x.x.x.x.x.x.", "o": "..............x."}, "M": {"k": "X..x....X..xX...", "s": "....X.......X.xX", "h": "x.x.x.x.x.x.....", "1": ".............x..", "2": "...............X"}}, "c12": {"A": {"k": "X..x..x.X..x..x.", "s": "....X..g....X..g", "h": "x.x.x.x.x.x.x.x."}, "B": {"k": "X..x..x.X..x..x.", "s": "....X..g....X..g", "h": "x.x.x.x.x.x.x.x.", "o": "..............x."}, "M": {"k": "X..x..x.X..xX...", "s": "....X..g....X.xX", "h": "x.x.x.x.x.x.....", "1": ".............x..", "2": "...............X"}}, "c13": {"A": {"k": "X...x...X...x...", "s": "..x.X.x...x.X.x."}, "B": {"k": "X...x...X...x.x.", "s": "..x.X.x...x.X.xg"}, "M": {"k": "X...x...X...X...", "s": "..x.X.x...x.X.xX", "1": ".............x..", "2": "...............X"}}, "c14": {"A": {"k": "X..x..x.X.......", "s": "....X..x....X.x.", "h": "x.x.x.x.x.x.x.x."}, "B": {"k": "X..x..x.X.....x.", "s": "....X..x....X.xg", "h": "x.x.x.x.x.x.x.x.", "o": "..............x."}, "M": {"k": "X..x..x.X...X...", "s": "....X..x....X.xX", "h": "x.x.x.x.x.x.....", "1": ".............x..", "2": "...............X"}}};
-const LVL = { X: 1, x: .72, g: .34 };
+const LVL = { X: 1, x: .72, g: .34, "1": .1, "2": .2, "3": .3, "4": .4, "5": .5, "6": .6, "7": .7, "8": .8, "9": .9 };
 function grooveEvents(id, variant){
   const st = STYLES[id], ev = [];
   if(st.custom){   // kendi ritmi: o bölümün deseni, boşsa Kıta
     const bar = partHas(st.parts[section]) ? st.parts[section] : st.parts.kita;
-    for(const [v, pat] of Object.entries(bar)) for(let i = 0; i < pat.length; i++) if(LVL[pat[i]]) ev.push({ b: i / st.per, v, a: LVL[pat[i]] });
+    for(const [v, pat] of Object.entries(bar)){ if(st.mute && st.mute[v]) continue; const g = st.mix && st.mix[v] != null ? st.mix[v] : 1; for(let i = 0; i < pat.length; i++) if(LVL[pat[i]]) ev.push({ b: i / st.per, v, a: LVL[pat[i]] * g }); }
     return ev;
   }
   let bar = st[variant] || st.A;
@@ -3484,6 +3768,10 @@ function fillEvents(id, len){
 function fillLen(id){ const L = barBeats(id); return STYLES[id].fam === "kit" ? Math.min(2, L / 2) : Math.min(1.5, L / 2); }
 function buildBar(id, type, variant){
   const L = barBeats(id);
+  if(type === "end" && STYLES[id].custom && partHas(STYLES[id].parts.bitis)){
+    const c = STYLES[id], ev = []; for(const [v, pat] of Object.entries(c.parts.bitis)){ if(c.mute && c.mute[v]) continue; const g = c.mix && c.mix[v] != null ? c.mix[v] : 1; for(let i = 0; i < pat.length; i++) if(LVL[pat[i]]) ev.push({ b: i / c.per, v, a: LVL[pat[i]] * g }); }
+    return ev.sort((x, y) => x.b - y.b);
+  }
   if(type === "end"){
     const fam = STYLES[id].fam;
     const ch = $("rChime").checked ? [{ b: 0, v: "W", a: true }] : [];
@@ -3492,7 +3780,8 @@ function buildBar(id, type, variant){
     return [{ b: 0, v: "c", a: true }];
   }
   const cst = STYLES[id].custom ? STYLES[id] : null;
-  const dolguEv = () => { const ev = []; for(const [v, pat] of Object.entries(cst.parts.dolgu)) for(let i = 0; i < pat.length; i++) if(LVL[pat[i]]) ev.push({ b: i / cst.per, v, a: LVL[pat[i]] }); return ev; };
+  const partEv = p => { const ev = []; for(const [v, pat] of Object.entries(cst.parts[p])){ if(cst.mute && cst.mute[v]) continue; const g = cst.mix && cst.mix[v] != null ? cst.mix[v] : 1; for(let i = 0; i < pat.length; i++) if(LVL[pat[i]]) ev.push({ b: i / cst.per, v, a: LVL[pat[i]] * g }); } return ev; };
+  const dolguEv = () => partEv("dolgu");
   if(cst && type === "groove+fill" && partHas(cst.parts.dolgu)) return dolguEv().sort((x, y) => x.b - y.b);
   if(cst && type === "intro"){
     const from = L - fillLen(id), ev = grooveEvents(id, "A").filter(e => e.b < from - 0.001);
@@ -3547,7 +3836,7 @@ function startBar(type){
   levelAt(barT);
   if(type === "end") crashNext = false;
   if(crashNext && STYLES[styleId].fam !== "click"){ barEv.unshift({ b: 0, v: "x", a: true }); crashNext = false; }
-  const L = type === "end" ? 1 : barBeats(styleId);
+  const L = type === "end" ? (STYLES[styleId].custom && partHas(STYLES[styleId].parts.bitis) ? barBeats(styleId) : 1) : barBeats(styleId);
   for(let b = 0; b < L - 0.001; b++) visQ.push({ t: barT + b * spb(), beat: b });
 }
 function schedule(){
@@ -3565,7 +3854,8 @@ function schedule(){
       if(barType === "end"){
         // last hit is scheduled: let the cymbal ring out, then tidy up
         clearInterval(timer); timer = 0;
-        const left = Math.max(0, (barT - actx.currentTime) * 1000) + 2600;
+        const lastB = barEv.length ? barEv[barEv.length - 1].b : 0;
+        const left = Math.max(0, (barT + lastB * spb() - actx.currentTime) * 1000) + 2600;
         clearTimeout(endTimer); endTimer = setTimeout(() => finishStop(), left);
         return;
       }
@@ -3914,6 +4204,7 @@ function drawHome(){
   const ip = document.createElement("span"); ip.className = "plus"; ip.textContent = "⤓";
   const is = document.createElement("small"); is.textContent = rL("Not Defteri, Word, ChordPro", "Notepad, Word, ChordPro");
   imp.append(ip, document.createTextNode(rL("Şarkı içe aktar", "Import songs")), is); imp.onclick = () => openImport(); g.append(imp);
+  try{ drawHomePages(); }catch(e){}
 }
 function showHome(){
   curRep = null;
@@ -4811,7 +5102,7 @@ function askText(msg, placeholder, okLabel, value, maxLen){
   });
 }
 /* seçim penceresi: Android'in kendi açılır listesi küçük ekranda taşıyor; sahnede büyük, dokunması kolay bir liste */
-const PICK_SEL = "#rStyle,#rDrummer,#fRitim,#reMeter,#reSet,#reFrom,#kbBase,#langSel,.ks-act";
+const PICK_SEL = "#rStyle,#rDrummer,#fRitim,#reMeter,#reSet,#reCopy,#kbBase,#langSel,.ks-act";
 const PICK_ON = !/iP(ad|hone|od)/.test(navigator.userAgent) && !(navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 let pickSel = null, pickOpenedAt = 0;
 function openPicker(sel){
@@ -4857,7 +5148,7 @@ const ED_ROWS = [
   { v: "r", n: "Çan",          c: "#c58bff" },
   { v: "x", n: "Zil",          c: "#ff6bb0" }
 ];
-const ED_PARTS = ["giris", "kita", "nakarat", "ara", "dolgu"];
+const ED_PARTS = ["giris", "kita", "nakarat", "ara", "dolgu", "bitis"];
 const METERS = [
   { id: "2/4", per: 4, g: [4,4] }, { id: "3/4", per: 4, g: [4,4,4] }, { id: "4/4", per: 4, g: [4,4,4,4] },
   { id: "5/8 (2+3)", per: 4, g: [4,6] }, { id: "5/8 (3+2)", per: 4, g: [6,4] },
@@ -4870,18 +5161,19 @@ const LL = (tr, en) => { try{ return LANG === "en" ? en : tr; }catch(e){ return 
 const VELT = l => l === "X" ? LL("S", "H") : l === "x" ? LL("N", "M") : LL("Y", "S");
 const stepsOf = m => m.g.reduce((a, b) => a + b, 0);
 const meterOf = d => METERS.find(m => m.id === (d && d.meter)) || METERS[2];
-function partHas(p){ return !!p && Object.values(p).some(s => typeof s === "string" && /[Xxg]/.test(s)); }
-function fixPart(p, n){ const o = {}; ED_ROWS.forEach(r => { let s = String((p && p[r.v]) || "").replace(/[^Xxg.]/g, ".").slice(0, n); o[r.v] = s + ".".repeat(n - s.length); }); return o; }
+function partHas(p){ return !!p && Object.values(p).some(s => typeof s === "string" && /[Xxg1-9]/.test(s)); }
+function fixPart(p, n){ const o = {}; ED_ROWS.forEach(r => { let s = String((p && p[r.v]) || "").replace(/[^Xxg1-9.]/g, ".").slice(0, n); o[r.v] = s + ".".repeat(n - s.length); }); return o; }
 let myRhythms = LS.get("sp.myr", {}) || {};
 function customStyle(d){
   const m = meterOf(d), n = stepsOf(m), parts = {};
   ED_PARTS.forEach(p => parts[p] = fixPart(d.parts && d.parts[p], n));
   const kita = parts.kita;
   return { name: d.name || "Ritmim", fam: "kit", per: m.per, group: MY_GROUP, custom: true, rev: d.updatedAt || 0,
-    swing: Math.max(0, Math.min(60, +d.swing || 0)) / 100, set: SETS[d.set] ? d.set : "cajon", meter: m, parts, bpm: +d.bpm || 0,
+    swing: Math.max(0, Math.min(60, +d.swing || 0)) / 100, set: SETS[d.set] ? d.set : "cajon", meter: m, parts, bpm: +d.bpm || 0, mix: d.mix || {}, mute: d.mute || {},
     A: kita, B: partHas(parts.nakarat) ? parts.nakarat : kita, M: kita, t: kita };
 }
 function registerMine(){
+  try{ if(!$("home").hidden) setTimeout(drawHomePages, 0); }catch(e){}
   for(const id of Object.keys(STYLES)) if(STYLES[id].custom && !myRhythms[id]) delete STYLES[id];
   for(const [id, d] of Object.entries(myRhythms)) STYLES[id] = customStyle(d);
   const sel = $("rStyle"); let og = sel.querySelector("optgroup[data-my]");
@@ -4889,7 +5181,6 @@ function registerMine(){
   og.textContent = "";
   Object.entries(myRhythms).sort((a, b) => String(a[1].name || "").localeCompare(String(b[1].name || ""), "tr"))
     .forEach(([id, d]) => { const o = document.createElement("option"); o.value = id; o.textContent = d.name || "Ritmim"; og.append(o); });
-  const nw = document.createElement("option"); nw.value = "__new"; nw.textContent = "＋ Yeni ritim yap…"; og.append(nw);
   if(STYLES[styleId]) sel.value = styleId;
 }
 function applyStyleSet(){
@@ -4924,195 +5215,385 @@ function builtinToDoc(id){
     parts: { giris: evToPart(giris, st.per, n), kita: evToPart(kitaEv, st.per, n), nakarat: evToPart(ev(st.B || st.A), st.per, n), ara: fixPart(null, n), dolgu: evToPart(dolgu, st.per, n) } };
 }
 
+/* ---------- Ritim stüdyosu ----------
+   Ana ekrandan açılır; sahnede ritim yazılmaz. Sol tarafta kütüphane (kendi ritimlerim + hazırdan başla), üstte çalma,
+   tempo, ölçü, set, swing, geri al; ortada bölüm kartları ve ızgara. Kutu içindeki çubuk sesin şiddetidir (GarageBand gibi):
+   dolu kutuyu yukarı / aşağı sürükle. Şiddet 10 basamak: "1"…"9" ve "X" (eski "x" ve "g" de okunur). */
 let ed = null, edTimer = 0, edNext = 0, edStep = 0, edRaf = 0, edQ = [], edNow = -1;
+let edPm = "loop", edMet = false, edSeq = null, edBar = 0, edPlayPart = null, edSolo = {}, edUndo = [], edRedo = [], edSnapAt = 0, edSnapWhy = "";
+let edTool = "draw", edLast = "8";
+const PART_NAME = { giris: "Giriş", kita: "Kıta", nakarat: "Nakarat", ara: "Ara", dolgu: "Dolgu", bitis: "Bitiş" };
+const PART_EMPTY = { giris: ["boş · otomatik giriş", "empty · auto intro"], kita: ["boş", "empty"], nakarat: ["boş · Kıta çalar", "empty · plays Verse"], ara: ["boş · Kıta çalar", "empty · plays Verse"], dolgu: ["boş · otomatik dolgu", "empty · auto fill"], bitis: ["boş · zil ile biter", "empty · cymbal ending"] };
+const lvlChar = f => f >= .95 ? "X" : String(Math.max(1, Math.min(9, Math.round(f * 10))));
+const lvlPct = c => Math.round((LVL[c] || 0) * 100);
+const pn = p => LL(PART_NAME[p], { giris: "Intro", kita: "Verse", nakarat: "Chorus", ara: "Interlude", dolgu: "Fill", bitis: "Ending" }[p]);
 (() => {
   const ms = $("reMeter"); METERS.forEach(m => { const o = document.createElement("option"); o.value = m.id; o.textContent = m.id; ms.append(o); });
-
 })();
-function edFillFrom(){
-  const sel = $("reFrom"); sel.length = 1; const groups = {};
-  for(const [id, st] of Object.entries(STYLES)){
-    if(st.fam === "click") continue;
-    const g = st.group || "Diğer";
-    if(!groups[g]){ groups[g] = document.createElement("optgroup"); groups[g].label = g; sel.append(groups[g]); }
-    const o = document.createElement("option"); o.value = id; o.textContent = st.name; groups[g].append(o);
-  }
-  sel.value = "";
+function edShell(){ return $("rEd"); }
+function edDirty(v){ ed.dirty = v; edShell().classList.toggle("dirty", !!v); }
+function edSnap(why){
+  const now = Date.now();
+  if(why && why === edSnapWhy && now - edSnapAt < 900){ edSnapAt = now; return; }
+  edUndo.push(JSON.stringify({ d: ed.d, part: ed.part })); if(edUndo.length > 100) edUndo.shift();
+  edRedo = []; edSnapAt = now; edSnapWhy = why || ""; edUndoBtns();
+}
+function edUndoBtns(){ $("stUndo").disabled = !edUndo.length; $("stRedo").disabled = !edRedo.length; }
+function edHistory(back){
+  const from = back ? edUndo : edRedo, to = back ? edRedo : edUndo; if(!from.length) return;
+  to.push(JSON.stringify({ d: ed.d, part: ed.part }));
+  const s = JSON.parse(from.pop()); ed.d = s.d; ed.part = s.part; edSnapWhy = ""; edDirty(true); edRender(); edUndoBtns();
 }
 function openRhythmEditor(id, fromStyle){
   if(!proOk("editor")) return;
   if(playing) stopRhythm();
   const own = id && myRhythms[id];
-  ed = { id: own ? id : null, d: own ? JSON.parse(JSON.stringify(myRhythms[id])) : fromStyle ? builtinToDoc(fromStyle) : newDoc(), part: "kita", mode: "hit", dirty: false };
+  ed = { id: own ? id : null, d: own ? JSON.parse(JSON.stringify(myRhythms[id])) : fromStyle ? builtinToDoc(fromStyle) : newDoc(), part: "kita", dirty: false };
   if(!ed.d.parts) ed.d.parts = {};
-  edFillFrom();
-  $("reMenu").hidden = true;
-  $("rEd").hidden = false;
-  edRender();
+  edUndo = []; edRedo = []; edSolo = {}; edUndoBtns();
+  $("reMenu").hidden = true; edShell().classList.remove("libopen");
+  edShell().hidden = false; edDirty(false);
+  edLib(); edRender();
   audio(); ensureKit(ed.d.set).catch(() => {});
+  if(own) LS.set("sp.lastRhythm", id);
 }
+function openStudio(){
+  const last = LS.get("sp.lastRhythm", null);
+  openRhythmEditor(last && myRhythms[last] ? last : (Object.keys(myRhythms)[0] || null), null);
+}
+async function edSwitch(fn){
+  if(ed.dirty){
+    const a = await ask(LL("Bu ritimde kaydedilmemiş değişiklikler var.", "This rhythm has unsaved changes."), [{ k: "save", t: LL("Kaydet", "Save"), c: "pri" }, { k: "drop", t: LL("Kaydetme", "Don't save"), c: "danger" }, { k: "stay", t: LL("Vazgeç", "Cancel") }]);
+    if(a === "stay") return;
+    if(a === "save"){ await edSave(); if(ed.dirty) return; }
+  }
+  edPlay(false); fn();
+}
+/* ---- kütüphane ---- */
+function edMini(d){
+  const m = meterOf(d), n = stepsOf(m), p = fixPart(d.parts && d.parts.kita, n), box = document.createElement("span"); box.className = "st-mini";
+  for(let i = 0; i < n; i++){ const e = document.createElement("i"); e.className = /[^.]/.test(p.k[i]) ? "k" : /[^.]/.test(p.s[i]) ? "s" : /[^.]/.test(p.h[i] + p.a[i]) ? "h" : ""; box.append(e); }
+  return box;
+}
+function edLib(){
+  const q = $("stQ").value.trim().toLocaleLowerCase("tr"), mine = $("stMine"), pre = $("stPre");
+  mine.textContent = ""; pre.textContent = "";
+  const list = Object.entries(myRhythms).filter(([, d]) => !q || String(d.name || "").toLocaleLowerCase("tr").includes(q)).sort((a, b) => (b[1].updatedAt || 0) - (a[1].updatedAt || 0));
+  if(!list.length){ const e = document.createElement("p"); e.className = "st-empty"; e.textContent = q ? LL("Bu adda ritim yok.", "No rhythm with that name.") : LL("Henüz kendi ritmin yok. Yeni'ye bas ya da aşağıdan hazır bir ritimle başla.", "No rhythms of your own yet. Tap New or start from a preset below."); mine.append(e); }
+  for(const [id, d] of list){
+    const b = document.createElement("button"); b.type = "button"; b.className = "st-it" + (ed && ed.id === id ? " cur" : ""); b.dataset.id = id;
+    const a = document.createElement("span"); a.className = "a"; const nm = document.createElement("b"); nm.textContent = d.name || LL("Ritmim", "My rhythm"); nm.dataset.noi18n = "";
+    const mt = document.createElement("span"); mt.textContent = meterOf(d).id.split(" ")[0]; a.append(nm, mt); b.append(a, edMini(d)); mine.append(b);
+  }
+  const groups = {};
+  for(const [id, st] of Object.entries(STYLES)){
+    if(st.fam === "click" || st.custom) continue;
+    const name = LL(st.name, tr1(st.name) || st.name);
+    if(q && !name.toLocaleLowerCase("tr").includes(q)) continue;
+    const g = st.group || "Diğer"; (groups[g] = groups[g] || []).push([id, name]);
+  }
+  for(const [g, items] of Object.entries(groups)){
+    const det = document.createElement("details"); det.className = "st-grp"; if(q) det.open = true;
+    const sm = document.createElement("summary"); sm.textContent = g; const c = document.createElement("span"); c.textContent = items.length; sm.append(c); det.append(sm);
+    for(const [id, name] of items){ const b = document.createElement("button"); b.type = "button"; b.className = "st-pre"; b.dataset.pre = id; b.textContent = name; b.dataset.noi18n = ""; det.append(b); }
+    pre.append(det);
+  }
+}
+$("stQ").addEventListener("input", edLib);
+$("stMine").addEventListener("click", e => { const b = e.target.closest(".st-it"); if(!b || (ed && ed.id === b.dataset.id)) { edShell().classList.remove("libopen"); return; } edSwitch(() => openRhythmEditor(b.dataset.id)); });
+$("stPre").addEventListener("click", e => {
+  const b = e.target.closest(".st-pre"); if(!b) return;
+  edSwitch(() => { openRhythmEditor(null, b.dataset.pre); toast(LL("Başlangıç: ", "Starting from: ") + b.textContent); });
+});
+$("stNew").onclick = () => edSwitch(() => openRhythmEditor(null, null));
+$("stImp").onclick = () => $("reFile").click();
+$("stExp").onclick = () => edExport();
+$("stLibBtn").onclick = () => { const o = !edShell().classList.contains("libopen"); edShell().classList.toggle("libopen", o); $("stLibBtn").setAttribute("aria-expanded", o); };
+edShell().addEventListener("click", e => { if(edShell().classList.contains("libopen") && !e.target.closest(".st-lib") && !e.target.closest("#stLibBtn")) edShell().classList.remove("libopen"); });
+/* ---- çizim ---- */
 function edCellW(n){
-  const w = $("reWrap").clientWidth - 20 - (innerWidth <= 760 ? 100 : 130) - n * 3;
-  return Math.max(22, Math.min(58, Math.floor(w / n)));
+  const wrap = $("reWrap"), head = innerWidth <= 640 ? 118 : 196;
+  return Math.max(26, Math.min(64, Math.floor((wrap.clientWidth - 32 - head - n * 3) / n)));
+}
+function edThumb(P, n){
+  const th = document.createElement("span"); th.className = "th"; th.style.gridTemplateColumns = "repeat(" + n + ",1fr)";
+  for(let i = 0; i < n; i++){ const col = document.createElement("i"); for(const r of ED_ROWS){ const b = document.createElement("b"); const c = P[r.v][i]; if(c !== ".") b.style.background = r.c; col.append(b); } th.append(col); }
+  return th;
+}
+function edTabs(){
+  const d = ed.d, n = stepsOf(meterOf(d)), box = $("reTabs"); box.textContent = "";
+  ED_PARTS.forEach((p, k) => {
+    const P = d.parts[p], has = partHas(P), b = document.createElement("button"); b.type = "button"; b.setAttribute("role", "tab");
+    b.className = "st-sec" + (p === ed.part ? " cur" : "") + (has ? "" : " empty") + (edTimer && edPlayPart === p ? " play" : ""); b.dataset.p = p; b.setAttribute("aria-selected", p === ed.part);
+    const h = document.createElement("span"); h.className = "h"; h.append(pn(p)); const s = document.createElement("span");
+    let cnt = 0; if(has) ED_ROWS.forEach(r => { cnt += (P[r.v].match(/[^.]/g) || []).length; });
+    s.textContent = has ? cnt + LL(" vuruş", " hits") : LL(PART_EMPTY[p][0], PART_EMPTY[p][1]); s.dataset.noi18n = ""; h.append(s);
+    const kk = document.createElement("span"); kk.className = "k"; kk.textContent = k + 1;
+    b.append(h, edThumb(P, n), kk); box.append(b);
+  });
+  const cp = $("reCopy"); cp.textContent = "";
+  const o0 = document.createElement("option"); o0.value = ""; o0.textContent = LL("buraya…", "here…"); cp.append(o0);
+  ED_PARTS.forEach(p => { if(p !== ed.part && partHas(d.parts[p])){ const o = document.createElement("option"); o.value = p; o.textContent = pn(p) + LL("'dan", " →"); o.dataset.noi18n = ""; cp.append(o); } });
+  cp.disabled = cp.length < 2;
 }
 function edRender(){
   const d = ed.d, m = meterOf(d), n = stepsOf(m);
+  if(!d.mix) d.mix = {}; if(!d.mute) d.mute = {};
   ED_PARTS.forEach(p => d.parts[p] = fixPart(d.parts[p], n));
-  $("reName").value = d.name || ""; $("reMeter").value = m.id; $("reBpm").value = d.bpm || 96; $("reSet").value = SETS[d.set] ? d.set : "cajon"; $("reSwing").value = d.swing || 0;
-  document.querySelectorAll("#reTabs .tab").forEach(b => { b.classList.toggle("cur", b.dataset.p === ed.part); b.classList.toggle("empty", !partHas(d.parts[b.dataset.p])); });
-  document.querySelectorAll("#reMode button").forEach(b => b.classList.toggle("cur", b.dataset.m === ed.mode));
-  $("reCopy").hidden = ed.part === "kita";
-  $("rEd").querySelector(".red-menu [data-act=del]").hidden = !ed.id;
-  const grid = $("reGrid"), cw = edCellW(n);
-  grid.style.setProperty("--cw", cw + "px"); grid.style.setProperty("--cell", Math.max(36, Math.min(50, cw + 8)) + "px");
-  grid.style.gridTemplateColumns = "auto repeat(" + n + ", minmax(var(--cw), 1fr))";
+  $("reName").value = d.name || ""; $("reMeter").value = m.id; $("reBpm").value = d.bpm || 96; $("reSet").value = SETS[d.set] ? d.set : "cajon";
+  $("reSwing").value = d.swing || 0; $("stSwV").textContent = d.swing || 0;
+  document.querySelectorAll("#reMode button").forEach(b => b.classList.toggle("on", b.dataset.m === edTool)); edShell().dataset.tool = edTool;
+  document.querySelectorAll("#stPm button").forEach(b => b.classList.toggle("on", b.dataset.pm === edPm));
+  edShell().querySelector("#reMenu [data-act=del]").hidden = !ed.id;
+  edShell().querySelectorAll("#stMine .st-it").forEach(b => b.classList.toggle("cur", b.dataset.id === ed.id));
+  edTabs();
+  const grid = $("reGrid"), cw = edCellW(n), anySolo = Object.values(edSolo).some(Boolean);
+  grid.style.setProperty("--cw", cw + "px");
+  grid.style.gridTemplateColumns = (innerWidth <= 640 ? "118px" : "196px") + " repeat(" + n + ", minmax(var(--cw), 1fr))";
   const starts = new Set(), gi = []; let pos = 0; m.g.forEach((g, k) => { starts.add(pos); for(let j = 0; j < g; j++) gi.push(k); pos += g; });
   const P = d.parts[ed.part], frag = document.createDocumentFragment();
-  const top = document.createElement("div"); top.className = "num"; frag.append(top);
+  const c0 = document.createElement("div"); c0.className = "num c0"; frag.append(c0);
   let cnt = 0;
-  for(let i = 0; i < n; i++){ const x = document.createElement("div"); x.className = "num" + (starts.has(i) ? " beatn" : ""); x.textContent = starts.has(i) ? ++cnt : (m.per === 4 && i % 2 === 0) ? "·" : ""; frag.append(x); }
+  for(let i = 0; i < n; i++){ const x = document.createElement("div"); x.className = "num" + (starts.has(i) ? " b" : ""); x.textContent = starts.has(i) ? ++cnt : (m.per === 4 && i % 2 === 0) ? "·" : ""; frag.append(x); }
   for(const r of ED_ROWS){
-    const lab = document.createElement("div"); lab.className = "lab"; lab.dataset.r = r.v; lab.style.setProperty("--rc", r.c);
-    lab.innerHTML = "<i></i>"; lab.append(r.n); lab.title = "Dinle"; frag.append(lab);
+    const off = d.mute[r.v] || (anySolo && !edSolo[r.v]);
+    const row = document.createElement("div"); row.className = "st-row" + (off ? " off" : ""); row.style.setProperty("--rc", r.c); row.dataset.r = r.v;
+    const vol = Math.round((d.mix[r.v] != null ? d.mix[r.v] : 1) * 100);
+    row.innerHTML = '<i class="c"></i><button type="button" class="n"></button><input type="range" min="0" max="150" step="5" aria-label="Satır sesi"><span class="ms"><button type="button" class="m" aria-label="Sustur" title="Sustur">M</button><button type="button" class="s" aria-label="Sadece bu satır" title="Sadece bu satır">S</button></span>';
+    row.querySelector(".n").textContent = r.n; row.querySelector(".n").title = LL("Dinle", "Listen");
+    const rg = row.querySelector("input"); rg.value = vol; rg.title = vol + "%"; rg.style.setProperty("--v", (vol / 1.5) + "%");
+    row.querySelector(".m").setAttribute("aria-pressed", !!d.mute[r.v]); row.querySelector(".s").setAttribute("aria-pressed", !!edSolo[r.v]);
+    frag.append(row);
     for(let i = 0; i < n; i++){
-      const c = document.createElement("button"); c.type = "button"; c.className = "cell" + (gi[i] % 2 ? " g1" : "") + (starts.has(i) && i ? " beat" : "");
+      const c = document.createElement("button"); c.type = "button"; c.className = "cell" + (gi[i] % 2 ? " g1" : "") + (starts.has(i) && i ? " bt" : "") + (off ? " off" : "");
       c.dataset.r = r.v; c.dataset.i = i; c.style.setProperty("--rc", r.c);
-      const l = P[r.v][i]; if(l !== ".") c.dataset.l = l;
-      if(ed.mode === "vel" && l !== ".") c.dataset.t = VELT(l);
-      c.setAttribute("aria-label", r.n + " " + (i + 1) + (l !== "." ? " açık" : ""));
+      const l = P[r.v][i]; edPaint(c, l, r);
       frag.append(c);
     }
   }
-  grid.textContent = ""; grid.append(frag);
+  grid.textContent = ""; grid.append(frag); edNow = -1;
 }
-function edSet(v, i, l){
-  const P = ed.d.parts[ed.part], s = P[v]; if(!s || s[i] === l) return;
-  P[v] = s.slice(0, i) + l + s.slice(i + 1); ed.dirty = true;
-  const c = $("reGrid").querySelector('.cell[data-r="' + v + '"][data-i="' + i + '"]');
-  if(c){ if(l === ".") { delete c.dataset.l; delete c.dataset.t; } else { c.dataset.l = l; if(ed.mode === "vel") c.dataset.t = VELT(l); } }
-  const tab = document.querySelector('#reTabs .tab[data-p="' + ed.part + '"]'); if(tab) tab.classList.toggle("empty", !partHas(P));
-  if(l !== "." && !edTimer && kit) try{ play(v, actx.currentTime + .005, LVL[l]); }catch(e){}
+function edPaint(c, l, r){
+  c.textContent = "";
+  if(l && l !== "."){ const v = document.createElement("i"); v.className = "v"; v.style.setProperty("--h", lvlPct(l) + "%"); c.append(v); c.dataset.l = l; }
+  else delete c.dataset.l;
+  c.setAttribute("aria-label", (r ? r.n : "") + " " + (+c.dataset.i + 1) + (l && l !== "." ? " · " + lvlPct(l) : ""));
+}
+const edRow = v => ED_ROWS.find(r => r.v === v);
+function edSet(v, i, l, quiet){
+  const P = ed.d.parts[ed.part], s = P[v]; if(!s || s[i] === l) return false;
+  P[v] = s.slice(0, i) + l + s.slice(i + 1); edDirty(true);
+  const c = $("reGrid").querySelector('.cell[data-r="' + v + '"][data-i="' + i + '"]'); if(c) edPaint(c, l, edRow(v));
+  if(l !== "." && !quiet && !edTimer && kit) try{ play(v, actx.currentTime + .005, LVL[l] * edVol(v)); }catch(e){}
+  return true;
+}
+const edVol = v => ed.d.mix && ed.d.mix[v] != null ? ed.d.mix[v] : 1;
+function edInfo(v, i, l){
+  const r = edRow(v); $("stInfo").innerHTML = "";
+  if(!r) return;
+  const b = document.createElement("b"); b.textContent = r.n; $("stInfo").append(b, " · " + LL("adım ", "step ") + (i + 1) + (l && l !== "." ? " · " + lvlPct(l) : ""));
 }
 let edDrag = null;
+function edTip(c, txt){ edShell().querySelectorAll(".cell.act").forEach(x => { x.classList.remove("act"); const t = x.querySelector(".tip"); if(t) t.remove(); }); if(!c) return; c.classList.add("act"); const t = document.createElement("span"); t.className = "tip"; t.textContent = txt; c.append(t); }
 $("reGrid").addEventListener("pointerdown", e => {
-  const lab = e.target.closest(".lab");
-  if(lab){ audio(); ensureKit(ed.d.set).then(() => play(lab.dataset.r, actx.currentTime + .01, 1)).catch(() => {}); return; }
+  const row = e.target.closest(".st-row");
+  if(row){
+    const v = row.dataset.r;
+    if(e.target.closest(".n")){ audio(); ensureKit(ed.d.set).then(() => play(v, actx.currentTime + .01, edVol(v))).catch(() => {}); }
+    return;
+  }
   const c = e.target.closest(".cell"); if(!c) return;
-  e.preventDefault();
-  const v = c.dataset.r, i = +c.dataset.i, cur = ed.d.parts[ed.part][v][i];
-  if(ed.mode === "vel"){ edSet(v, i, cur === "." ? "X" : cur === "X" ? "x" : cur === "x" ? "g" : "X"); return; }
-  const val = cur === "." ? "x" : ".";
-  edDrag = { val, id: e.pointerId };
-  edSet(v, i, val);
+  e.preventDefault(); try{ c.setPointerCapture(e.pointerId); }catch(er){}
+  const v = c.dataset.r, i = +c.dataset.i, cur = ed.d.parts[ed.part][v][i], rect = c.getBoundingClientRect();
+  edSnap(); edInfo(v, i, cur);
+  if(edTool === "erase"){ edDrag = { kind: "paint", val: ".", id: e.pointerId }; edSet(v, i, "."); return; }
+  if(edTool === "vel"){
+    const f = Math.max(.1, Math.min(1, 1 - (e.clientY - rect.top) / rect.height));
+    edDrag = { kind: "line", id: e.pointerId, v };
+    const l = lvlChar(f); edSet(v, i, l, cur !== "."); edLast = l; edTip(c, lvlPct(l)); edInfo(v, i, l); return;
+  }
+  if(cur === "."){ edDrag = { kind: "paint", val: edLast, id: e.pointerId }; edSet(v, i, edLast); edInfo(v, i, edLast); return; }
+  edDrag = { kind: "maybe", id: e.pointerId, v, i, c, y0: e.clientY, x0: e.clientX, f0: LVL[cur] || .8, h: rect.height };
 });
-addEventListener("pointermove", e => {
+function edMove(e){
   if(!edDrag || e.pointerId !== edDrag.id) return;
-  const el = document.elementFromPoint(e.clientX, e.clientY), c = el && el.closest && el.closest("#reGrid .cell");
-  if(c) edSet(c.dataset.r, +c.dataset.i, edDrag.val);
+  if(edDrag.kind === "maybe"){
+    const dy = e.clientY - edDrag.y0, dx = e.clientX - edDrag.x0;
+    if(Math.abs(dy) > 5 && Math.abs(dy) > Math.abs(dx)) edDrag.kind = "vel";
+    else if(Math.abs(dx) > 8){ edDrag = { kind: "paint", val: ".", id: e.pointerId }; }
+    else return;
+  }
+  if(edDrag.kind === "vel"){
+    const f = Math.max(.1, Math.min(1, edDrag.f0 - (e.clientY - edDrag.y0) / (edDrag.h * 2.2))), l = lvlChar(f);
+    edSet(edDrag.v, edDrag.i, l, true); edLast = l; edTip(edDrag.c, lvlPct(l)); edInfo(edDrag.v, edDrag.i, l);
+    return;
+  }
+  const el = document.elementFromPoint(e.clientX, e.clientY), c = el && el.closest && el.closest("#reGrid .cell"); if(!c) return;
+  if(edDrag.kind === "line"){
+    if(c.dataset.r !== edDrag.v) return;
+    const P = ed.d.parts[ed.part], i = +c.dataset.i; if(P[edDrag.v][i] === ".") return;
+    const rect = c.getBoundingClientRect(), l = lvlChar(Math.max(.1, Math.min(1, 1 - (e.clientY - rect.top) / rect.height)));
+    edSet(edDrag.v, i, l, true); edTip(c, lvlPct(l)); edInfo(edDrag.v, i, l); return;
+  }
+  edSet(c.dataset.r, +c.dataset.i, edDrag.val);
+}
+function edUp(e){
+  if(!edDrag || (e && e.pointerId !== edDrag.id)) return;
+  if(edDrag.kind === "maybe") edSet(edDrag.v, edDrag.i, ".");
+  if(edDrag.kind === "vel" || edDrag.kind === "line"){ const v = edDrag.v, i = edDrag.i; if(i != null && kit && !edTimer) try{ play(v, actx.currentTime + .005, LVL[ed.d.parts[ed.part][v][i]] * edVol(v)); }catch(er){} }
+  edDrag = null; edTip(null); edTabs();
+}
+addEventListener("pointermove", edMove);
+addEventListener("pointerup", edUp);
+addEventListener("pointercancel", edUp);
+$("reGrid").addEventListener("click", e => {
+  const row = e.target.closest(".st-row"); if(!row) return;
+  const v = row.dataset.r, b = e.target.closest(".ms button"); if(!b) return;
+  if(b.classList.contains("m")){ edSnap(); ed.d.mute[v] = !ed.d.mute[v]; if(!ed.d.mute[v]) delete ed.d.mute[v]; edDirty(true); }
+  else edSolo[v] = !edSolo[v];
+  edRender();
 });
-addEventListener("pointerup", () => { edDrag = null; });
-addEventListener("pointercancel", () => { edDrag = null; });
-document.querySelectorAll("#reTabs .tab").forEach(b => b.onclick = () => { ed.part = b.dataset.p; edRender(); });
-document.querySelectorAll("#reMode button").forEach(b => b.onclick = () => { ed.mode = b.dataset.m; edRender(); });
-$("reCopy").onclick = () => { ed.d.parts[ed.part] = JSON.parse(JSON.stringify(ed.d.parts.kita)); ed.dirty = true; edRender(); };
-$("reClear").onclick = () => { ed.d.parts[ed.part] = fixPart(null, stepsOf(meterOf(ed.d))); ed.dirty = true; edRender(); };
-$("reName").oninput = () => { ed.d.name = $("reName").value; ed.dirty = true; };
-$("reMeter").onchange = () => { ed.d.meter = $("reMeter").value; ed.dirty = true; edRender(); };
-$("reSet").onchange = () => { if($("reSet").value === "__newset"){ $("reSet").value = SETS[ed.d.set] ? ed.d.set : "cajon"; openKitEditor(null); return; } ed.d.set = $("reSet").value; ed.dirty = true; audio(); ensureKit(ed.d.set).catch(() => {}); };
-$("reSwing").oninput = () => { ed.d.swing = +$("reSwing").value; ed.dirty = true; };
-const edBpmSet = v => { ed.d.bpm = Math.max(40, Math.min(240, Math.round(+v || 96))); $("reBpm").value = ed.d.bpm; ed.dirty = true; };
+$("reGrid").addEventListener("input", e => {
+  const rg = e.target.closest(".st-row input[type=range]"); if(!rg) return;
+  const v = rg.closest(".st-row").dataset.r; edSnap("vol" + v);
+  ed.d.mix[v] = Math.round(+rg.value) / 100; if(ed.d.mix[v] === 1) delete ed.d.mix[v]; rg.title = rg.value + "%"; rg.style.setProperty("--v", (rg.value / 1.5) + "%"); edDirty(true);
+});
+$("reGrid").addEventListener("change", e => { const rg = e.target.closest(".st-row input[type=range]"); if(rg){ const v = rg.closest(".st-row").dataset.r; audio(); ensureKit(ed.d.set).then(() => play(v, actx.currentTime + .01, edVol(v))).catch(() => {}); } });
+$("reTabs").addEventListener("click", e => { const b = e.target.closest(".st-sec"); if(!b) return; ed.part = b.dataset.p; edRender(); });
+document.querySelectorAll("#reMode button").forEach(b => b.onclick = () => { edTool = b.dataset.m; edRender(); });
+document.querySelectorAll("#stPm button").forEach(b => b.onclick = () => { edPm = b.dataset.pm; document.querySelectorAll("#stPm button").forEach(x => x.classList.toggle("on", x === b)); if(edTimer){ edPlay(false); edPlay(true); } });
+$("stMet").onclick = () => { edMet = !edMet; $("stMet").setAttribute("aria-pressed", edMet); };
+$("reCopy").onchange = () => { const src = $("reCopy").value; $("reCopy").value = ""; if(!src) return; edSnap(); ed.d.parts[ed.part] = JSON.parse(JSON.stringify(ed.d.parts[src])); edDirty(true); edRender(); toast(pn(src) + LL(" kopyalandı", " copied")); };
+$("reClear").onclick = () => { if(!partHas(ed.d.parts[ed.part])) return; edSnap(); ed.d.parts[ed.part] = fixPart(null, stepsOf(meterOf(ed.d))); edDirty(true); edRender(); };
+$("reName").oninput = () => { edSnap("name"); ed.d.name = $("reName").value; edDirty(true); };
+$("reMeter").onchange = () => { edSnap(); ed.d.meter = $("reMeter").value; edDirty(true); edRender(); };
+$("reSet").onchange = () => { if($("reSet").value === "__newset"){ $("reSet").value = SETS[ed.d.set] ? ed.d.set : "cajon"; openKitEditor(null); return; } edSnap(); ed.d.set = $("reSet").value; edDirty(true); audio(); ensureKit(ed.d.set).catch(() => {}); };
+$("reSwing").oninput = () => { edSnap("swing"); ed.d.swing = +$("reSwing").value; $("stSwV").textContent = ed.d.swing; edDirty(true); };
+const edBpmSet = v => { const b = Math.max(40, Math.min(240, Math.round(+v || 96))); if(b !== ed.d.bpm) edSnap("bpm"); ed.d.bpm = b; $("reBpm").value = b; edDirty(true); };
 $("reBpm").onchange = () => edBpmSet($("reBpm").value);
+$("reBpm").onkeydown = e => { if(e.key === "Enter"){ e.preventDefault(); $("reBpm").blur(); } };
 $("reTDn").onclick = () => edBpmSet((ed.d.bpm || 96) - 1);
 $("reTUp").onclick = () => edBpmSet((ed.d.bpm || 96) + 1);
-$("reFrom").onchange = async () => {
-  const id = $("reFrom").value; if(!id) return;
-  if(STYLES[id] && STYLES[id].custom){   // kendi ritmini düzenlemek için aç
-    if(ed.dirty && !(await askYes("Bu ritimde kaydedilmemiş değişiklikler var. Kaydetmeden başka ritme geçilsin mi?", "Kaydetmeden geç"))){ $("reFrom").value = ""; return; }
-    edPlay(false); openRhythmEditor(id); return;
-  }
-  const keepName = ed.id ? ed.d.name : null;
-  const nd = builtinToDoc(id); if(keepName) nd.name = keepName;
-  ed.d = nd; ed.dirty = true; edRender(); toast("Başlangıç: " + STYLES[id].name);
+let edTaps = [];
+$("stTap").onclick = () => {
+  const t = performance.now(); edTaps = edTaps.filter(x => t - x < 2200); edTaps.push(t);
+  $("stTap").classList.add("hit"); setTimeout(() => $("stTap").classList.remove("hit"), 90);
+  if(edTaps.length >= 3){ const iv = (edTaps[edTaps.length - 1] - edTaps[0]) / (edTaps.length - 1); edBpmSet(60000 / iv); }
 };
+$("stUndo").onclick = () => edHistory(true);
+$("stRedo").onclick = () => edHistory(false);
+addEventListener("resize", () => { if(ed && !edShell().hidden) edRender(); });
+/* ---- çalma ---- */
+function edFlow(){
+  const d = ed.d, has = p => partHas(d.parts[p]), nak = has("nakarat") ? "nakarat" : "kita", fill = has("dolgu") ? "dolgu" : null;
+  const s = []; if(has("giris")) s.push("giris");
+  s.push("kita", fill || "kita", nak, fill || nak);
+  if(has("ara")) s.push("ara", fill || "ara");
+  s.push("kita"); if(has("bitis")) s.push("bitis");
+  return s;
+}
+function edClick(t, acc){
+  try{ const o = actx.createOscillator(), g = actx.createGain(); o.frequency.value = acc ? 1760 : 1180; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(acc ? .35 : .2, t + .002); g.gain.exponentialRampToValueAtTime(.001, t + .05); o.connect(g); g.connect(actx.destination); o.start(t); o.stop(t + .06); }catch(e){}
+}
 function edTick(){
   const d = ed.d, m = meterOf(d), n = stepsOf(m), sd = 60 / (d.bpm || 96) / m.per, sw = (d.swing || 0) / 100;
-  const P = partHas(d.parts[ed.part]) ? d.parts[ed.part] : d.parts.kita;
+  const starts = []; let pos = 0; m.g.forEach(g => { starts.push(pos); pos += g; });
+  const anySolo = Object.values(edSolo).some(Boolean);
   while(edNext < actx.currentTime + .12){
-    const i = edStep % n, t = edNext + (i % 2 ? sd * sw : 0);
-    for(const r of ED_ROWS){ const c = P[r.v] && P[r.v][i]; if(LVL[c]) play(r.v, t, LVL[c]); }
-    edQ.push({ t, i }); edNext += sd; edStep++;
+    const i = edStep % n;
+    if(i === 0 && edStep > 0) edBar++;
+    let part;
+    if(edPm === "flow"){ if(edBar >= edSeq.length){ edPlay(false); return; } part = edSeq[edBar]; }
+    else part = ed.part;
+    const P = partHas(d.parts[part]) ? d.parts[part] : d.parts.kita, t = edNext + (i % 2 ? sd * sw : 0);
+    for(const r of ED_ROWS){
+      if(d.mute && d.mute[r.v]) continue; if(anySolo && !edSolo[r.v]) continue;
+      const c = P[r.v] && P[r.v][i]; if(LVL[c]) play(r.v, t, LVL[c] * edVol(r.v));
+    }
+    if(edMet && starts.includes(i)) edClick(edNext, i === 0);
+    edQ.push({ t, i, part }); edNext += sd; edStep++;
   }
 }
-function edMark(i){
-  if(i === edNow) return;
+function edMark(i, part){
+  if(part !== edPlayPart){ edPlayPart = part; document.querySelectorAll("#reTabs .st-sec").forEach(b => b.classList.toggle("play", b.dataset.p === part)); }
+  const show = part === ed.part ? i : -1;
+  if(show === edNow) return;
   $("reGrid").querySelectorAll(".cell.now").forEach(c => c.classList.remove("now"));
-  if(i >= 0) $("reGrid").querySelectorAll('.cell[data-i="' + i + '"]').forEach(c => c.classList.add("now"));
-  edNow = i;
+  if(show >= 0) $("reGrid").querySelectorAll('.cell[data-i="' + show + '"]').forEach(c => c.classList.add("now"));
+  edNow = show;
 }
 function edVis(){
   if(!edTimer) return;
   const now = actx.currentTime; let cur = null;
-  while(edQ.length && edQ[0].t <= now){ cur = edQ.shift(); }
-  if(cur) edMark(cur.i);
+  while(edQ.length && edQ[0].t <= now) cur = edQ.shift();
+  if(cur) edMark(cur.i, cur.part);
   edRaf = requestAnimationFrame(edVis);
 }
 async function edPlay(on){
-  if(!on){ clearInterval(edTimer); edTimer = 0; cancelAnimationFrame(edRaf); edQ = []; edMark(-1); $("rePlay").setAttribute("aria-pressed", "false"); $("rePlay").textContent = "▶ Çal"; return; }
+  if(!on){ clearInterval(edTimer); edTimer = 0; cancelAnimationFrame(edRaf); edQ = []; edMark(-1, null); $("rePlay").setAttribute("aria-pressed", "false"); $("rePlay").setAttribute("aria-label", LL("Çal", "Play")); return; }
   audio(); try{ await actx.resume(); }catch(e){}
-  try{ await ensureKit(ed.d.set); }catch(e){ toast("Ses seti yüklenemedi"); return; }
+  try{ await ensureKit(ed.d.set); }catch(e){ toast(LL("Ses seti yüklenemedi", "Sound set could not load")); return; }
   if(levelG) levelG.gain.setTargetAtTime(1, actx.currentTime, .02);
+  edSeq = edFlow(); edBar = 0;
   edNext = actx.currentTime + .08; edStep = 0; edQ = [];
   edTimer = setInterval(edTick, 25); edTick(); edVis();
-  $("rePlay").setAttribute("aria-pressed", "true"); $("rePlay").textContent = "■ Durdur";
+  $("rePlay").setAttribute("aria-pressed", "true"); $("rePlay").setAttribute("aria-label", LL("Durdur", "Stop"));
 }
 $("rePlay").onclick = () => edPlay(!edTimer);
+/* ---- kaydet / kapat ---- */
 function edClean(){
   const d = ed.d, n = stepsOf(meterOf(d)), parts = {};
-  ED_PARTS.forEach(p => { const fp = fixPart(d.parts[p], n); if(partHas(fp)){ const o = {}; ED_ROWS.forEach(r => { if(/[Xxg]/.test(fp[r.v])) o[r.v] = fp[r.v]; }); parts[p] = o; } });
-  return { name: (String(d.name || "").trim() || "Ritmim").slice(0, 40), meter: meterOf(d).id, bpm: Math.round(+d.bpm || 96), set: SETS[d.set] ? d.set : "cajon", swing: Math.round(+d.swing || 0), parts, updatedAt: Date.now() };
+  ED_PARTS.forEach(p => { const fp = fixPart(d.parts[p], n); if(partHas(fp)){ const o = {}; ED_ROWS.forEach(r => { if(/[^.]/.test(fp[r.v])) o[r.v] = fp[r.v]; }); parts[p] = o; } });
+  const out = { name: (String(d.name || "").trim() || "Ritmim").slice(0, 40), meter: meterOf(d).id, bpm: Math.round(+d.bpm || 96), set: SETS[d.set] ? d.set : "cajon", swing: Math.round(+d.swing || 0), parts, updatedAt: Date.now() };
+  const mix = {}, mute = {}; ED_ROWS.forEach(r => { if(d.mix && d.mix[r.v] != null && d.mix[r.v] !== 1) mix[r.v] = d.mix[r.v]; if(d.mute && d.mute[r.v]) mute[r.v] = true; });
+  if(Object.keys(mix).length) out.mix = mix; if(Object.keys(mute).length) out.mute = mute;
+  return out;
 }
 async function edSave(){
   const clean = edClean();
-  if(!partHas(clean.parts.kita)){ toast("Kıta bölümüne en az bir vuruş koy"); ed.part = "kita"; edRender(); return; }
+  if(!partHas(clean.parts.kita)){ toast(LL("Kıta bölümüne en az bir vuruş koy", "Put at least one hit in the Verse")); ed.part = "kita"; edRender(); return; }
   const id = ed.id || ("u_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6));
-  myRhythms[id] = clean; LS.set("sp.myr", myRhythms); ed.id = id; ed.dirty = false; ed.d = JSON.parse(JSON.stringify(clean));
+  myRhythms[id] = clean; LS.set("sp.myr", myRhythms); LS.set("sp.lastRhythm", id); ed.id = id; edDirty(false);
+  const keepPart = ed.part; ed.d = JSON.parse(JSON.stringify(clean)); ed.part = keepPart;
   for(const k of Object.keys(loudCache)) if(k.indexOf(id + "|") === 0) delete loudCache[k];
-  registerMine(); edRender();
-  if(db && canWrite){ try{ await queued(() => db.collection("ritimler").doc(id).set(clean)); }catch(e){ toast("Kaydedilemedi"); return; } }
-  if(current){ styleId = id; $("rStyle").value = id; applyStyleSet(); drawBeats(); showKitSel(); refreshSave(); }
-  toast("Kaydedildi: " + clean.name + (current ? " · şarkıda seçildi" : ""));
+  registerMine(); edLib(); edRender();
+  if(db && canWrite){ try{ await queued(() => db.collection("ritimler").doc(id).set(clean)); }catch(e){ toast(LL("Kaydedilemedi", "Could not save")); return; } }
+  if(current && $("home").hidden){ styleId = id; $("rStyle").value = id; applyStyleSet(); drawBeats(); showKitSel(); refreshSave(); }
+  toast(LL("Kaydedildi: ", "Saved: ") + clean.name + (current && $("home").hidden ? LL(" · şarkıda seçildi", " · set for this song") : ""));
 }
 $("reSave").onclick = edSave;
 async function closeRhythmEditor(force){
-  if(!force && ed && ed.dirty){
-    const a = await ask("Bu ritimde kaydedilmemiş değişiklikler var.", [{ k: "save", t: "Kaydet ve çık", c: "pri" }, { k: "drop", t: "Kaydetmeden çık", c: "danger" }, { k: "stay", t: "Vazgeç" }]);
+  if(!force && ed && ed.dirty && (ed.id || ED_PARTS.some(p => partHas(ed.d.parts[p])))){
+    const a = await ask(LL("Bu ritimde kaydedilmemiş değişiklikler var.", "This rhythm has unsaved changes."), [{ k: "save", t: LL("Kaydet ve çık", "Save and close"), c: "pri" }, { k: "drop", t: LL("Kaydetmeden çık", "Close without saving"), c: "danger" }, { k: "stay", t: LL("Vazgeç", "Cancel") }]);
     if(a === "stay") return;
     if(a === "save"){ await edSave(); if(!ed || ed.dirty) return; }
   }
-  edPlay(false); $("rEd").hidden = true; $("kitEd").hidden = true; ed = null;
+  edPlay(false); edShell().hidden = true; $("kitEd").hidden = true; ed = null;
   if(actx && setId) ensureKit(setId).catch(() => {});
+  try{ drawHome(); }catch(e){}
 }
 $("reClose").onclick = () => closeRhythmEditor();
 $("reMore").onclick = e => { e.stopPropagation(); $("reMenu").hidden = !$("reMenu").hidden; };
 document.addEventListener("click", e => { if(!$("reMenu").hidden && !e.target.closest("#reMenu")) $("reMenu").hidden = true; });
+function edExport(){
+  const c = edClean(), blob = new Blob([JSON.stringify({ format: "sahne-ritim", v: 2, ritim: c }, null, 1)], { type: "application/json" });
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = (c.name.replace(/[^\wçğıöşüÇĞİÖŞÜ -]+/g, "").trim() || "ritim") + ".ritim.json";
+  document.body.append(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+}
 $("reMenu").addEventListener("click", async e => {
   const b = e.target.closest("button"); if(!b) return; $("reMenu").hidden = true;
   const act = b.dataset.act;
-  if(act === "dup"){ ed.id = null; ed.d.name = (ed.d.name || LL("Ritmim", "My rhythm")) + LL(" (kopya)", " (copy)"); ed.dirty = true; edRender(); toast("Kopya hazır: Kaydet'e bas"); }
-  if(act === "export"){
-    const blob = new Blob([JSON.stringify({ format: "sahne-ritim", v: 1, ritim: edClean() }, null, 1)], { type: "application/json" });
-    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = (edClean().name.replace(/[^\wçğıöşüÇĞİÖŞÜ -]+/g, "").trim() || "ritim") + ".ritim.json";
-    document.body.append(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
-  }
+  if(act === "dup"){ edSnap(); ed.id = null; ed.d.name = (ed.d.name || LL("Ritmim", "My rhythm")) + LL(" (kopya)", " (copy)"); edDirty(true); edRender(); edLib(); toast(LL("Kopya hazır: Kaydet'e bas", "Copy ready: tap Save")); }
+  if(act === "export") edExport();
   if(act === "import") $("reFile").click();
   if(act === "del" && ed.id){
-    if(!(await askYes("“" + (ed.d.name || "Ritim") + "” silinsin mi? Bu ritmi kullanan şarkılar hazır bir ritme döner.", "Ritmi sil"))) return;
+    if(!(await askYes(LL("“" + (ed.d.name || "Ritim") + "” silinsin mi? Bu ritmi kullanan şarkılar hazır bir ritme döner.", "Delete “" + (ed.d.name || "Rhythm") + "”? Songs using it go back to a preset rhythm."), LL("Ritmi sil", "Delete rhythm")))) return;
     const id = ed.id; delete myRhythms[id]; LS.set("sp.myr", myRhythms);
-    if(db && canWrite) try{ await queued(() => db.collection("ritimler").doc(id).delete()); }catch(e){}
-    closeRhythmEditor(true);
+    if(db && canWrite) try{ await queued(() => db.collection("ritimler").doc(id).delete()); }catch(er){}
     if(styleId === id){ styleId = current ? defaultStyle(current) : "slow"; }
     registerMine(); drawBeats(); showKitSel(); if(current) refreshSave();
-    toast("Silindi");
+    edPlay(false); openRhythmEditor(Object.keys(myRhythms)[0] || null, null);
+    toast(LL("Silindi", "Deleted"));
   }
 });
 $("reFile").onchange = async () => {
@@ -5120,10 +5601,23 @@ $("reFile").onchange = async () => {
   try{
     const j = JSON.parse(await f.text()), r = j && j.format === "sahne-ritim" ? j.ritim : null;
     if(!r || !r.parts) throw 0;
-    ed.id = null; ed.d = { name: r.name, meter: r.meter, bpm: r.bpm, set: r.set, swing: r.swing, parts: r.parts }; ed.dirty = true; ed.part = "kita"; edRender();
-    toast("İçe alındı: Kaydet'e bas");
-  }catch(e){ toast("Bu bir ritim dosyası değil"); }
+    const go = () => { openRhythmEditor(null, null); ed.d = { name: r.name, meter: r.meter, bpm: r.bpm, set: r.set, swing: r.swing, parts: r.parts, mix: r.mix || {}, mute: r.mute || {} }; edDirty(true); ed.part = "kita"; edRender(); toast(LL("İçe alındı: Kaydet'e bas", "Imported: tap Save")); };
+    if(ed) edSwitch(go); else go();
+  }catch(e){ toast(LL("Bu bir ritim dosyası değil", "This is not a rhythm file")); }
 };
+document.addEventListener("keydown", e => {
+  if(!ed || edShell().hidden || !$("kitEd").hidden || !$("askBox").hidden) return;
+  const tag = (e.target.tagName || "").toLowerCase(), typing = tag === "input" && !/range|checkbox/.test(e.target.type) || tag === "select" || tag === "textarea";
+  const mod = e.ctrlKey || e.metaKey;
+  if(mod && e.key.toLowerCase() === "z"){ if(typing && tag === "input" && e.target.type === "text") return; e.preventDefault(); edHistory(!e.shiftKey); return; }
+  if(mod && e.key.toLowerCase() === "y"){ e.preventDefault(); edHistory(false); return; }
+  if(mod && e.key.toLowerCase() === "s"){ e.preventDefault(); edSave(); return; }
+  if(typing) return;
+  if(e.key === " "){ e.preventDefault(); edPlay(!edTimer); return; }
+  if(/^[1-6]$/.test(e.key) && !mod){ ed.part = ED_PARTS[+e.key - 1]; edRender(); return; }
+  if(e.key === "Escape"){ if(edShell().classList.contains("libopen")) edShell().classList.remove("libopen"); else closeRhythmEditor(); }
+}, true);
+
 /* ---------- kendi ses setlerim ----------
    Her satır (bas, slap, shaker…) için kullanıcı kendi kaydını yükler. Dosya tek kanala indirilir, baştaki sessizlik
    kesilir, uzunluğu sınırlanır, 32 kHz WAV olarak saklanır. Çalarken diğer setler gibi seviyesi otomatik eşitlenir.
@@ -5175,6 +5669,7 @@ function registerSets(){
   };
   fill($("reSet"), true); fill($("rKit"));
   registerSetDrummers();
+  try{ if(!$("home").hidden) drawHomePages(); }catch(e){}
   registerMine();
 }
 function audioToWav(buf, role){
@@ -5287,6 +5782,83 @@ $("kbDel").onclick = async () => {
   $("kitEd").hidden = true; toast("Silindi");
 };
 $("reKit").onclick = () => openKitEditor(mySets[ed.d.set] ? ed.d.set : null);
+$("studioBtn").onclick = () => openStudio();
+
+/* ---------- ana ekran sayfaları (yana kaydır) ---------- */
+let homePg = LS.get("sp.homePg", 0) || 0;
+function homeGo(i, smooth){
+  i = Math.max(0, Math.min(2, i)); homePg = i; LS.set("sp.homePg", i);
+  const box = $("homePages"); box.scrollTo({ left: i * box.clientWidth, behavior: smooth === false ? "auto" : "smooth" });
+  homeTabsMark(i);
+}
+function homeTabsMark(i){
+  document.querySelectorAll("#homeTabs [data-pg]").forEach(b => b.setAttribute("aria-selected", +b.dataset.pg === i));
+  const b = document.querySelector('#homeTabs [data-pg="' + i + '"]'), ink = document.querySelector("#homeTabs .ht-ink");
+  if(b && ink){ ink.style.width = b.offsetWidth + "px"; ink.style.transform = "translateX(" + b.offsetLeft + "px)"; }
+  document.querySelectorAll("#homeDots i").forEach((d, k) => d.classList.toggle("on", k === i));
+}
+document.querySelectorAll("#homeTabs [data-pg]").forEach(b => b.onclick = () => homeGo(+b.dataset.pg));
+(() => {
+  let t = 0; const box = $("homePages");
+  box.addEventListener("scroll", () => { clearTimeout(t); t = setTimeout(() => { const i = Math.round(box.scrollLeft / Math.max(1, box.clientWidth)); if(i !== homePg){ homePg = i; LS.set("sp.homePg", i); } homeTabsMark(i); }, 60); }, { passive: true });
+  addEventListener("resize", () => { if(!$("home").hidden) homeGo(homePg, false); });
+  document.addEventListener("keydown", e => { if($("home").hidden || !$("rEd").hidden || !$("askBox").hidden) return; const tag = (e.target.tagName || "").toLowerCase(); if(tag === "input" || tag === "select" || tag === "textarea") return; if(e.key === "ArrowRight"){ homeGo(homePg + 1); } else if(e.key === "ArrowLeft"){ homeGo(homePg - 1); } });
+  requestAnimationFrame(() => homeGo(homePg, false));
+})();
+const hpPlayIcon = '<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>';
+function hpPattern(d){
+  const span = document.createElement("div"); span.className = "hp-pat";
+  try{ const m = meterOf(d), n = stepsOf(m), p = fixPart(d.parts && d.parts.kita, n);
+    for(let i = 0; i < n; i++){ const e = document.createElement("i"); e.className = /[^.]/.test(p.k[i]) ? "k" : /[^.]/.test(p.s[i]) ? "s" : /[^.]/.test(p.h[i] + p.a[i]) ? "h" : ""; span.append(e); } }catch(e){}
+  return span;
+}
+let hpPrev = null;
+async function previewSet(id, btn){
+  if(playing){ toast(LL("Ritim çalarken önizleme yok", "No preview while the rhythm plays")); return; }
+  audio(); try{ await actx.resume(); }catch(e){}
+  try{ await ensureKit(id); }catch(e){ toast(LL("Ses seti yüklenemedi", "Sound set could not load")); return; }
+  if(levelG) levelG.gain.setTargetAtTime(1, actx.currentTime, .02);
+  if(hpPrev) hpPrev.classList.remove("on"); hpPrev = btn; btn.classList.add("on");
+  const t0 = actx.currentTime + .06, sd = 60 / 100 / 4, P = { k: "X.....x.X.x.....", s: "....X.......X..g", h: "x.x.x.x.x.x.x.x.", x: "X..............." };
+  for(const [v, pat] of Object.entries(P)) for(let i = 0; i < 16; i++) if(LVL[pat[i]]) try{ play(v, t0 + i * sd, LVL[pat[i]]); }catch(e){}
+  setTimeout(() => btn.classList.remove("on"), 16 * sd * 1000 + 300);
+}
+function drawHomePages(){
+  try{
+    const g = $("homeRhy"); g.textContent = "";
+    const list = Object.entries(myRhythms).sort((a, b) => (b[1].updatedAt || 0) - (a[1].updatedAt || 0));
+    for(const [id, d] of list){
+      const c = document.createElement("button"); c.type = "button"; c.className = "repcard hp-card";
+      const n = document.createElement("div"); n.className = "rc-name"; const nb = document.createElement("span"); nb.textContent = d.name || LL("Ritmim", "My rhythm"); nb.dataset.noi18n = ""; n.append(nb);
+      const tg = document.createElement("span"); tg.className = "hp-tag"; tg.textContent = meterOf(d).id.split(" ")[0]; n.append(tg);
+      const meta = document.createElement("div"); meta.className = "rc-meta"; meta.dataset.noi18n = "";
+      meta.textContent = (d.bpm || 96) + " BPM · " + (SETS[d.set] || "").split("·")[0].trim();
+      c.append(n, hpPattern(d), meta); c.onclick = () => openRhythmEditor(id); g.append(c);
+    }
+    const add = document.createElement("button"); add.type = "button"; add.className = "repcard add";
+    const pl = document.createElement("span"); pl.className = "plus"; pl.textContent = "+"; add.append(pl, document.createTextNode(LL("Yeni ritim", "New rhythm")));
+    add.onclick = () => openRhythmEditor(null, null); g.append(add);
+  }catch(e){}
+  try{
+    const g = $("homeSets"); g.textContent = "";
+    const mk = (id, name, mine) => {
+      const c = document.createElement("div"); c.className = "repcard hp-card";
+      const parts = name.split("·").map(x => x.trim()), title = parts[1] ? parts[1].charAt(0).toLocaleUpperCase("tr") + parts[1].slice(1) : parts[0];
+      const n = document.createElement("div"); n.className = "rc-name"; const nb = document.createElement("span"); nb.textContent = title; nb.dataset.noi18n = ""; n.append(nb);
+      const pb = document.createElement("button"); pb.type = "button"; pb.className = "hp-play"; pb.innerHTML = hpPlayIcon; pb.setAttribute("aria-label", LL("Dinle", "Listen")); pb.onclick = e => { e.stopPropagation(); previewSet(id, pb); }; n.append(pb);
+      const meta = document.createElement("div"); meta.className = "rc-meta"; meta.dataset.noi18n = ""; meta.textContent = mine ? LL("Kendi setin", "Your set") : parts[1] ? parts[0] : LL("Karma set", "Mixed set");
+      c.append(n, meta);
+      if(mine){ const e = document.createElement("button"); e.type = "button"; e.className = "hp-edit"; e.textContent = LL("Düzenle", "Edit"); e.onclick = () => { openRhythmEditor(null, null); if(ed) openKitEditor(id); }; c.append(e); }
+      g.append(c);
+    };
+    for(const [id, name] of Object.entries(BUILTIN_SETS)) mk(id, name, false);
+    for(const [id, m] of Object.entries(mySets)) mk(id, m.name || LL("Setim", "My set"), true);
+    const add = document.createElement("button"); add.type = "button"; add.className = "repcard add";
+    const pl = document.createElement("span"); pl.className = "plus"; pl.textContent = "+"; add.append(pl, document.createTextNode(LL("Kendi ses setini yap", "Make your own sound set")));
+    add.onclick = () => { openRhythmEditor(null, null); if(ed) openKitEditor(null); }; g.append(add);
+  }catch(e){}
+}
+
 async function loadMySets(){
   if(!db) return;
   try{
@@ -5299,7 +5871,6 @@ async function loadMySets(){
   }catch(e){}
 }
 
-$("myRBtn").onclick = () => openRhythmEditor(STYLES[styleId] && STYLES[styleId].custom ? styleId : (Object.keys(myRhythms)[0] || null), null);
 $("rEdit").onclick = () => openRhythmEditor(STYLES[styleId] && STYLES[styleId].custom ? styleId : null, styleId);
 registerSets();
 
@@ -5342,13 +5913,15 @@ tr: `<details open><summary>1. Hızlı başlangıç</summary>
 <p>Uygulama tuşları algılamıyorsa ekrana bir kez dokun. Uzun süre basılmayan Bluetooth cihazlar uykuya geçer; şarkıdan önce bir tuşa basıp uyandır.</p>
 <p><button type="button" class="btn primary" data-open="keys">⌨ Tuş ayarlarını aç</button></p></details>
 <details><summary>5. Kendi ritmini yap</summary>
-<ul><li>Sol alttan <b>Ritim editörü</b>'nü, ya da ritim çubuğundaki <b>✎ Düzenle</b>'yi aç.</li>
-<li>Her satır bir ses (bas, slap, shaker…), her kutu bir adım. Kutuya dokun: vuruş ekle / sil. <b>Güç</b> modunda vuruşun sertliğini ayarlarsın.</li>
-<li>Üstten <b>ölçüyü</b> seç (4/4, 9/8, 7/8…). <b>Giriş, Kıta, Nakarat, Ara, Dolgu</b> bölümlerini ayrı ayrı yaz; boş bıraktığın bölüm Kıta'yı çalar.</li>
-<li>En kolay yol: <b>Aç</b> menüsünden hazır bir ritmi seç, değiştir ve kendi adınla kaydet.</li>
+<ul><li>Ana ekrandaki <b>Ritim stüdyosu</b>'nu aç.</li>
+<li>Her satır bir ses (bas, slap, shaker…), her kutu bir adım. Boş kutuya dokun: vuruş ekle. Dolu kutuya dokun: sil. Parmağını sürükleyerek art arda doldurabilirsin.</li>
+<li><b>Ses şiddeti:</b> kutudaki çubuk vuruşun gücüdür. Dolu kutuyu yukarı sürükle: sertleşir, aşağı: yumuşar. <b>Güç</b> aracında parmağını satır boyunca gezdirerek şiddet çizgisi çizebilirsin.</li>
+<li>Satırın yanındaki sürgü o sesin seviyesi; <b>M</b> susturur, <b>S</b> sadece o satırı çalar.</li>
+<li>Üstten <b>ölçüyü</b> seç (4/4, 9/8, 7/8…). <b>Giriş, Kıta, Nakarat, Ara, Dolgu, Bitiş</b> bölümlerini ayrı ayrı yaz; boş bıraktığın bölüm Kıta'yı çalar. <b>Akış</b> ile bütün şarkıyı baştan sona dinlersin.</li>
+<li>En kolay yol: soldaki <b>Hazırdan başla</b> listesinden bir ritim seç, değiştir ve kendi adınla kaydet. Yaptığını <b>geri al</b> ile geri alabilirsin.</li>
 <li>Kaydettiğin ritim, ritim listesinde <b>Benim ritimlerim</b> altında çıkar. <b>⋯</b> menüsünden dosya olarak paylaşabilirsin.</li></ul></details>
 <details><summary>6. Kendi seslerin</summary>
-<ul><li>Editörde <b>Seslerim…</b>'e bas. Her satıra tek bir vuruşun kaydını yükle (WAV, MP3, M4A).</li>
+<ul><li>Stüdyoda set seçiminin yanındaki nota düğmesine bas. Her satıra tek bir vuruşun kaydını yükle (WAV, MP3, M4A).</li>
 <li>Kaydı sessiz bir yerde, tek vuruş olarak al; başı ve sonu uygulama tarafından kesilir, seviyesi diğer seslerle eşitlenir.</li>
 <li>Yüklemediğin satırlar seçtiğin hazır setin sesini çalar: sadece basını değiştirmek de olur.</li></ul></details>
 <details><summary>7. Verilerin ve yedek</summary>
@@ -5396,13 +5969,15 @@ en: `<details open><summary>1. Quick start</summary>
 <p>If keys aren't detected, tap the screen once. Bluetooth devices go to sleep when idle; press a key before the song to wake them up.</p>
 <p><button type="button" class="btn primary" data-open="keys">⌨ Open key settings</button></p></details>
 <details><summary>5. Make your own rhythm</summary>
-<ul><li>Open the <b>Rhythm editor</b> at the bottom left, or <b>✎ Edit</b> in the rhythm bar.</li>
-<li>Each row is a sound (bass, slap, shaker…), each box a step. Tap a box to add or remove a hit. In <b>Velocity</b> mode you set how hard each hit is.</li>
-<li>Choose the <b>time signature</b> (4/4, 9/8, 7/8…). Write <b>Intro, Verse, Chorus, Interlude, Fill</b> separately; an empty section plays the Verse.</li>
-<li>Easiest: pick a preset from the <b>Open</b> menu, change it and save it under your own name.</li>
+<ul><li>Open the <b>Rhythm studio</b> on the start screen.</li>
+<li>Each row is a sound (bass, slap, shaker…), each box a step. Tap an empty box to add a hit, tap a filled one to remove it. Drag to fill several in a row.</li>
+<li><b>Velocity:</b> the bar inside a box is how hard the hit is. Drag a filled box up for harder, down for softer. With the <b>Velocity</b> tool, sweep along a row to draw a velocity line.</li>
+<li>The slider next to each row sets that sound's level; <b>M</b> mutes it, <b>S</b> plays only that row.</li>
+<li>Choose the <b>time signature</b> (4/4, 9/8, 7/8…). Write <b>Intro, Verse, Chorus, Interlude, Fill, Ending</b> separately; an empty section plays the Verse. <b>Flow</b> plays the whole song from start to end.</li>
+<li>Easiest: pick a rhythm from <b>Start from a preset</b> on the left, change it and save it under your own name. <b>Undo</b> takes back any step.</li>
 <li>Saved rhythms appear under <b>My rhythms</b> in the rhythm list. Share them as a file from the <b>⋯</b> menu.</li></ul></details>
 <details><summary>6. Your own sounds</summary>
-<ul><li>In the editor tap <b>My sounds…</b> and upload a single hit for each row (WAV, MP3, M4A).</li>
+<ul><li>In the studio tap the note button next to the set and upload a single hit for each row (WAV, MP3, M4A).</li>
 <li>Record in a quiet place, one hit per file; the app trims the start and end and matches the level to the other sounds.</li>
 <li>Rows you don't upload use the preset you choose, so you can replace just the bass, for example.</li></ul></details>
 <details><summary>7. Your data and backups</summary>
@@ -5574,7 +6149,7 @@ const EN = {
   "TUŞLAR · basılı tut = alttaki":"KEYS · hold = lower action","Tuş takımı ipuçları":"Keypad hints","İpuçlarını gizle":"Hide hints","Gizle (Ses · EQ yanındaki “Tuş ipuçları” ile geri gelir)":"Hide (bring back with “Key hints” next to Volume · EQ)",
   "Sonraki şarkı":"Next song","Önceki şarkı":"Previous song","Bitir (ritmi kapat)":"End (stop the rhythm)","Başlangıç: Giriş":"Starts with: Intro",
   // ritim editörü
-  "Ritim editörü":"Rhythm editor","✎ Ritim editörü":"✎ Rhythm editor","Editörü kapat":"Close editor","Ritmin adı":"Rhythm name","▶ Çal":"▶ Play","Diğer işlemler":"More actions","Kopyasını oluştur":"Make a copy","Dışa aktar (dosya)":"Export (file)","İçe aktar (dosyadan)":"Import (from file)","Bu ritmi sil":"Delete this rhythm",
+  "Ritim editörü":"Rhythm editor","Repertuarlar":"Repertoires","Sesler":"Sounds","Ritimlerin çaldığı davul ve kajon setleri. Dinlemek için ▶'ye dokun. Kendi kayıtlarınla yeni bir set de yapabilirsin.":"The drum and cajon sets your rhythms play. Tap ▶ to listen. You can also build a set from your own recordings.","Kendi ritmini yaz, hazır bir ritmi kendine göre değiştir. Kaydettiğin ritimler şarkılarının ritim listesinde çıkar.":"Write your own rhythm, or reshape a preset. Saved rhythms appear in your songs' rhythm list.","Bölümler":"Sections","Stüdyo":"Studio","Ritim stüdyosu":"Rhythm studio","Stüdyodan çık":"Leave studio","Ritimlerim":"My rhythms","Çal":"Play","Durdur":"Stop","Çalma biçimi":"Playback","Bölüm döngüsü":"Loop section","Akış":"Flow","Metronom":"Metronome","ÖLÇÜ":"METER","SET":"KIT","Seslerim":"My sounds","Kendi seslerin":"Your own sounds","Geri al":"Undo","Yinele":"Redo","Ritim ara":"Search rhythms","＋ Yeni":"＋ New","Hazırdan başla":"Start from a preset","İçe aktar":"Import","Dışa aktar":"Export","Bölümler":"Sections","Araç":"Tool","Çiz":"Draw","Sil":"Erase","Güç":"Velocity","Kopyala":"Copy","Başka bölümden kopyala":"Copy from another section","Boşluk":"Space","çal / durdur":"play / stop","bölüm":"section","geri al":"undo","Dolu kutuyu yukarı ya da aşağı sürükle: ses şiddeti. Satır adına dokun: sesi dinle. Boş bölüm Kıta'yı çalar.":"Drag a filled box up or down: velocity. Tap a row name: hear the sound. An empty section plays the Verse.","Sustur":"Mute","Sadece bu satır":"Solo","Satır sesi":"Row level","Stüdyoyu aç":"Open studio","Ritim yazmaya başla":"Start writing a rhythm","Karma set":"Mixed set","Kendi ritimlerini yaz: giriş, kıta, nakarat, dolgu ve bitiş. Vuruşların şiddetini ayarla, şarkılarında seç.":"Write your own rhythms: intro, verse, chorus, fill and ending. Shape each hit's velocity, then pick them in your songs.","TEMPO":"TEMPO","SWING":"SWING","Ses seti":"Sound set","Ölçü":"Time signature","✎ Ritim editörü":"✎ Rhythm editor","Editörü kapat":"Close editor","Ritmin adı":"Rhythm name","▶ Çal":"▶ Play","Diğer işlemler":"More actions","Kopyasını oluştur":"Make a copy","Dışa aktar (dosya)":"Export (file)","İçe aktar (dosyadan)":"Import (from file)","Bu ritmi sil":"Delete this rhythm",
   "Ölçü":"Time","Ses seti":"Sound set","Seslerim…":"My sounds…","Sallantı (swing)":"Swing","Sallantı":"Swing","Aç":"Open","Ritim aç ya da hazırdan başla…":"Open a rhythm or start from a preset…","Tempo azalt":"Tempo down","Tempo artır":"Tempo up",
   "Dokunma modu":"Tap mode","Vuruş":"Hits","Güç":"Velocity","Kıta'dan kopyala":"Copy from Verse","Temizle":"Clear","Dinle":"Listen","Benim ritimlerim":"My rhythms","＋ Yeni ritim yap…":"＋ Make a new rhythm…","Yeni ritim":"New rhythm","Ritmim":"My rhythm",
   "Bas (düm)":"Bass (düm)","Slap (tek)":"Slap (tek)","Parmak (ka)":"Finger (ka)","Shaker":"Shaker","Shaker vurgu":"Shaker accent","Tom tiz":"High tom","Tom pes":"Low tom","Çan":"Bell","Zil":"Crash",
