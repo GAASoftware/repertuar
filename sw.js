@@ -1,5 +1,5 @@
 // StagePal Repertoire – offline
-const C = "repertuar-2026-11-20f";
+const C = "repertuar-2026-11-20g";
 const CORE = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(C).then(c => c.addAll(CORE)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k.startsWith("repertuar-") && k !== C).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
@@ -9,7 +9,7 @@ self.addEventListener("fetch", e => {
   if(u.origin !== self.location.origin) return;
   // the page itself: network first, so a new version shows on the next open; the cache only when offline
   if(e.request.mode === "navigate") {
-    e.respondWith(fetch(e.request).then(r => { if(r && r.ok) { const copy = r.clone(); caches.open(C).then(c => c.put("./index.html", copy)); } return r; })
+    e.respondWith(fetch(e.request.url, { cache: "no-store", credentials: "same-origin" }).then(r => { if(r && r.ok) { const copy = r.clone(); caches.open(C).then(c => c.put("./index.html", copy)); } return r; })
       .catch(() => caches.open(C).then(c => c.match("./index.html"))));
     return;
   }
